@@ -5,6 +5,7 @@ B00877934
 mn697903@dal.ca
 
 Group10-s21
+Course instructor : Prof. Gabriella Mosquera
 Group TA: Bala Sandeep
 
 Project members: 
