@@ -8,10 +8,10 @@ Group10-s21
 Group TA: Bala Sandeep
 
 Project members: 
-                Manraj Singh
-                Kishan Patel
-                Robinder Singh
-                Narendran
+                Manraj Singh,
+                Kishan Patel,
+                Robinder Singh,
+                Narendran,
                 Pathik Patel
 
 
