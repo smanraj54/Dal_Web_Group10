@@ -3,8 +3,8 @@ import { Form, Button, Container, Card} from 'react-bootstrap';
 import ThirdPage from './ThirdPage';
 import React, {useState} from 'react';
 
-var nameValidationPattern = new RegExp('^[a-zA-Z0-9]*$');
-var passwordValidationPattern = new RegExp('^[a-zA-Z0-9$@_]*$');
+var nameValidationPattern = new RegExp('^[0-9A-Za-z]*$');
+var passwordValidationPattern = new RegExp('^[0-9A-Za-z$_@]*$');
 var emailValidationPattern = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$');
 
 function SecondPage(){
