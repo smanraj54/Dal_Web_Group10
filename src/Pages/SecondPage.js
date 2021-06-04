@@ -123,7 +123,7 @@ function SecondPage(){
                                 Password
                             </Form.Label>
                             <Form.Control required isInvalid = {passwordValidation} onChange = {handlePasswordValidation} value = {passwordValue} type="password" placeholder="Enter Unique Password!!!"/>
-                            <Form.Control.Feedback type = 'invalid'>Please Enter 7 Characters with special characters and capital letter in it</Form.Control.Feedback>
+                            <Form.Control.Feedback type = 'invalid'>Please Enter minimum of 7 Characters</Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group controlId = "formConfirmPassword">
                             <Form.Label>
