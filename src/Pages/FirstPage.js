@@ -1,18 +1,18 @@
 import { Button, Container, Card } from 'react-bootstrap';
-import SecondPage from './SecondPage';
-import React, {useState} from 'react';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+
 
 function FirstPage(){
-    
-    const [redirectPage, setRedirectPage] = useState('FirstPage');
+    const history = useHistory();
+
     const handleSignUp = () =>{
-        setRedirectPage('SecondPage');
+        history.push("SecondPage");
     }
 
 
     return (<div>
         {
-            redirectPage === 'SecondPage' ? <SecondPage/> :
             <Container fluid>
                 <Card style = {{color: '#000'}}>
                 <Card.Img src = 'https://picsum.photos/id/237/1000/500'/>
