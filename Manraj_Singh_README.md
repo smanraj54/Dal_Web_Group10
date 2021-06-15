@@ -25,3 +25,7 @@ References
 [7] Picsum.photos. 2021. Dog Picture. [online] Available at: <https://picsum.photos/id/237/1000/500> [Accessed 3 June 2021].
 
 [8] RegExr. 2021. RegExr: Learn, Build, & Test RegEx. [online] Available at: <https://regexr.com/3e48o> [Accessed 3 June 2021].
+
+[9] 2021. [online] Available at: <https://tutorial4-api.herokuapp.com/api/users/login> [Accessed 15 June 2021].
+
+[10] Tutorial4-api.herokuapp.com. 2021. [online] Available at: <https://tutorial4-api.herokuapp.com/api/users/> [Accessed 15 June 2021].
