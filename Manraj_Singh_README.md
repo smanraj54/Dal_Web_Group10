@@ -5,8 +5,8 @@ Tutorial-LAB 3
 
 Group10-s21 Course instructor : Prof. Gabriella Mosquera
 
-Link To Hiroku: https://dalwebtutoriallab3.herokuapp.com/ deployed to Heroku
-github link : https://github.com/smanraj54/Dal_Web_Group10/tree/ManrajSingh_WEB
+Link To Hiroku: https://dalwebtutoriallabms4.herokuapp.com/
+github link : https://github.com/smanraj54/Dal_Web_Group10
 
 
 References

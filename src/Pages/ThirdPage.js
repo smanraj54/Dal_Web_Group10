@@ -12,7 +12,7 @@ function ThirdPage(){
         //console.log(password);
         const getUrl = 'https://tutorial4-api.herokuapp.com/api/users/';
         const [records, setRecords] = useState([]); 
-        const [sortDirection, setSortDirection] = useState("NoFilter");
+        //const [sortDirection, setSortDirection] = useState("NoFilter");
         const [searchFilter, setSearchFilter] = useState('');
         
         useEffect( () =>{
@@ -34,25 +34,25 @@ function ThirdPage(){
             fetchData();
         });
 
-        const sortArray = (Type) =>{
-            const Types = {
-                NoFilter: "id",
-                FirstName: "firstName",
-                LastName: "lastName" 
-            };
-            const sortProperty = Types[Type];
-            const temp = records;
-            const sorted = temp.sort((a,b) => a[sortProperty].localeCompare(b[sortProperty]));
-            //console.log(Type);
-            //console.log(sortProperty);
-            //console.log(records[0][sortProperty]);
-            //records = null;
-            setRecords(sorted);
-            console.log(temp);
-            setSortDirection(Type);
+        // const sortArray = (Type) =>{
+        //     const Types = {
+        //         NoFilter: "id",
+        //         FirstName: "firstName",
+        //         LastName: "lastName" 
+        //     };
+        //     const sortProperty = Types[Type];
+        //     const temp = records;
+        //     const sorted = temp.sort((a,b) => a[sortProperty].localeCompare(b[sortProperty]));
+        //     //console.log(Type);
+        //     //console.log(sortProperty);
+        //     //console.log(records[0][sortProperty]);
+        //     //records = null;
+        //     setRecords(sorted);
+        //     console.log(temp);
+        //     setSortDirection(Type);
 
             
-        }
+        // }
 
         const filterArray = (event) => {
             setSearchFilter(event.target.value);
@@ -60,7 +60,7 @@ function ThirdPage(){
                     
 
     return (<div>
-        <Container fluid='md' className = 'm-5' padding = "10">
+        <Container fluid='md' className = 'm-5' padding = "10" margin = "20">
              <Row>
                 <Col>
                     <Form>
@@ -71,7 +71,7 @@ function ThirdPage(){
                     </Form>
                 </Col>
             </Row>
-            <Row>
+            {/* <Row>
                 <Col>
                 <select onChange={(e) => sortArray(e.target.value)}>
                     <option value="NoFilter">Select Sortby option:</option>
@@ -79,12 +79,12 @@ function ThirdPage(){
                     <option value="LastName">Last Name</option>
                 </select>
                 </Col>
-            </Row>
+            </Row> */}
             {records.filter(name => (((name.firstName).toUpperCase()).includes(searchFilter.toUpperCase()) || ((name.lastName).toUpperCase()).includes(searchFilter.toUpperCase()))).map((record) => {
                 return (
                 <Row>
                     <Col>
-                        <CardComponent ID = {record.id} title = {record.title} firstName = {record.firstName} lastName = {record.lastName} picture = {record.picture} email = {record.email} sortDirection = {sortDirection}/>
+                        <CardComponent ID = {record.id} title = {record.title} firstName = {record.firstName} lastName = {record.lastName} picture = {record.picture} email = {record.email}/>
                     </Col>
                 </Row>
                 );

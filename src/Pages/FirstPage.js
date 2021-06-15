@@ -20,7 +20,7 @@ function FirstPage(){
                     <Card.Title>
                     Welcome To the Page :
                     </Card.Title>
-                    <Button type = 'submit' onClick = {handleSignUp}>SignUp</Button>
+                    <Button type = 'submit' onClick = {handleSignUp}>Login</Button>
                 </Card.Body>
                 </Card>
             </Container>
