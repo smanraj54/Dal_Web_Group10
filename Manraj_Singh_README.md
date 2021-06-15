@@ -1,12 +1,12 @@
 Name : Manraj Singh 
 Student ID: B00877934 
 dal id: mn697903@dal.ca
-Tutorial-LAB 3
+Tutorial-LAB 4
 
 Group10-s21 Course instructor : Prof. Gabriella Mosquera
 
 Link To Hiroku: https://dalwebtutoriallabms4.herokuapp.com/
-github link : https://github.com/smanraj54/Dal_Web_Group10
+github link : https://github.com/smanraj54/Dal_Web_Group10/tree/manraj_singh_t4_csci_5709
 
 
 References
