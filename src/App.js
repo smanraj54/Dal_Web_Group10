@@ -5,6 +5,7 @@ import './App.css';
 import Footer from './CustomerCare/footer';
 import Header from './CustomerCare/header';
 import Body from './CustomerCare/body';
+import Payment from './PaymentManagement/Payment';
 //import FirstPage from "./Pages/FirstPage";
 //import SecondPage from "./Pages/SecondPage";
 import { NavbarDetails } from './CartManagement/NavBarDetails';
@@ -24,7 +25,7 @@ function App() {
     // </div>
     <div style={{'height':'100%'}}>
       <Header />
-      <Body/>
+      <Payment/>
       <Footer />
     </div>
   );
