@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import user from './logo.png'
 
-class Header extends Component {
+class CustomerCareHeader extends Component {
     render() {
         return (
             <header style={{backgroundColor:'#5CDB95'}}>
@@ -41,4 +41,4 @@ class Header extends Component {
         );
     }
 }
-export default Header;
+export default CustomerCareHeader;

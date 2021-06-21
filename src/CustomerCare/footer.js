@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import FooterLeft from './footer_left'
 import FooterRight from './footer_right';
 
-class Footer extends Component {
+class CustomerCareFooter extends Component {
     render() {
         return (
             
@@ -18,4 +18,4 @@ class Footer extends Component {
         );
     }
 }
-export default Footer;
+export default CustomerCareFooter;
