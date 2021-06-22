@@ -1,13 +1,13 @@
-Name : Manraj Singh 
-Student ID: B00877934 
-dal id: mn697903@dal.ca
-Tutorial-LAB 4
+Name : Manraj Singh, Kisahn Patel, Robinder Singh, Pathik Patel, Narendran Krishnakumar
 
-Group10-s21 Course instructor : Prof. Gabriella Mosquera
+Project Proposal
 
-Link To Hiroku: https://dalwebtutoriallabms4.herokuapp.com/
-github link : https://github.com/smanraj54/Dal_Web_Group10/tree/manraj_singh_t4_csci_5709
+Group10-s21 Course 
 
+instructor : Prof. Gabriella Mosquera
+
+Application Heroku Link:      https://group10proposalweb.herokuapp.com/  
+Application Repository Link: https://github.com/smanraj54/Dal_Web_Group10/tree/projectProposal 
 
 References
 [1] Getbootstrap.com. 2021. Redirecting…. [online] Available at: <https://getbootstrap.com/docs/4.0/components/> [Accessed 3 June 2021].
