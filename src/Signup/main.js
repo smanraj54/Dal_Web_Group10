@@ -70,9 +70,8 @@ class Main extends Component{
         }
         else
         {
-            // this.props.history.push({
-            //     pathname : '/profile',
-            // });
+            //alert("All Set!!!");
+             this.props.history.push("Cart");
         }
         this.setState({error: errorTxt});
         

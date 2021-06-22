@@ -2,6 +2,7 @@ import React from 'react';
 import { Row,Col, Form, Button, Container, Card} from 'react-bootstrap';
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useHistory } from 'react-router';
 
 var namePattern = new RegExp('^[a-zA-Z]*$');
 var numberPattern = new RegExp('^[0-9]+$');
@@ -62,6 +63,7 @@ class App extends React.Component{
             event.preventDefault();
             this.setState({setRedirect:true});
             alert("Order Placed!");
+
             this.setState({cardHolderName:'',
             cardNumber:'',
             cvv:'',

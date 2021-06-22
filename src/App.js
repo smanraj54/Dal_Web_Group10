@@ -2,6 +2,7 @@ import {Switch, Route} from 'react-router-dom';
 import './App.css';
 import SignUpHeader from './Signup/header';
 import SignUpFooter from './Signup/footer';
+import Delivery from './Delivery/Delivery';
 import Main from './Signup/main';
 import CustomerCareFooter from './CustomerCare/footer';
 import CustomerCareHeader from './CustomerCare/header';
@@ -9,9 +10,11 @@ import Body from './CustomerCare/body';
 import Payment from './PaymentManagement/Payment';
 import { NavbarDetails } from './CartManagement/NavBarDetails';
 import { Cart } from './CartManagement/Cart';
+import { useHistory } from 'react-router-dom';
+//import AdminPanel from './AdminPage/AdminPanel';
 
 function App() {
-  
+  const history = useHistory();  
   return (
     // <div>
     //     <NavbarDetails/>
@@ -32,6 +35,14 @@ function App() {
       <Route exact path = "/">
           {" "}
           <div>
+            <SignUpHeader/>
+            <Main history = {history}/>
+            <SignUpFooter/>
+          </div>
+      </Route>
+      <Route exact path = "/home">
+          {" "}
+          <div>
             <NavbarDetails/>
             <h2>Welcome To Home Page!!!!</h2>
           </div>
@@ -44,7 +55,15 @@ function App() {
           </div>
           {/* <h1>WELCOME TO SecondPage</h1> */}
       </Route>
-      <Route path = "/Customer">
+      <Route path = "/Delivery">
+          {" "}
+          <div>
+            <NavbarDetails/>
+            <Delivery/>
+          </div>
+          {/* <h1>WELCOME TO SecondPage</h1> */}
+      </Route>
+      <Route path = "/CustomerCare">
           {" "}
           <div>
             <CustomerCareHeader/>
@@ -56,7 +75,7 @@ function App() {
           {" "}
           <div>
             <SignUpHeader/>
-            <Main/>
+            <Main history = {history}/>
             <SignUpFooter/>
           </div>
       </Route>
@@ -67,6 +86,12 @@ function App() {
             <Payment/>
           </div>
       </Route>
+      {/* <Route path = "/Admin">
+          {" "}
+          <div>
+            <AdminPanel/>
+          </div>
+      </Route> */}
       <Route path = "/Wrong">
           {" "}
           <h1>Wrong Email and Password!!!</h1>

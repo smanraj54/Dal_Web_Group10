@@ -3,8 +3,9 @@ import {CardComponent} from './Components/CardComponent';
 import Apple from './FruitImages/Apple3.jpg';
 import Banana from './FruitImages/Banana3.jpg';
 import Pineapple from './FruitImages/Pineapple3.jpg';
-
+import { useHistory } from 'react-router';
 export const Cart = () =>{
+    const history = useHistory();
     return(
         <Container fluid='md' className = 'm-5'>
             <Row>
@@ -31,7 +32,7 @@ export const Cart = () =>{
             
                 <Col>
                     <Button variant="primary" className="float-right" style = {{width: 200}} onClick = {() => {
-                        alert("Payment Page"); 
+                        history.push("Payment"); 
                     }}>Payment</Button>
                 </Col>
             </Row>
