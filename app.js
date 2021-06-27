@@ -4,9 +4,9 @@ const userRoute = require('./api/routes/users');
 
 const app = express();
 
-const mainRoute = '/api';
+const mainRoute = '/';
 
-app.use(mainRoute+"/users", userRoute);
+app.use(mainRoute, userRoute);
 
 
 
