@@ -6,22 +6,22 @@ const uniqid = require('uniqid');
 
 const express = require('express');
 
-const userExpress = express();
+//const userExpress = express();
 
 const router = express.Router();
 
 const users = require('../data/users');
 
 
- router.use(express.json());
- router.use(express.urlencoded({ extended: false}));
+ router.use(bodyParser.json());
+ router.use(bodyParser.urlencoded({ extended: false}));
 
- router.use(middleware);
+//  router.use(middleware);
 
-function middleware(req, res, next){
-    console.log( req.body);
-    next();
-}
+// function middleware(req, res, next){
+//     console.log( req.body);
+//     next();
+// }
 
 router.post('/add', (req, res) => {
     const userTemp = req.body;
@@ -137,9 +137,5 @@ router.put('/update/:id', (req, res) => {
 
     }
 });
-
-
-
-
 
 module.exports = router;
