@@ -66,7 +66,7 @@ app.get('/users', (req, res) => {
 });
 
 
-app.get('/users/:id', (req, res) => {
+app.get('/user/:id', (req, res) => {
     const id = req.params.id;
     var userTemp = null;
     users.map(user => {
