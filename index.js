@@ -1,5 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var uniqid = require("uniqid");
 var app = express();
 
 var users = [{
@@ -29,9 +30,8 @@ app.post('/add', (req, res) => {
     users.push(userTemp);
     console.log("Inside POST Statement");
     return res.status(200).json({
-        success : 'True',
-        inside : 'POST Statement',
-        Message : 'Users Not FounUser Added',
+        success : true,
+        Message : 'User added'
     })
 });
 
@@ -49,7 +49,7 @@ app.get('/users', (req, res) => {
 
         res.status(200).json({
             success :  true,
-            Message : "Users Received",
+            Message : "Users retrieved",
             data : users
         });
     }
@@ -125,7 +125,7 @@ app.put('/update/:id', (req, res) => {
 
         res.status(200).json({
             success :  true,
-            Message : "User Updated"
+            Message : "User updated"
         });
     }
     catch(err){
