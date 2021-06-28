@@ -107,8 +107,13 @@ app.put('/update/:id', (req, res) => {
     var userTemp = null;
     users.map(user => {
         if(user.id === id){
-            user.firstName = newUser.firstName;
-            user.email = newUser.email;
+            if(newUser.firstName){
+                user.firstName = newUser.firstName;
+            }
+            if(newUser.email){
+                user.email = newUser.email;
+            }
+            
             userTemp = user;
         }
     });
@@ -120,6 +125,12 @@ app.put('/update/:id', (req, res) => {
             return res.status(404).json({
                 success : 'False',
                 Message : 'User with id = '+ id +' Not Found'
+            });
+        }
+        if(!newUser){
+            return res.status(404).json({
+                success : 'False',
+                Message : 'No Body passed in json file'
             });
         }
 
