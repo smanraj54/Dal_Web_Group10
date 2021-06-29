@@ -27,12 +27,22 @@ app.listen(port, () => {
 app.post('/add', (req, res) => {
     const userTemp = req.body;
     userTemp.id = uniqid();
-    users.push(userTemp);
     console.log("Inside POST Statement");
-    return res.status(200).json({
-        success : true,
-        Message : 'User added'
-    })
+    if(!userTemp || !userTemp.firstName || !userTemp.email){
+        return res.status(404).json({
+            success : 'False',
+            Message : 'Data is incomplete'
+        });
+    }
+    else{
+        users.push(userTemp);
+        return res.status(200).json({
+            success : true,
+            Message : 'User added'
+        });
+    }
+    
+    
 });
 
 app.get('/users', (req, res) => {
