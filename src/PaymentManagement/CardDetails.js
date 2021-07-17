@@ -2,6 +2,7 @@ import React from 'react';
 import { Row,Col, Form, Button, Container, Card} from 'react-bootstrap';
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import axios from 'axios'
 import { useHistory } from 'react-router';
 
 var namePattern = new RegExp('^[a-zA-Z]*$');
@@ -64,6 +65,9 @@ class App extends React.Component{
             this.setState({setRedirect:true});
             alert("Order Placed!");
 
+            this.information()
+
+
             this.setState({cardHolderName:'',
             cardNumber:'',
             cvv:'',
@@ -71,6 +75,21 @@ class App extends React.Component{
             expiryYear:''})
           }
       };
+
+      information = async()=>{
+        console.log(this.state.cardHolderName);
+        console.log(this.state.cardNumber);
+        console.log(this.state.expiryMonth);
+        console.log(this.state.expiryYear);
+        const { cardHolderName, cardNumber, expiryMonth, expiryYear  } = this.state;
+        const response = await axios.post("/payment", { cardHolderName, cardNumber, expiryMonth, expiryYear  }).then(result => {
+          console.log("values are")
+          console.log(cardHolderName);
+          console.log(cardNumber);
+          console.log(expiryMonth);
+          console.log(expiryYear);
+        });
+      }
 
       cancelOrder= ()=>{
         var proceed = window.confirm("Are you sure you want to cancel the order?");
@@ -91,7 +110,7 @@ class App extends React.Component{
 
             <Form controlId="form1" onSubmit={this.handleSubmit}>                 
                     <Form.Group controlId="formCardHolderName">
-                    <Form.Label className="margin-top margin-bottom" style={{width:'150px'}}>Card Holder Name:</Form.Label>
+                    <Form.Label className="margin-top margin-bottom" style={{width:'150px',margintop:'500px'}}>Card Holder Name:</Form.Label>
                     <Form.Control value={this.state.cardHolderName} isInvalid={this.state.nameValidity} onChange={this.handleName} type="text" placeholder="Enter name" style={{width:'500px'}} required/>
                     <Form.Control.Feedback type="invalid">Should only contain Alphabets</Form.Control.Feedback>
                     </Form.Group>

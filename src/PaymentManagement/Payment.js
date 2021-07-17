@@ -43,18 +43,18 @@ class Payment extends React.Component{
                 <Card className="mb-20" style={{color: "#000"}}>
                 <Card.Header style={{size:"20px" ,color:"#000", textAlign:"center", paddingTop:"10px"}}>PAYMENT</Card.Header>
                     <Card.Title style={{size:"20px" ,color:"#4a54f1", textAlign:"center", paddingTop:"30px"}}>Choose a PAYMENT METHOD</Card.Title>
-                    <Card.Body>
+                    <Card.Body style={{width:"600px"}}>
                     <Row className="margin-bottom-buttons">
-                    <Col md={{ span: 1}} >
+                    <Col md={{ span: 1, offset: 2}} >
                         <Button type="submit" size="lg" variant="outline-dark" onClick={()=>{this.credit()}}>Credit</Button>
                     </Col>
-                    <Col md={{ span: 1, offset: 2 }}>
+                    <Col md={{ span: 1, offset: 1 }}>
                         <Button type="submit" size="lg" variant="outline-dark" onClick={()=>{this.debit()}}>Debit</Button>
                     </Col>
-                    <Col md={{ span: 1, offset: 2 }}>
+                    <Col md={{ span: 1, offset: 1}}>
                         <Button type="submit" size="lg" variant="outline-dark" onClick={()=>{this.cash()}}>Cash</Button>
                     </Col>
-                    <Col md={{ span: 1, offset: 2 }}>
+                    <Col md={{ span: 1, offset: 1 }}>
                         <Button type="submit" size="lg" variant="outline-dark" onClick={()=>{this.points()}}>Points</Button>
                     </Col>
                     </Row>

@@ -19,9 +19,9 @@ class Cash extends React.Component{
     render(){
         return(<div className="container">
             <Form onSubmit={this.handleSubmit}>
-                <h6>You have selected {this.props.nameOfType}.
+                <h6 className="margin-top margin-bottom">You have selected {this.props.nameOfType}.
                     Click on "Place Order to place your order!"</h6>
-                <Button className="margin-top" variant="outline-success" type="submit" size="lg" >
+                <Button className="margin-top margin-left-cash" variant="outline-success" type="submit" size="lg" >
                 Place Order
                 </Button>
                 <Button className="margin-top margin-left-cash" variant="outline-danger" type="button" size="lg" onClick={this.cancelCashOrder}>
