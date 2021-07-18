@@ -66,6 +66,120 @@ app.get('/homepage/items', (req, res) => {
 
 });
 
+app.get('/cart/items', (req, res) => {
+
+    con.query(`SELECT * FROM cart_items`, function(err, result, fields) {
+        console.log(result.length);
+        
+        if (err)
+        {
+            return res.status(404).json({
+                success: false,
+                message: "No user found!"
+            })
+        } 
+        if (result)
+        {
+            return res.status(200).json({
+                success: true,
+                message: "Users retrieved",
+                data: result
+            });
+        } 
+    });
+
+});
+
+app.put('/cart/truncate', (req, res) => {
+
+    con.query(`TRUNCATE TABLE cart_items;`,function(err,res){
+        
+        if(err) throw err;
+
+        console.log(res);
+    });
+
+    return res.status(200).json({
+        success: true,
+        message: "Users Truncated",
+    })
+});
+
+app.post('/cart/add', (req, res) => {
+
+	var records = [[req.body.firstName,req.body.email]];
+
+	if(records[0][0]!=null)
+	{
+		con.query("INSERT into cart_items (store_name, item_name, item_qty, item_price, item_desc, item_image) VALUES ?",[records],function(err,result,fields){
+
+			if(err)
+            {
+                console.log(err)
+                return res.status(500).json({
+                    success: false,
+                    message: "server error"
+                })
+                
+            }
+
+            else
+            {
+                return res.status(200).json({
+                    success: true,
+                    message: "Users Added",
+                })
+            }
+
+		});
+	}
+});
+
+// app.get('/user/:id', (req, res) => {
+
+//     let userID = req.params.id;
+//     con.query(`SELECT * FROM user_info WHERE id = '${req.params.id}'`, function(err, result, fields) {
+//         console.log(result);
+//         var found=false;
+//         Object.keys(result).forEach(function(key) {
+//             var row = result[key];
+//             if (row.id == userID)
+//             {
+//                 found=true;
+//             }
+//             console.log(row.id)
+//           });
+
+//         if (found==false)
+//         {
+//             return res.status(404).json({
+//                 success: false,
+//                 message: "No user found!"
+//             })
+//         }
+
+//         else
+//         {
+//             if (err)
+//             {
+//                 return res.status(500).json({
+//                     success: false,
+//                     message: "Server error"
+//                 })
+//             } 
+//             if (result)
+//             {
+//                 return res.status(200).json({
+//                     success: true,
+//                     message: "User retrieved",
+//                     data: result
+//                 });
+//             } 
+//         }
+//     });
+
+// });
+
 
 // app.post('/add', (req, res) => {
 //     const userTemp = req.body;
