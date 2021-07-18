@@ -110,28 +110,31 @@ app.put('/cart/truncate', (req, res) => {
 
 app.post('/cart/add', (req, res) => {
 
-	var records = [[req.body.firstName,req.body.email]];
+	var records = [[req.body.item_id, req.body.store_name, req.body.item_name, req.body.item_qty,req.body.item_price,req.body.item_desc,req.body.item_image]];
 
 	if(records[0][0]!=null)
 	{
-		con.query("INSERT into cart_items (store_name, item_name, item_qty, item_price, item_desc, item_image) VALUES ?",[records],function(err,result,fields){
+        console.log('Entering Data');
+		con.query("INSERT into cart_items (item_id, store_name, item_name, item_qty, item_price, item_desc, item_image) VALUES ?",[records],function(err,result,fields){
 
 			if(err)
             {
-                console.log(err)
+                console.log('Entering Data Failed with Error:');
+                console.log(err);
                 return res.status(500).json({
                     success: false,
                     message: "server error"
-                })
+                });
                 
             }
 
             else
             {
+                console.log('Entering Data Complete!!!');
                 return res.status(200).json({
                     success: true,
                     message: "Users Added",
-                })
+                });
             }
 
 		});
