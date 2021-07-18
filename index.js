@@ -3,7 +3,10 @@ var bodyParser = require("body-parser");
 //var uniqid = require("uniqid");
 var app = express();
 var mysql = require('mysql');
+const cors = require('cors');
  
+app.use(cors());
+
 var con = mysql.createConnection({
   host: "db-admin.cbsrzgbgkhst.us-east-1.rds.amazonaws.com",
   user: "admin",
