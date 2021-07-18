@@ -14,6 +14,8 @@ function ThirdPage(){
         const [records, setRecords] = useState([]); 
         const [sortDirection, setSortDirection] = useState("NoFilter");
         const [searchFilter, setSearchFilter] = useState('');
+        const[Counter, setCounter] = useState(0);
+        const[Change, setChange] = useState(0);
         
         useEffect( () =>{
             async function fetchData(){
@@ -32,7 +34,7 @@ function ThirdPage(){
                 
             }
             fetchData();
-        });
+        }, [])
 
         const sortArray = (Type) =>{
             const Types = {
@@ -60,6 +62,8 @@ function ThirdPage(){
                     
 
     return (<div>
+        {/* {setChange(Change + 1)}
+         */}
         <Container fluid='md' className = 'm-5' padding = "10">
              <Row>
                 <Col>
@@ -81,10 +85,15 @@ function ThirdPage(){
                 </Col>
             </Row>
             {records.filter(name => (((name.firstName).toUpperCase()).includes(searchFilter.toUpperCase()) || ((name.lastName).toUpperCase()).includes(searchFilter.toUpperCase()))).map((record) => {
+                 setCounter(Counter + 1);
+                // if (Counter === 6) {
+                //     setCounter(0);
+                // }
+
                 return (
                 <Row>
                     <Col>
-                        <CardComponent ID = {record.id} title = {record.title} firstName = {record.firstName} lastName = {record.lastName} picture = {record.picture} email = {record.email} sortDirection = {sortDirection}/>
+                        <CardComponent ID = {record.id} title = {record.title} firstName = {record.firstName} lastName = {record.lastName} picture = {record.picture} email = {record.email} sortDirection = {sortDirection} Counter = {Counter}/>
                     </Col>
                 </Row>
                 );

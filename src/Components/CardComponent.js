@@ -47,6 +47,9 @@ export const CardComponent = (Props) => {
                             <Row>
                                 LastName : {data.lastName}<br/>
                             </Row>
+                            <Row>
+                                Counter : {Props.Counter}<br/>
+                            </Row>
                         </Card.Body>
                     </Row>
                     </Col>
