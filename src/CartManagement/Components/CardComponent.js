@@ -1,13 +1,11 @@
 import axios from 'axios';
 import { Card, Row, Col, Button} from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
 
 
 export const CardComponent = (Props) =>{
   var baseUrl = "http://localhost:2007";
   var deleteUrl = baseUrl + "/cart/delete/";
-  const history = useHistory();
-
+  
   const data = {
     "ID": Props.record.item_id,
     "picture": Props.record.item_image,
@@ -17,11 +15,13 @@ export const CardComponent = (Props) =>{
     "description": Props.record.item_desc,
     "store": Props.record.store_name
   };
+  
 
   const handleRemoveThisItem = () => {
     axios.delete(deleteUrl+data.ID)
         .then(response => {
             //console.log(JSON.stringify(response));
+            
         })
         .catch(error => {
             console.log(error);
