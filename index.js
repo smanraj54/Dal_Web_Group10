@@ -94,6 +94,32 @@ app.get('/cart/items', (req, res) => {
 
 });
 
+app.delete('/cart/delete/:id', (req, res) => {
+    console.log("about to delete id: "+req.params.id);
+    let userID = req.params.id;
+    con.query(`DELETE FROM cart_items WHERE item_id = '${userID}';`,function(err,result){
+        
+        console.log(result);
+
+        if(err)
+        {
+            return res.status(500).json({
+                success: false,
+                message: "server error"
+            })
+        }
+        else
+        {
+            return res.status(200).json({
+                success: true,
+                message: "User deleted",
+            })
+        }
+                
+    });
+
+});
+
 app.get('/cart/items/:id', (req, res) => {
     console.log("i am in GEt with ID");
     let userID = req.params.id;
@@ -246,207 +272,3 @@ app.post('/cart/add', (req, res) => {
     }
 });
 
-// app.get('/user/:id', (req, res) => {
-
-//     let userID = req.params.id;
-//     con.query(`SELECT * FROM user_info WHERE id = '${req.params.id}'`, function(err, result, fields) {
-//         console.log(result);
-//         var found=false;
-//         Object.keys(result).forEach(function(key) {
-//             var row = result[key];
-//             if (row.id == userID)
-//             {
-//                 found=true;
-//             }
-//             console.log(row.id)
-//           });
-
-//         if (found==false)
-//         {
-//             return res.status(404).json({
-//                 success: false,
-//                 message: "No user found!"
-//             })
-//         }
-
-//         else
-//         {
-//             if (err)
-//             {
-//                 return res.status(500).json({
-//                     success: false,
-//                     message: "Server error"
-//                 })
-//             } 
-//             if (result)
-//             {
-//                 return res.status(200).json({
-//                     success: true,
-//                     message: "User retrieved",
-//                     data: result
-//                 });
-//             } 
-//         }
-//     });
-
-// });
-
-
-// app.post('/add', (req, res) => {
-//     const userTemp = req.body;
-//     userTemp.id = uniqid();
-//     console.log("Inside POST Statement");
-//     if(!userTemp || !userTemp.firstName || !userTemp.email){
-//         return res.status(404).json({
-//             success : 'False',
-//             Message : 'Data is incomplete'
-//         });
-//     }
-//     else{
-//         users.push(userTemp);
-//         return res.status(200).json({
-//             success : true,
-//             Message : 'User added'
-//         });
-//     }
-    
-    
-// });
-
-// app.get('/users', (req, res) => {
-//     console.log("Inside GET Statement");
-
-//     try{
-
-//         if(!users || !users.length){
-//             return res.status(404).json({
-//                 success : 'False',
-//                 Message : 'Users Not Found'
-//             });
-//         }
-
-//         res.status(200).json({
-//             success :  true,
-//             Message : "Users retrieved",
-//             data : users
-//         });
-//     }
-//     catch(err){
-//         return res.status(500).json({
-//             success : 'False',
-//             Message : 'Server response Error',
-//             Stack_Trace : err 
-//         })
-
-//     }
-    
-    
-// });
-
-
-// app.get('/user/:id', (req, res) => {
-//     const id = req.params.id;
-//     var userTemp = null;
-//     users.map(user => {
-//         if(user.id === id){
-//             userTemp = user;
-//         }
-//     });
-//     console.log("Inside GET Statement");
-
-//     try{
-
-//         if(!userTemp){
-//             return res.status(404).json({
-//                 success : 'False',
-//                 Message : 'User with id = '+ id +' Not Found'
-//             });
-//         }
-
-//         res.status(200).json({
-//             success :  true,
-//             Message : "Users Received",
-//             data : userTemp
-//         });
-//     }
-//     catch(err){
-//         return res.status(500).json({
-//             success : 'False',
-//             Message : 'Server response Error',
-//             Stack_Trace : err 
-//         })
-
-//     }
-// });
-
-// app.put('/update/:id', (req, res) => {
-//     const id = req.params.id;
-//     const newUser = req.body;
-//     var userTemp = null;
-//     users.map(user => {
-//         if(user.id === id){
-//             if(newUser.firstName){
-//                 user.firstName = newUser.firstName;
-//             }
-//             if(newUser.email){
-//                 user.email = newUser.email;
-//             }
-            
-//             userTemp = user;
-//         }
-//     });
-//     console.log("Inside PUT Statement");
-
-//     try{
-
-//         if(!userTemp){
-//             return res.status(404).json({
-//                 success : 'False',
-//                 Message : 'User with id = '+ id +' Not Found'
-//             });
-//         }
-//         if(!newUser){
-//             return res.status(404).json({
-//                 success : 'False',
-//                 Message : 'No Body passed in json file'
-//             });
-//         }
-
-//         res.status(200).json({
-//             success :  true,
-//             Message : "User updated"
-//         });
-//     }
-//     catch(err){
-//         return res.status(500).json({
-//             success : 'False',
-//             Message : 'Server response Error',
-//             Stack_Trace : err 
-//         })
-
-//     }
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-// app.get("/", (req, res) => {
-//     res.status(200).json({"status": "Success", "message": "User api server for Tutorial5 in CSCI5709"});
-// });
-// app.get("/users", (req, res) => {
-//     res.json(
-//         {
-//             "success": true,
-//             "message": "user_retrieved",
-//             "data": "Hello World"
-//         }
-//     )
-// });
