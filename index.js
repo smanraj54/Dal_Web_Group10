@@ -94,6 +94,55 @@ app.get('/cart/items', (req, res) => {
 
 });
 
+app.get('/cart/items/:id', (req, res) => {
+    console.log("i am in GEt with ID");
+    let userID = req.params.id;
+    con.query(`SELECT * FROM cart_items WHERE item_id = '${userID}'`, function(err, result, fields) {
+        console.log(result);
+        var found=false;
+        var quantity = 0;
+        Object.keys(result).forEach(function(key) {
+            var rowData = result[key];
+            if (rowData.item_id == userID)
+            {
+                quantity = rowData.item_qty;
+                found=true;
+                console.log(rowData)
+            }
+            
+          });
+
+        if (found==false)
+        {
+            return res.status(404).json({
+                success: false,
+                message: "No user found!",
+                item_qty: quantity
+            })
+        }
+
+        else
+        {
+            if (err)
+            {
+                return res.status(500).json({
+                    success: false,
+                    message: "Server error"
+                })
+            } 
+            if (result)
+            {
+                return res.status(200).json({
+                    success: true,
+                    message: "User retrieved",
+                    data: result,
+                    item_qty: quantity
+                });
+            } 
+        }
+    });
+});
+
 app.put('/cart/truncate', (req, res) => {
 
     con.query(`TRUNCATE TABLE cart_items;`,function(err,res){
