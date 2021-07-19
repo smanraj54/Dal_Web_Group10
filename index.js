@@ -4,6 +4,7 @@ var bodyParser = require("body-parser");
 var app = express();
 var mysql = require('mysql');
 const cors = require('cors');
+const { request } = require("express");
  
 app.use(cors());
 
@@ -111,34 +112,89 @@ app.put('/cart/truncate', (req, res) => {
 app.post('/cart/add', (req, res) => {
 
 	var records = [[req.body.item_id, req.body.store_name, req.body.item_name, req.body.item_qty,req.body.item_price,req.body.item_desc,req.body.item_image]];
-
-	if(records[0][0]!=null)
+	
+    if(records[0][0]!=null)
 	{
-        console.log('Entering Data');
-		con.query("INSERT into cart_items (item_id, store_name, item_name, item_qty, item_price, item_desc, item_image) VALUES ?",[records],function(err,result,fields){
+        var quantity = 1;
+        records = [[req.body.item_id, req.body.store_name, req.body.item_name, quantity,req.body.item_price,req.body.item_desc,req.body.item_image]];
+        console.log("Trying to find data in Cart tables");
+        
+        con.query(`SELECT * FROM cart_items`, function(err, result, fields) {
+            console.log("fetching data from Cart table");
+            var found=false;
+            Object.keys(result).forEach(function(key) {
+                var row = result[key];
+                console.log("Finding data : "+ row.item_id);
+                console.log(row);
+                if (row.item_id == req.body.item_id)
+                {
+                    quantity = row.item_qty + 1;
+                    console.log("Found data from Cart table : Quantity = "+ quantity + " Boolean comparison : " + (quantity > 1));
+            
+                }
+                console.log(row.id);
+            });
 
-			if(err)
-            {
-                console.log('Entering Data Failed with Error:');
-                console.log(err);
-                return res.status(500).json({
-                    success: false,
-                    message: "server error"
-                });
-                
+            records = [[req.body.item_id, req.body.store_name, req.body.item_name, quantity,req.body.item_price,req.body.item_desc,req.body.item_image]];
+            console.log("quantity ====== " + quantity);
+            if(quantity == 1){
+                if(quantity <= req.body.item_qty){
+                    con.query("INSERT into cart_items (item_id, store_name, item_name, item_qty, item_price, item_desc, item_image) VALUES ?",[records],function(err,result,fields){
+
+                        if(err)
+                        {
+                            console.log('Entering Data Failed with Error:');
+                            console.log(err);
+                            return res.status(500).json({
+                                success: false,
+                                message: "server error"
+                            }); 
+                        }
+        
+                        else
+                        {
+                            console.log('Entering Data Complete!!!');
+                            return res.status(200).json({
+                                success: true,
+                                message: "Users Added",
+                            });
+                       }
+        
+                    });
+                }
+           }
+        
+            else{
+                console.log("Trying to update!!!!!");
+                if(quantity <= req.body.item_qty){
+                    console.log("Updating!!!!!");
+            
+                    con.query(`UPDATE cart_items SET item_qty = '${quantity}' where item_id = '${req.body.item_id}'`,function(err,res){
+    
+                        if(err) 
+                        {
+                            console.log(err);
+                        }
+        
+                        console.log(res);
+                        console.log("Updated!!!!!");
+                    });
+                    return res.status(200).json({
+                        success: true,
+                        message: "Users quantity Updated",                    
+                    });
+                }
+                else {
+                    console.log('item quantity exceeded!!!');
+                    return res.status(401).json({
+                        success: false,
+                        message: "quantity exceeded"
+                    });
+                }
             }
-
-            else
-            {
-                console.log('Entering Data Complete!!!');
-                return res.status(200).json({
-                    success: true,
-                    message: "Users Added",
-                });
-            }
-
-		});
-	}
+        });
+    
+    }
 });
 
 // app.get('/user/:id', (req, res) => {
