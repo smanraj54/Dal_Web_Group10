@@ -11,6 +11,7 @@ import Payment from './PaymentManagement/Payment';
 import { NavbarDetails } from './CartManagement/NavBarDetails';
 import { Cart } from './CartManagement/Cart';
 import { useHistory } from 'react-router-dom';
+import HomePageCatalogue from './HomePage/HomePageCatalogue';
 //import AdminPanel from './AdminPage/AdminPanel';
 
 function App() {
@@ -44,7 +45,7 @@ function App() {
           {" "}
           <div>
             <NavbarDetails/>
-            <h2>Welcome To Home Page!!!!</h2>
+            <HomePageCatalogue></HomePageCatalogue>
           </div>
       </Route>
       <Route path = "/Cart">

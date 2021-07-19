@@ -1,33 +1,68 @@
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import {CardComponent} from './Components/CardComponent';
-import Apple from './FruitImages/Apple3.jpg';
-import Banana from './FruitImages/Banana3.jpg';
-import Pineapple from './FruitImages/Pineapple3.jpg';
 import { useHistory } from 'react-router';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+
 export const Cart = () =>{
+
+    var baseUrl = "https://homepagebackend.herokuapp.com";
+    const [toggle, setToggle] = useState(true);
+    var getUrl = baseUrl + "/cart/items";
+    const [records, setRecords] = useState([]);
     const history = useHistory();
+
+    async function fetchData(){
+        await axios.get(getUrl)
+        .then(response => {
+            //console.log(JSON.stringify(response));
+            setRecords(response.data.data);
+            console.log(response.data);
+        
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+        console.log("Records");
+        console.log(records);
+        
+    }
+
+    useEffect( () =>{
+        fetchData();
+    }, []);
+
+    const handleRemoveAll = () => {
+        axios.put(baseUrl+"/cart/truncate")
+        .then(response => {
+            //console.log(JSON.stringify(response));
+            fetchData();
+        
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    };
+    
+
     return(
         <Container fluid='md' className = 'm-5'>
+            {records.map((record) => {
+                return (
+                <Row>
+                    <Col>
+                        <CardComponent record = {record} toggle = {toggle}/>
+                    </Col>
+                </Row>
+                );
+            })}
             <Row>
                 <Col>
-                    <CardComponent image = {Apple} heading = '$4.74 APPLES: Royal' quantity = 'quantity: 3KG'/>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <CardComponent image = {Banana} heading = '$5.97 Banana: From Maysaur' quantity = 'quantity: 5KG'/>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <CardComponent image = {Pineapple} heading = '$9.47 Pineapple: Dubai' quantity = 'quantity: 1KG'/>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <Button variant="outline-danger" className="float-left" style = {{width: 200}} onClick = {() => {
-                        alert("Removed All Items"); 
-                    }}>Remove All</Button>
+                    <Button variant="outline-danger" className="float-left" style = {{width: 200}} onClick = {
+                        handleRemoveAll 
+                    }>Remove All</Button>
                 </Col>
             
                 <Col>
