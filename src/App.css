@@ -44,7 +44,15 @@
     margin-left:150px;}
     
   .margin-left-cash {
-    margin-left:100px;}
+    margin-left:80px;}
+
+  table,th,td {
+      border: 1px solid black;
+    }
+  th, td {
+      padding: 10px;
+    }
+
 
 @keyframes App-logo-spin {
   from {

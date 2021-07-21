@@ -2,8 +2,7 @@ import React from 'react';
 import { Row,Col, Form, Button, Container, Card} from 'react-bootstrap';
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import axios from 'axios'
-import { useHistory } from 'react-router';
+import axios from 'axios';
 
 var namePattern = new RegExp('^[a-zA-Z]*$');
 var numberPattern = new RegExp('^[0-9]+$');
@@ -63,47 +62,61 @@ class App extends React.Component{
           else {
             event.preventDefault();
             this.setState({setRedirect:true});
-            alert("Order Placed!");
-
+            console.log('------------------------------------')
+            // console.log(this.props.pricefinal)
+            console.log(this.state.cardHolderName);
+            console.log(this.state.cardNumber);
+            console.log(this.state.expiryMonth);
+            console.log(this.state.expiryYear);
+            console.log('------------------------------------')
             this.information()
-
-
             this.setState({cardHolderName:'',
             cardNumber:'',
             cvv:'',
             expiryMonth:'',
             expiryYear:''})
+            console.log('state empty')
           }
       };
 
       information = async()=>{
+        var finalOrderPrice = this.props.pricefinal
+        console.log(this.props.pricefinal)
         console.log(this.state.cardHolderName);
         console.log(this.state.cardNumber);
         console.log(this.state.expiryMonth);
         console.log(this.state.expiryYear);
         const { cardHolderName, cardNumber, expiryMonth, expiryYear  } = this.state;
-        const response = await axios.post("/payment", { cardHolderName, cardNumber, expiryMonth, expiryYear  }).then(result => {
+        if(this.props.pricefinal!= 0){
+        alert("Order Placed!");
+        const response = await axios.post("/payment", { cardHolderName, cardNumber, expiryMonth, expiryYear,finalOrderPrice}).then(result => {
           console.log("values are")
           console.log(cardHolderName);
           console.log(cardNumber);
           console.log(expiryMonth);
           console.log(expiryYear);
+          console.log(finalOrderPrice)
         });
+        this.props.clearInfo();
+      }
+      else{
+        alert("order total is 0. Cannot place order")
+      }
       }
 
       cancelOrder= ()=>{
-        var proceed = window.confirm("Are you sure you want to cancel the order?");
-        if (proceed) {
-          //proceed
-        alert("order cancelled");
-        this.setState({cardHolderName:'',
-        cardNumber:'',
-        cvv:'',
-        expiryMonth:'',
-        expiryYear:''})
-        }
+        var baseUrl = "https://homepagebackend.herokuapp.com";
+        var truncateURL = baseUrl + "/cart/truncate";
+        axios.put(truncateURL).then(res => {
+          this.props.clearInfo();
+          this.setState({cardHolderName:'',
+          cardNumber:'',
+          cvv:'',
+          expiryMonth:'',
+          expiryYear:''})
+        });
       }
-
+        
     render(){
         return(<div className="container">
           <Container fluid="md">
@@ -160,6 +173,6 @@ class App extends React.Component{
             </div>
         );
     }
-}
+  }
 
 export default App;

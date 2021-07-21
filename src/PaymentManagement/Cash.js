@@ -1,19 +1,49 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 import App from './CardDetails';
+import axios from 'axios'
 
 class Cash extends React.Component{
 
-    handleSubmit(event){
+    handleSubmit=(event)=>{
         event.preventDefault();
-        alert("Order Placed!");
+        console.log(this.props.nameOfType)
+        const values = this.props.nameOfType
+        // this.setState({type:values})
+        // console.log(this.state.type)
+          this.informationCash()
+        
     }
+
     cancelCashOrder= ()=>{
         var proceed = window.confirm("Are you sure you want to cancel the order?");
         if (proceed) {
-        alert("order cancelled")
-        
+        alert("order cancelled")      
         }
+
+        var baseUrl = "https://homepagebackend.herokuapp.com";
+        var truncateURL = baseUrl + "/cart/truncate";
+        axios.put(truncateURL).then(res => {
+          this.props.clearInfo();
+        });
+      }
+
+      informationCash = async()=>{
+        var finalOrderPrice = this.props.pricefinal
+          console.log('in information cash')
+        //   console.log(this.state.type)
+          const type = this.props.nameOfType;
+          if(finalOrderPrice!= 0){
+            alert("Order Placed!");
+        const response = await axios.post("/payment", {type,finalOrderPrice}).then(result => {
+          console.log("cash/points payment in frontend")
+          console.log(type)
+        });
+        this.props.clearInfo();
+      }
+      else{
+        alert("order total is 0. Cannot place order")
+      }
       }
 
     render(){

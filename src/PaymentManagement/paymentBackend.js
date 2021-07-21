@@ -24,7 +24,7 @@ app.post('/payment', function  (req, res) {
     console.log('hello')
     
     const userdata = req.body;
-    console.log(userdata)
+    // console.log(userdata)
     try{
             userdata.id = uniqid();
             // user.push(userdata)
@@ -65,12 +65,30 @@ catch(err){
             }
           
             console.log('Connected to database.');
-            var sqlquery = `INSERT INTO webEmployee.client VALUES ('${userdata.id}', '${userdata.cardHolderName}', ${userdata.cardNumber}, ${todayDate}, 'SUCCESS')`;
-            // var sqlquery = "INSERT INTO webEmployee.client VALUES (123, 'man', 'dude', 123333333, 1626499036, 'SUCCESS')";
+            console.log(todayDate.type)
+            console.log(`date is ${todayDate}`)
+            console.log(`price is ${userdata.finalOrderPrice}`)
+            console.log(`card is ${userdata.cardNumber}`)
+            if(userdata.type != 'Cash on Delivery' && userdata.type != 'Redeem Points option'){
+                var query = `INSERT INTO webEmployee.client(idclient,name,type,card,timestamp,status,price) VALUES ('${userdata.id}', '${userdata.cardHolderName}','CardPayment', ${userdata.cardNumber}, ${todayDate}, 'SUCCESS',${userdata.finalOrderPrice})`;
+            console.log('in if')
+            connection.query(query, function (err, result) {
+                if (err) throw err;
+                console.log("client record inserted");
+              });
+              connection.end
+            }
+            else{
+                console.log('in else')
+            
+                var sqlquery = `INSERT INTO webEmployee.client(idclient,type,timestamp,status,price) VALUES ('${userdata.id}', '${userdata.type}', ${todayDate}, 'SUCCESS',${userdata.finalOrderPrice})`;
+            
             connection.query(sqlquery, function (err, result) {
                 if (err) throw err;
                 console.log("client record inserted");
               });
-            
+              connection.end
+            }
+           
           });
     }
