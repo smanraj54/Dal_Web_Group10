@@ -46,6 +46,13 @@ app.get('/homepage',(req,res) => {
     });
 });
 
+app.get('/',(req,res) => {
+    return res.status(200).json({
+        success: true,
+        message: "Connected",
+    });
+});
+
 app.get('/homepage/items', (req, res) => {
 
         con.query(`SELECT * FROM item_details`, function(err, result, fields) {
