@@ -56,7 +56,9 @@ const Question = (props) => {
           <div className="col col-lg-5">
             <form onSubmit={answerValidation}>
               <div className="container">
-                <h1>Reset Password</h1>
+                <div className="text-center">
+                  <h4>Reset Password</h4>
+                </div>
                 <div className="form-group">
                   <h4>Question : {question} ?</h4>
                 </div>

@@ -1,5 +1,7 @@
 import { withRouter } from "react-router";
+import {Navbar, Nav, NavDropdown, Form, FormControl, Button, ButtonGroup, ButtonToolbar} from 'react-bootstrap';
 import Logo from '../../logo.png';
+import "../css/Header.css";
 
 
 
@@ -17,30 +19,30 @@ const Header = (props) => {
       }
       
         return (
-          <header className="p-3  text-white bg-primary">
-            <div className="container">
-              <div className="container d-flex flex-wrap justify-content-center">
-                <a href="#"className="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
-                  <img
-                    src={Logo}
-                    className="img-thumbnail"
-                    width="40"
-                    height="32"
-                    alt="Logo"
-                  />
-                </a>
-    
-                <div className="text-end">
-                  <button type="button" className="btn btn-outline-light me-2" onClick={loginHandler}>
-                    Login
-                  </button>
-                  <button type="button" className="btn btn-warning" onClick={signUpHandler}>
-                    Sign-up
-                  </button>
-                </div>
-              </div>
-            </div>
-          </header>
+        <Navbar className = "color_nav" expand="lg">
+          <Navbar.Brand onClick = {() => {
+            props.history.push("/home");
+            }}>
+              <img
+              alt="Logo"
+              src={Logo}
+              width="30"
+              height="30"
+              className="d-inline-block align-top"/>
+              {' '}Volunteer Mart
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav className="mr-auto my-2 my-lg-0" 
+            style={{ maxHeight: '100px' }}
+            navbarScroll>
+            </Nav>
+          </Navbar.Collapse>
+          <ButtonToolbar>
+            <Button className = "btn" variant="outline-dark" onClick={loginHandler}>Login</Button>{' '}
+            <Button variant="success" onClick={signUpHandler}>Sign Up</Button>{' '}
+          </ButtonToolbar>
+          </Navbar>
         );
 }
 

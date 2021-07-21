@@ -66,7 +66,9 @@ const ForgotPassword = (props) => {
           <div className="col col-lg-5">
             <form onSubmit={emailValidation}>
               <div className="container">
-                <h1>Reset Password</h1>
+                <div className="text-center">
+                  <h4>Reset Password</h4>
+                </div>
                 <div className="form-group">
                   <label>Enter your Email :</label>
                   <input
