@@ -1,17 +1,20 @@
-import {Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router,Switch, Route ,useHistory} from 'react-router-dom';
 import './App.css';
-import SignUpHeader from './Signup/header';
-import SignUpFooter from './Signup/footer';
 import Delivery from './Delivery/Delivery';
-import Main from './Signup/main';
 import CustomerCareFooter from './CustomerCare/footer';
 import CustomerCareHeader from './CustomerCare/header';
 import Body from './CustomerCare/body';
 import Payment from './PaymentManagement/Payment';
 import { NavbarDetails } from './CartManagement/NavBarDetails';
 import { Cart } from './CartManagement/Cart';
-import { useHistory } from 'react-router-dom';
 import HomePageCatalogue from './HomePage/HomePageCatalogue';
+import Homepage from "./UserManagement/pages/Homepage";
+import UserHomepage from "./UserManagement/pages/UserHomepage";
+import Login from "./UserManagement/pages/Login";
+import SignUp from "./UserManagement/pages/SignUp";
+import ForgotPassword from "./UserManagement/pages/ForgotPassword";
+import Question from "./UserManagement/pages/Question";
+import UpdatePassword from "./UserManagement/pages/UpdatePassword";
 //import AdminPanel from './AdminPage/AdminPanel';
 
 function App() {
@@ -31,15 +34,28 @@ function App() {
     //   <Payment/>
     //   <Footer />
     // </div>
-    <div>
+    <Router>
     <Switch>
-      <Route exact path = "/">
-          {" "}
-          <div>
-            <SignUpHeader/>
-            <Main history = {history}/>
-            <SignUpFooter/>
-          </div>
+      <Route exact path="/">
+        <Homepage />
+      </Route>
+      <Route exact path="/userHome">
+        <UserHomepage />
+      </Route>
+      <Route exact path="/login">
+        <Login />
+      </Route>
+      <Route exact path="/signUp">
+        <SignUp />
+      </Route>
+      <Route exact path="/resetPassword">
+        <ForgotPassword />
+      </Route>
+      <Route exact path="/question">
+        <Question />
+      </Route>
+      <Route exact path="/updatePassword">
+        <UpdatePassword />
       </Route>
       <Route exact path = "/home">
           {" "}
@@ -72,14 +88,6 @@ function App() {
             <CustomerCareFooter/>
           </div>
       </Route>
-      <Route path = "/SignUp">
-          {" "}
-          <div>
-            <SignUpHeader/>
-            <Main history = {history}/>
-            <SignUpFooter/>
-          </div>
-      </Route>
       <Route path = "/Payment">
           {" "}
           <div>
@@ -102,7 +110,7 @@ function App() {
           <h1>WrongPage!!!</h1>
       </Route>
     </Switch>
-</div>
+</Router>
 
   );
 }
