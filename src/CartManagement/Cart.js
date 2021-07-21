@@ -76,31 +76,44 @@ export const Cart = () =>{
                 return (
                 <Row>
                     <Col>
-                    <Card>
+                    <Card className = "w-90 h-30 p-10">
                         <Row>
                             <Col>
                             <Card.Body>
-                                <Card.Img className="w-50" variant="Left" src={data.picture}/>
+                                <Card.Img style = {{height: '10rem'}} className="w-50 p-100" variant="Left" src={data.picture}/>
                             </Card.Body>
                             </Col>
                             <Col>
                             <Row>
-                                <Card.Title>
+                                <Card.Title style = {{
+                                    color: "black",
+                                    backgroundColor: "lightgreen",
+                                    padding: "10px",
+                                    fontFamily: "Arial"}}>
                                 {data.name}
                                 </Card.Title>
                             </Row>
                             <Row>
                                 <Card.Body>
-                                <Row>
-                                    Price : {data.price}<br/>
+                                <Row style = {{
+                                    color: "black",
+                                    padding: "10px",
+                                    fontFamily: "Arial"}}>
+                                    Price : ${data.price}<br/>
                                 </Row>
-                                <Row>
+                                <Row  style = {{
+                                    color: "black",
+                                    padding: "10px",
+                                    fontFamily: "Arial"}}>
                                     Description : {data.description}<br/>
                                 </Row>
                                 </Card.Body>
                             </Row>
                             <Row>
-                                <Col>
+                                <Col  style = {{
+                                    color: "black",
+                                    padding: "10px",
+                                    fontFamily: "Arial"}}>
                                 Added Items : {data.used_quantity}
                                 </Col>         
                             </Row>
