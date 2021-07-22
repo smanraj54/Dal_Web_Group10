@@ -1,3 +1,6 @@
+//Author: Robinder Jasdev Singh Dhillon
+
+
 import React from 'react';
 import App from './CardDetails';
 import Cash from './Cash';
@@ -15,10 +18,12 @@ class Payment extends React.Component{
 
         clearInfo=()=> {
             this.setState({datainfo:[], pricetotal: 0})
+            // console.log('cleareddddddddddddddddd')
+            // alert(this.state.pricetotal)
     }
     
     componentDidMount() {
-        
+
         this.informationOrder();       
     }
     
@@ -47,7 +52,7 @@ class Payment extends React.Component{
     }
     
     informationOrder = async()=>{
-        var baseUrl = "https://homepagebackend.herokuapp.com";
+        var baseUrl = "https://group10projectbackend.herokuapp.com";
         var getUrlInfo = baseUrl + "/cart/items";
         console.log('in information order')
         var price = 0

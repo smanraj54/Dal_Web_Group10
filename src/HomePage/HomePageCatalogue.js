@@ -4,9 +4,16 @@ import {Container, Row, Col , Form} from 'react-bootstrap';
 import axios from 'axios';
 import {CardComponent} from './Components/CardComponent';
 
+/*
+    Homepage items are fetched from the database with their detials and rendered on the browser screen
+ */
+
 function HomePageCatalogue(){
     console.log("Third Page");
-    const baseUrl = 'https://homepagebackend.herokuapp.com';
+
+    //const baseUrl = 'https://homepagebackend.herokuapp.com';
+    const baseUrl = 'https://group10projectbackend.herokuapp.com';
+    //const baseUrl = 'http://localhost:2000';
     const getUrl = baseUrl+'/homepage/items';
     const [records, setRecords] = useState([]); 
     const [searchFilter, setSearchFilter] = useState('');
@@ -33,7 +40,7 @@ function HomePageCatalogue(){
     }, []);
 
     return (<div>
-        <Container fluid='md' className = 'm-5' padding = "10" margin = "20">
+        <Container fluid='md' className = 'm-5' style = {{padding: "10px"}}>
              <Row>
                 <Col>
                 </Col>

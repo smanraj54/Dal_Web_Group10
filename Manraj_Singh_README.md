@@ -1,21 +1,25 @@
 Assignment 3
 
-## Feature Developed: Cart Management
+## Feature Developed: Cart Management and Homepage Catalogue
 
 Date Created: 19 JUL 2021
 Last Modification Date: 21 JUL 2021
-Cart Management Feature Branch URL: https://github.com/smanraj54/Dal_Web_Group10/tree/projectProposal
-Cartmanagement backend Code URL: https://github.com/smanraj54/Dal_Web_Group10.git 
+Cart Management Feature Frontend Code URL: https://github.com/smanraj54/Dal_Web_Group10/tree/projectProposal
+Cart Management Feature backend Code URL: https://github.com/smanraj54/Dal_Web_Group10/tree/projectBackend 
 
-Heroku Backend URL Link : https://homepagebackend.herokuapp.com/    
-Heroku Frontend URL: https://group10proposalweb.herokuapp.com/
+Heroku Backend URL Link : https://group10projectbackend.herokuapp.com    
+Heroku Frontend URL Link: https://group10proposalweb.herokuapp.com/home
+
+## After Adding items open MyCart form the NAVBAR or click on the below link:
+Heroku Frontend URL Link: https://group10proposalweb.herokuapp.com/cart
+
 ## Request: Please run the backend heroku link first ... somethimes the heroku link goes down after being inactive for too long.
 
 
 ## Author
 
 Manraj Singh
-Cart Management
+Cart Management and HomePage Catalogue
 The customer user in this feature is authorised to add items from the homepage into the cart.
 
 ## Tasks
@@ -24,7 +28,24 @@ The customer user in this feature is authorised to add items from the homepage i
 
 ## Files Written
 
-*homepagebackend.js *cart.js *cardComponent.js *Layout.js *homepageCatalogue.js *invalid.js *navBarDetails.js *navBarDetails.css
+*homepagebackend.js : 
+    Description: In this file I have exposed the apis to fetch the data from the database and render it on the browser   page. Apis I exposed for homepage can be accessed using the backend link given above. Extensionts are get('URL:/homepage') , get('URL:/homepage/items').
+
+
+*cartBackend.js:
+    Description: In this file i exposed the apis which are used to fetch, update, delete, insert the cart details to and from the cart table in the database. Apis I exposed for homepage can be accessed using the backend link given above. Extensionts are get('URL:/cart'), get('URL:/cart/Items'), delete('URL:/cart/delete/:id'), get('URL:/items/:id'), put('URL:/truncate'), post('URL:/add') 
+
+*cart.js:
+    Description: This is a frontend code file in which the frontend code of cart is written. Carts page is rendered based on this file. I this file the data from cart table is fetched and rendered on the browser page. This code mainly consists of Container, Row, Col, Button, Card components of bootstrap which is used to make the site more resposive.
+
+
+ *cardComponent.js
+    Description: This is a frontend code file which is used by theh homepage component and the cart component. This is sub component which is called multiple times for all the items fetched from the databse. In this file the data from cart table is fetched and rendered on the browser page. This code mainly consists of Container, Row, Col, Button, Card components of bootstrap which is used to make the site more resposive.
+
+  
+  *homepageCatalogue.js
+    Description: This is a frontend code file in which the frontend code of homepage is written. homepage page is rendered based on this file. I this file the data from item_details table is fetched and rendered on the browser page. This code mainly consists of Container, Row, Col, Button, Card components of bootstrap which is used to make the site more resposive.
+
 
 ## W3C Validation Test
 
@@ -68,7 +89,9 @@ Git clone https://github.com/smanraj54/Dal_Web_Group10.git
 npm install
 npm start 
 
-References
+
+## References
+
 [1] npm. 2021. cors. [online] Available at: https://www.npmjs.com/package/cors [Accessed 20 July 2021]. 
 
 [2] Broder, J., 2021. Online Markdown Editor - Dillinger, the Last Markdown Editor ever.. [online] Dillinger.io. Available at: https://dillinger.io/ [Accessed 21 July 2021]. 

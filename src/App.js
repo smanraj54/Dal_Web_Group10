@@ -1,9 +1,8 @@
 import {BrowserRouter as Router,Switch, Route ,useHistory} from 'react-router-dom';
 import './App.css';
 import Delivery from './Delivery/Delivery';
-import CustomerCareFooter from './CustomerCare/footer';
-import CustomerCareHeader from './CustomerCare/header';
-import Body from './CustomerCare/body';
+import CustomerSupport from './CustomerCare/customerSupport';
+
 import Payment from './PaymentManagement/Payment';
 import { NavbarDetails } from './CartManagement/NavBarDetails';
 import { Cart } from './CartManagement/Cart';
@@ -15,6 +14,7 @@ import SignUp from "./UserManagement/pages/SignUp";
 import ForgotPassword from "./UserManagement/pages/ForgotPassword";
 import Question from "./UserManagement/pages/Question";
 import UpdatePassword from "./UserManagement/pages/UpdatePassword";
+import UserHeader from './UserManagement/components/UserHeader';
 //import AdminPanel from './AdminPage/AdminPanel';
 
 function App() {
@@ -60,14 +60,14 @@ function App() {
       <Route exact path = "/home">
           {" "}
           <div>
-            <NavbarDetails/>
+            <UserHeader/>
             <HomePageCatalogue></HomePageCatalogue>
           </div>
       </Route>
       <Route path = "/Cart">
           {" "}
           <div>
-            <NavbarDetails/>
+            <UserHeader/>
             <Cart/>
           </div>
           {/* <h1>WELCOME TO SecondPage</h1> */}
@@ -75,7 +75,7 @@ function App() {
       <Route path = "/Delivery">
           {" "}
           <div>
-            <NavbarDetails/>
+            <UserHeader/>
             <Delivery/>
           </div>
           {/* <h1>WELCOME TO SecondPage</h1> */}
@@ -83,15 +83,13 @@ function App() {
       <Route path = "/CustomerCare">
           {" "}
           <div>
-            <CustomerCareHeader/>
-            <Body/>
-            <CustomerCareFooter/>
+            <CustomerSupport/>
           </div>
       </Route>
       <Route path = "/Payment">
           {" "}
           <div>
-            <NavbarDetails/>
+            <UserHeader/>
             <Payment/>
           </div>
       </Route>
