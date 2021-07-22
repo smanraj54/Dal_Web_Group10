@@ -19,7 +19,7 @@ const rootRoute = '/api';
 //app.use(cors());
 
 app.use(cors({
-    origin: ["http://localhost:3000"],
+    origin: ["https://group10proposalweb.herokuapp.com"],
     methods: ["GET","POST","PUT","DELETE"],
     credentials: true
 }));
