@@ -11,7 +11,7 @@ Heroku Backend URL Link : https://group10projectbackend.herokuapp.com
 Heroku Frontend URL Link: https://group10proposalweb.herokuapp.com/home
 
 ## After Adding items open MyCart form the NAVBAR or click on the below link:
-Heroku Frontend URL Link: https://group10proposalweb.herokuapp.com/
+Heroku Frontend URL Link: https://group10proposalweb.herokuapp.com/cart
 
 ## Request: Please run the backend heroku link first ... somethimes the heroku link goes down after being inactive for too long.
 
