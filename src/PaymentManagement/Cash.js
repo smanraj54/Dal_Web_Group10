@@ -1,9 +1,17 @@
+//Author: Robinder Jasdev Singh Dhillon
+
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 import App from './CardDetails';
 import axios from 'axios'
 
+
 class Cash extends React.Component{
+
+  constructor(props) {
+    super(props);
+    this.state = { totalPrice: props.pricefinal}
+  }
 
     handleSubmit=(event)=>{
         event.preventDefault();
@@ -12,6 +20,8 @@ class Cash extends React.Component{
         // this.setState({type:values})
         // console.log(this.state.type)
           this.informationCash()
+          this.cancelOrder();
+
         
     }
 
@@ -20,26 +30,30 @@ class Cash extends React.Component{
         if (proceed) {
         alert("order cancelled")      
         }
+        this.cancelOrder();
+      }
 
-        var baseUrl = "https://homepagebackend.herokuapp.com";
+      cancelOrder = () => {
+        this.props.clearInfo();
+        var baseUrl = "https://group10projectbackend.herokuapp.com";
         var truncateURL = baseUrl + "/cart/truncate";
         axios.put(truncateURL).then(res => {
           this.props.clearInfo();
         });
       }
 
-      informationCash = async()=>{
+      informationCash = ()=>{
         var finalOrderPrice = this.props.pricefinal
           console.log('in information cash')
         //   console.log(this.state.type)
           const type = this.props.nameOfType;
-          if(finalOrderPrice!= 0){
+          if(this.state.totalPrice!= 0){
             alert("Order Placed!");
-        const response = await axios.post("/payment", {type,finalOrderPrice}).then(result => {
+        const response = axios.post("https://backend-nodeapp.herokuapp.com/payment", {type,finalOrderPrice}).then(result => {
           console.log("cash/points payment in frontend")
           console.log(type)
+          this.setState({totalPrice:0})
         });
-        this.props.clearInfo();
       }
       else{
         alert("order total is 0. Cannot place order")

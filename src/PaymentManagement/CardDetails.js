@@ -1,3 +1,5 @@
+//Author: Robinder Jasdev Singh Dhillon
+
 import React from 'react';
 import { Row,Col, Form, Button, Container, Card} from 'react-bootstrap';
 import '../App.css'
@@ -9,20 +11,24 @@ var numberPattern = new RegExp('^[0-9]+$');
 
 class App extends React.Component{
 
-    state ={
-        cardHolderName:'',
-        cardNumber:'',
-        cvv:'',
-        expiryMonth:'',
-        expiryYear:'',
-        redirect:'',
-        nameValidity:false,
-        cardNumberValidity:false,
-        cvvValidity:false,
-        expiryMonthValidity:false,
-        expiryYearValidity:false,
-        setRedirect:false
-    };
+
+  constructor(props) {
+    super(props);
+    this.state = { totalPrice: props.pricefinal,
+      cardHolderName:'',
+      cardNumber:'',
+      cvv:'',
+      expiryMonth:'',
+      expiryYear:'',
+      redirect:'',
+      nameValidity:false,
+      cardNumberValidity:false,
+      cvvValidity:false,
+      expiryMonthValidity:false,
+      expiryYearValidity:false,
+      setRedirect:false
+    }
+  }
 
     handleName = (event) => {
         const value = !namePattern.test(event.target.value);
@@ -52,6 +58,7 @@ class App extends React.Component{
 
     
       handleSubmit=(event)=> {
+
         const form = event.currentTarget;
         console.log(form);
           if (this.state.nameValidity || this.state.cardNumberValidity || this.state.cvvValidity || this.state.expiryMonthValidity || this.state.expiryYearValidity){
@@ -60,42 +67,27 @@ class App extends React.Component{
             alert("Input should be valid!");
           }
           else {
+            this.cancelOrder();
             event.preventDefault();
             this.setState({setRedirect:true});
-            console.log('------------------------------------')
-            // console.log(this.props.pricefinal)
-            console.log(this.state.cardHolderName);
-            console.log(this.state.cardNumber);
-            console.log(this.state.expiryMonth);
-            console.log(this.state.expiryYear);
-            console.log('------------------------------------')
             this.information()
             this.setState({cardHolderName:'',
             cardNumber:'',
             cvv:'',
             expiryMonth:'',
             expiryYear:''})
-            console.log('state empty')
           }
       };
 
       information = async()=>{
+        var baseUrl = "https://group10projectbackend.herokuapp.com";
+        var deleteUrl = baseUrl + "/cart/delete/";
         var finalOrderPrice = this.props.pricefinal
-        console.log(this.props.pricefinal)
-        console.log(this.state.cardHolderName);
-        console.log(this.state.cardNumber);
-        console.log(this.state.expiryMonth);
-        console.log(this.state.expiryYear);
         const { cardHolderName, cardNumber, expiryMonth, expiryYear  } = this.state;
-        if(this.props.pricefinal!= 0){
+        if(this.state.totalPrice!= 0){
         alert("Order Placed!");
-        const response = await axios.post("/payment", { cardHolderName, cardNumber, expiryMonth, expiryYear,finalOrderPrice}).then(result => {
-          console.log("values are")
-          console.log(cardHolderName);
-          console.log(cardNumber);
-          console.log(expiryMonth);
-          console.log(expiryYear);
-          console.log(finalOrderPrice)
+        const response = await axios.post("https://backend-nodeapp.herokuapp.com/payment", { cardHolderName, cardNumber, expiryMonth, expiryYear,finalOrderPrice}).then(result => {
+          this.setState({totalPrice:0})
         });
         this.props.clearInfo();
       }
@@ -103,18 +95,26 @@ class App extends React.Component{
         alert("order total is 0. Cannot place order")
       }
       }
+      cancelCardOrder= ()=>{
+        var proceed = window.confirm("Are you sure you want to cancel the order?");
+        if (proceed) {
+        alert("order cancelled")      
+        }
+        this.cancelOrder();
+      }
 
       cancelOrder= ()=>{
-        var baseUrl = "https://homepagebackend.herokuapp.com";
+        var baseUrl = "https://group10projectbackend.herokuapp.com";
         var truncateURL = baseUrl + "/cart/truncate";
         axios.put(truncateURL).then(res => {
-          this.props.clearInfo();
+          
           this.setState({cardHolderName:'',
           cardNumber:'',
           cvv:'',
           expiryMonth:'',
           expiryYear:''})
         });
+        this.props.clearInfo();
       }
         
     render(){
@@ -164,7 +164,7 @@ class App extends React.Component{
                 <Button className="margin-top" variant="outline-success" type="submit" size="lg">
                 Place Order
                 </Button>
-                <Button className="margin-top margin-left" variant="outline-danger" type="button" size="lg" onClick={this.cancelOrder}>
+                <Button className="margin-top margin-left" variant="outline-danger" type="button" size="lg" onClick={this.cancelCardOrder}>
                 Cancel Order
                 </Button>
             </Form>
