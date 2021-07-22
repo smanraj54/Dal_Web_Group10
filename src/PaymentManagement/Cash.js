@@ -43,7 +43,6 @@ class Cash extends React.Component{
       }
 
       informationCash = ()=>{
-        alert(this.state.totalPrice)
         var finalOrderPrice = this.props.pricefinal
           console.log('in information cash')
         //   console.log(this.state.type)
