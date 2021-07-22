@@ -1,64 +1,41 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 
-class List extends Component {
+function List(props) {
+    const { setDetails, list } = props;
+    const [complainList, setComplain] = useState({});
 
-    tickets = [
-        {
-            id: '1',
-            ticketNo: 'ABCDEFG12345',
-            type: 'Order Return',
-            status: 'Pending'
-        },
-        {
-            id: '2',
-            ticketNo: 'ABCDEFG12345',
-            type: 'Refund',
-            status: 'Resolved'
-        },
-        {
-            id: '3',
-            ticketNo: 'ABCDEFG12345',
-            type: 'Order cancel',
-            status: 'Resolved'
-        },
-        {
-            id: '4',
-            ticketNo: 'ABCDEFG12345',
-            type: 'Order cancel',
-            status: 'Resolved'
-        },
-        {
-            id: '5',
-            ticketNo: 'ABCDEFG12345',
-            type: 'Order cancel',
-            status: 'Resolved'
-        }
-    ];
-
-
-    render() {
-        return (
-            <div>
-                <div className="mr-3 ml-3 rounded mt-4 pr-2 pl-2 pt-2" style={{ backgroundColor: '#8EE4AF', height: '390px',overflowY: 'scroll' }}>
-                    {this.tickets.map((ticket, index) => (
+    return (
+        <div>
+            <div className="mr-3 ml-3 rounded mt-4 pr-2 pl-2 pt-2" style={{ backgroundColor: '#f5f5f5', height: '390px', overflowY: 'scroll' }}>
+                {list && list.length > 0
+                    ? list.map((ticket, index) => (
                         <div key={index}>
-                            <div className="row align-items-center rounded border mr-2 ml-2 mt-3 mb-2" style={{ backgroundColor: '#FFFFFF' }}>
-                                <div className="col-1 pl-4">
-                                    <h6>{ticket.id}</h6>
+                            <div className="row align-items-center rounded border border-success mr-2 ml-2 mt-2 mb-2 pl-2" style={{ backgroundColor: '#FFFFFF' }}>
+                                <div className="col-1 pl-3 rounded-circle" style={{ backgroundColor: '#DEEDD6'}}>
+                                    <h6>{ticket.ticketId}</h6>
                                 </div>
-                                <div className="col-7 pt-3 pb-3">
-                                    <h6 style={{ 'margin': 0 }}>Ticket No: {ticket.ticketNo}</h6>
+                                <div className="col-6 pt-3 pb-3">
+                                    <h6 style={{ 'margin': 0 }}>Ticket No: {ticket.ticketNumber}</h6>
                                     <h6>Type: {ticket.type}</h6>
                                 </div>
-                                <div className="col-4">
-                                    <h5>Status: {ticket.status}</h5>
+                                <div className="col-3">
+                                    <h6>Status: {ticket.status}</h6>
                                 </div>
+                                {ticket.status.match("Pending") || ticket.status.match("pending") 
+                                ? <div className="col-2">
+                                    <button onClick={() => setDetails(ticket)} style={{ backgroundColor: '#0AAD0A', color: '#FFFFFF' }}>Update</button>
+                                </div>
+                                : <div className="col-2">
+                                </div>}
+                                
                             </div>
                         </div>
-                    ))}
-                </div>
+                    ))
+                    : <p>No tickets found!</p>}
+
             </div>
-        );
-    }
+        </div>
+    );
+
 }
 export default List;

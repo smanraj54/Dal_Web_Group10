@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import LeftBody from './left_body';
 import RightBody from './right_body';
 
-class Body extends Component {
-    render(){
+function Body(props) {
+
+    const [details,setDetails] = useState({});
         return(
             <div className="row">
                 <div className="col">
-                    <LeftBody/>
+                    <LeftBody details = {details} {...props}/>
                 </div>
                 <div className="col border-left">
-                    <RightBody/>
+                    <RightBody list = {props.list} setDetails={setDetails}/>
                 </div>
             </div>
         );
-    }
 }
 export default Body;

@@ -1,9 +1,8 @@
 import {BrowserRouter as Router,Switch, Route ,useHistory} from 'react-router-dom';
 import './App.css';
 import Delivery from './Delivery/Delivery';
-import CustomerCareFooter from './CustomerCare/footer';
-import CustomerCareHeader from './CustomerCare/header';
-import Body from './CustomerCare/body';
+import CustomerSupport from './CustomerCare/customerSupport';
+
 import Payment from './PaymentManagement/Payment';
 import { NavbarDetails } from './CartManagement/NavBarDetails';
 import { Cart } from './CartManagement/Cart';
@@ -84,9 +83,7 @@ function App() {
       <Route path = "/CustomerCare">
           {" "}
           <div>
-            <CustomerCareHeader/>
-            <Body/>
-            <CustomerCareFooter/>
+            <CustomerSupport/>
           </div>
       </Route>
       <Route path = "/Payment">
