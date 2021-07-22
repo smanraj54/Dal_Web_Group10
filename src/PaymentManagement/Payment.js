@@ -15,10 +15,12 @@ class Payment extends React.Component{
 
         clearInfo=()=> {
             this.setState({datainfo:[], pricetotal: 0})
+            // console.log('cleareddddddddddddddddd')
+            // alert(this.state.pricetotal)
     }
     
     componentDidMount() {
-        
+
         this.informationOrder();       
     }
     
