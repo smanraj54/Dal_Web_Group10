@@ -18,18 +18,19 @@ server.listen(port, ()=>{
     console.log("server started at http://localhost:"+port);
 })
 
+//get request to check if connection is made
+
 app.get("/", (req, res) => {
     res.send('Hello World!')
   });
   
-
+//handling post request from frontend to store values in database
 app.post('/payment', function  (req, res) {
-    console.log('hello')
     
-    const userdata = req.body;
+    const userdata = req.body; //saving the user information from the form
     // console.log(userdata)
     try{
-            userdata.id = uniqid();
+            userdata.id = uniqid(); //generating a hexadecimal order ID
             // user.push(userdata)
             console.log(userdata)
             insertDb(userdata)
@@ -50,7 +51,7 @@ catch(err){
     })
 }
     })
-
+//code to insert data to database
     insertDb = (userdata)=>{
         console.log('in insert')
         var todayDate = Date.now()
@@ -68,10 +69,7 @@ catch(err){
             }
           
             console.log('Connected to database.');
-            console.log(todayDate.type)
-            console.log(`date is ${todayDate}`)
-            console.log(`price is ${userdata.finalOrderPrice}`)
-            console.log(`card is ${userdata.cardNumber}`)
+            //if condition, if the type of payment is cash on delivery or points, execute code in if, otherwise execute code in else
             if(userdata.type != 'Cash on Delivery' && userdata.type != 'Redeem Points option'){
                 var query = `INSERT INTO webEmployee.client(idclient,name,type,card,timestamp,status,price) VALUES ('${userdata.id}', '${userdata.cardHolderName}','CardPayment', ${userdata.cardNumber}, ${todayDate}, 'SUCCESS',${userdata.finalOrderPrice})`;
             console.log('in if')
