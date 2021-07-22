@@ -15,11 +15,9 @@ class Payment extends React.Component{
         datainfo:[],
         pricetotal:0
     };
-
+//method to clear data information and total price
         clearInfo=()=> {
             this.setState({datainfo:[], pricetotal: 0})
-            // console.log('cleareddddddddddddddddd')
-            // alert(this.state.pricetotal)
     }
     
     componentDidMount() {
@@ -27,7 +25,7 @@ class Payment extends React.Component{
         this.informationOrder();       
     }
     
-
+//components for each type of payment. when the user clicks on a specific payment button, a specific method will be called which will call the component related to that payment
     credit(){
         console.log("in credit");
         this.setState({ viewForm: true })
@@ -50,7 +48,7 @@ class Payment extends React.Component{
         this.setState({ viewForm: true })
         this.paymentForm = <Cash nameOfType="Redeem Points option" clearInfo={this.clearInfo} pricefinal={this.state.pricetotal}/>;
     }
-    
+    //code to display data in the order details Card. API is called to fetch data from cart
     informationOrder = async()=>{
         var baseUrl = "https://group10projectbackend.herokuapp.com";
         var getUrlInfo = baseUrl + "/cart/items";
@@ -60,13 +58,9 @@ class Payment extends React.Component{
         try{
       const responses = await axios.get(getUrlInfo).then(result => {
         var finaldata = result.data.data
-        // this.setState({pricetotal:result.data.data.item_price})
         this.setState({datainfo:finaldata})
-        console.log("responses.data")
-        console.log(this.state.datainfo)
-        console.log(result.data.data.item_id)
         for(let i=0;i<finaldata.length;i++){
-            price = price +(finaldata[i].item_price*finaldata[i].item_qty)
+            price = price +(finaldata[i].item_price*finaldata[i].item_qty) //calculating total price with item*quantity
         }
         console.log(price)
         this.setState({pricetotal:price})
@@ -79,6 +73,7 @@ class Payment extends React.Component{
 
 
     render(){
+        //card deck to display payment methods and order details
         return(
             <div>
             <Container fluid ='md'>  
@@ -111,11 +106,11 @@ class Payment extends React.Component{
                     </Card.Body>
                 </Card>
                 </Col>
-
+                {/* table created to display order details and total price */}
                 <Col className="container-fluid mt-4">                 
                 <Card style={{color: "#000"}}>
                 <Card.Header style={{size:"20px" ,color:"#000", textAlign:"center", paddingTop:"10px"}}>ORDER DETAILS</Card.Header>
-                        <Card.Body>
+                        <Card.Body> 
                         ORDER DETAILS
                         <Table>
                             <thead>

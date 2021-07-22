@@ -6,6 +6,7 @@ import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios';
 
+//pattern to allow only alphabets and numbers respectively
 var namePattern = new RegExp('^[a-zA-Z]*$');
 var numberPattern = new RegExp('^[0-9]+$');
 
@@ -14,7 +15,7 @@ class App extends React.Component{
 
   constructor(props) {
     super(props);
-    this.state = { totalPrice: props.pricefinal,
+    this.state = { totalPrice: props.pricefinal, //defining state
       cardHolderName:'',
       cardNumber:'',
       cvv:'',
@@ -30,43 +31,52 @@ class App extends React.Component{
     }
   }
 
+  //code to handle the card holder name validity
     handleName = (event) => {
         const value = !namePattern.test(event.target.value);
         this.setState({cardHolderName: event.target.value});
         this.setState({nameValidity:value});
       }
+        //code to handle the card number validity
     handleCardNumber = (event) => {
      const value = (numberPattern.test(event.target.value) && event.target.value.length === 16);
      this.setState({cardNumber: event.target.value});
      this.setState({cardNumberValidity:!value});
       }
+        //code to handle the cvv validity
     handleCvv = (event) => {
       const value = numberPattern.test(event.target.value) && event.target.value.length === 3;
       this.setState({cvv: event.target.value});
       this.setState({cvvValidity:!value});
       }
+
+        //code to handle the expiry month validity
       handleExpiryMonth = (event) => {
         const value = numberPattern.test(event.target.value) && event.target.value <=12 && event.target.value >=1;
         this.setState({expiryMonth: event.target.value});
         this.setState({expiryMonthValidity:!value});
         }
+
+          //code to handle the expiry year validity
         handleExpiryYear = (event) => {
             const value = numberPattern.test(event.target.value)&& (event.target.value >= new Date().getFullYear()) && (event.target.value.length === 4);
             this.setState({expiryYear: event.target.value});
             this.setState({expiryYearValidity:!value});
             }
 
-    
+    //code to be executed when form is submitted
       handleSubmit=(event)=> {
 
         const form = event.currentTarget;
         console.log(form);
+        //check if all the validations are satisfied by input, if not, give alert that input should be valid
           if (this.state.nameValidity || this.state.cardNumberValidity || this.state.cvvValidity || this.state.expiryMonthValidity || this.state.expiryYearValidity){
             event.preventDefault();
             event.stopPropagation();
             alert("Input should be valid!");
           }
           else {
+            //executed if all the validations are checked and input is correct
             this.cancelOrder();
             event.preventDefault();
             this.setState({setRedirect:true});
@@ -79,6 +89,7 @@ class App extends React.Component{
           }
       };
 
+      //upon successful submission of form
       information = async()=>{
         var baseUrl = "https://group10projectbackend.herokuapp.com";
         var deleteUrl = baseUrl + "/cart/delete/";
@@ -86,6 +97,7 @@ class App extends React.Component{
         const { cardHolderName, cardNumber, expiryMonth, expiryYear  } = this.state;
         if(this.state.totalPrice!= 0){
         alert("Order Placed!");
+        //calling backend API to store information in database and place order
         const response = await axios.post("https://backend-nodeapp.herokuapp.com/payment", { cardHolderName, cardNumber, expiryMonth, expiryYear,finalOrderPrice}).then(result => {
           this.setState({totalPrice:0})
         });
@@ -95,6 +107,7 @@ class App extends React.Component{
         alert("order total is 0. Cannot place order")
       }
       }
+      //code to cancel the order
       cancelCardOrder= ()=>{
         var proceed = window.confirm("Are you sure you want to cancel the order?");
         if (proceed) {
@@ -102,7 +115,7 @@ class App extends React.Component{
         }
         this.cancelOrder();
       }
-
+//emptying the cart if order is cancelled
       cancelOrder= ()=>{
         var baseUrl = "https://group10projectbackend.herokuapp.com";
         var truncateURL = baseUrl + "/cart/truncate";
@@ -114,13 +127,15 @@ class App extends React.Component{
           expiryMonth:'',
           expiryYear:''})
         });
+        //deleting the information of total order price and data
         this.props.clearInfo();
       }
         
     render(){
+      // code for frontend form of credit/debit card
         return(<div className="container">
           <Container fluid="md">
-
+        
             <Form controlId="form1" onSubmit={this.handleSubmit}>                 
                     <Form.Group controlId="formCardHolderName">
                     <Form.Label className="margin-top margin-bottom" style={{width:'150px',margintop:'500px'}}>Card Holder Name:</Form.Label>
