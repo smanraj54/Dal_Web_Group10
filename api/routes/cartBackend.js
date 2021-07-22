@@ -1,3 +1,9 @@
+
+/*
+Author: Manraj Singh
+Dal Id: B00877934
+email id: mn697903@dal.ca
+*/
 const express = require("express");
 
 const router = express.Router();
@@ -9,6 +15,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 //var uniqid = require("uniqid");
 var mysql = require('mysql');
 
+// restricting the access of backend api to the frontend code only for security
 router.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "https://group10proposalweb.herokuapp.com"); // update to match the domain you will make the request from
     res.header(
@@ -18,6 +25,7 @@ router.use(function (req, res, next) {
     next();
   });
 
+// Connecting to the frontend code
 var con = mysql.createConnection({
   host: "db-admin.cbsrzgbgkhst.us-east-1.rds.amazonaws.com",
   user: "admin",
@@ -31,17 +39,7 @@ con.connect(function(err) {
    console.log('connection successful');
 });
 
-// var users = [{
-//     email : 'abc@abc.ca',
-//     firstName : 'ABC',
-//     id : '5abf6783'
-//     },
-//     {
-//     email : 'xyz@xyz.ca',
-//     firstName: 'XYZ',
-//     id : '5abf674563'
-//     }]
-
+//Get api to show the connection success message 
 router.get('/',(req,res) => {
     return res.status(200).json({
         success: true,
@@ -49,14 +47,7 @@ router.get('/',(req,res) => {
     });
 });
 
-// app.get('/',(req,res) => {
-//     return res.status(200).json({
-//         success: true,
-//         message: "Connected",
-//     });
-// });
-
-
+// Get api exposed to fetch all the items from Database
 router.get('/items', (req, res) => {
 
     con.query(`SELECT * FROM cart_items`, function(err, result, fields) {
@@ -81,6 +72,7 @@ router.get('/items', (req, res) => {
 
 });
 
+//Delete API exposed to delete perticular entry in the cart table in database using the id
 router.delete('/delete/:id', (req, res) => {
     console.log("about to delete id: "+req.params.id);
     let userID = req.params.id;
@@ -107,6 +99,7 @@ router.delete('/delete/:id', (req, res) => {
 
 });
 
+// Fetching details of an entry in cart table using the id
 router.get('/items/:id', (req, res) => {
     console.log("i am in GEt with ID");
     let userID = req.params.id;
@@ -156,6 +149,7 @@ router.get('/items/:id', (req, res) => {
     });
 });
 
+// Deleting all the entries from the table on canceling the order or completing the order
 router.put('/truncate', (req, res) => {
 
     con.query(`TRUNCATE TABLE cart_items;`,function(err,res){
@@ -171,6 +165,7 @@ router.put('/truncate', (req, res) => {
     })
 });
 
+// Adding new entry into the cart table of the item selected ... if the item already available then increasing the count
 router.post('/add', (req, res) => {
 
 	var records = [[req.body.item_id, req.body.store_name, req.body.item_name, req.body.item_qty,req.body.item_price,req.body.item_desc,req.body.item_image]];

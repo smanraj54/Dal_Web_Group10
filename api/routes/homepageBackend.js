@@ -1,3 +1,9 @@
+/*
+Author: Manraj Singh
+Dal Id: B00877934
+email id: mn697903@dal.ca
+*/
+
 const express = require("express");
 
 const router = express.Router();
@@ -18,6 +24,7 @@ router.use(function (req, res, next) {
     next();
   });
 
+// connecting to the database where homepage item_deteails page is present
 var con = mysql.createConnection({
   host: "db-admin.cbsrzgbgkhst.us-east-1.rds.amazonaws.com",
   user: "admin",
@@ -31,17 +38,7 @@ con.connect(function(err) {
    console.log('connection successful');
 });
 
-// var users = [{
-//     email : 'abc@abc.ca',
-//     firstName : 'ABC',
-//     id : '5abf6783'
-//     },
-//     {
-//     email : 'xyz@xyz.ca',
-//     firstName: 'XYZ',
-//     id : '5abf674563'
-//     }]
-
+// confirmation on the connection success with the backend api
 router.get('/',(req,res) => {
     return res.status(200).json({
         success: true,
@@ -49,13 +46,7 @@ router.get('/',(req,res) => {
     });
 });
 
-// app.get('/',(req,res) => {
-//     return res.status(200).json({
-//         success: true,
-//         message: "Connected",
-//     });
-// });
-
+//getting all the items list from the database to show on the homescreen 
 router.get('/items', (req, res) => {
 
         con.query(`SELECT * FROM item_details`, function(err, result, fields) {
