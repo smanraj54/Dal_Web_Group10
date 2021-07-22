@@ -21,6 +21,8 @@ export const CardComponent = (Props) => {
         "used_quantity": 0
     }
     
+    /* Fetching number of added items from the cart table in databse
+        using api exposed  */
     async function fetchData(){
         console.log("Fetching Data");
         await axios.get(baseUrl+'/cart/items/'+data.ID)
@@ -35,10 +37,14 @@ export const CardComponent = (Props) => {
         });
 
     }
+
+    /* Fetching data once the page load */
     useEffect( () => {
         fetchData();
     },[]);
 
+    /* adding the item to the cart table and updating 
+    the count if the item already existing  */
     const handleAddItem = () =>{
         const AddItemURL = baseUrl+'/cart/add';
         fetchData();

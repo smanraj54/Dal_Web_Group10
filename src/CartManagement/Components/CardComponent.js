@@ -3,9 +3,13 @@ import { Card, Row, Col, Button} from 'react-bootstrap';
 
 
 export const CardComponent = (Props) =>{
-  var baseUrl = "http://localhost:2007";
+
+  //base URL for the backend api exposed
+
+  var baseUrl = 'https://group10projectbackend.herokuapp.com';
   var deleteUrl = baseUrl + "/cart/delete/";
   
+  //data fetched from another component and rendered on this page 
   const data = {
     "ID": Props.record.item_id,
     "picture": Props.record.item_image,
@@ -17,6 +21,7 @@ export const CardComponent = (Props) =>{
   };
   
 
+  //Removing single items from the cart page handled on click of button
   const handleRemoveThisItem = () => {
     axios.delete(deleteUrl+data.ID)
         .then(response => {

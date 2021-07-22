@@ -19,6 +19,10 @@ function HomePageCatalogue(){
     const [searchFilter, setSearchFilter] = useState('');
     const [cartData, setCartData] = useState([]);
     
+
+    /*items fetched from database once the page is loaded 
+    using apis exposed from backend api 
+    */
     useEffect( () =>{
         async function fetchData(){
             await axios.get(getUrl)

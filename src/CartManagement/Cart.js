@@ -7,16 +7,18 @@ import axios from 'axios';
 
 export const Cart = () =>{
 
+    // ** BASE url of the backend apis exposed for this frontend application
+
     //const baseUrl = 'https://homepagebackend.herokuapp.com';
     const baseUrl = 'https://group10projectbackend.herokuapp.com';
     //const baseUrl = 'http://localhost:2000';
     var deleteUrl = baseUrl + "/cart/delete/";
-    const [toggle, setToggle] = useState(true);
     var getUrl = baseUrl + "/cart/items";
     const [records, setRecords] = useState([]);
     const history = useHistory();
     const [itemID, setItemID] = useState(0);
 
+    //**  fetching data from the get api exposed from backend
     async function fetchData(){
         await axios.get(getUrl)
         .then(response => {
@@ -34,11 +36,13 @@ export const Cart = () =>{
         
     }
 
+    // *rendering page with any change in the itemID const value
     useEffect( () =>{
         handleRemoveThisItem();
         fetchData();
     }, [itemID]);
 
+    // *Removing all items together on sigle click
     const handleRemoveAll = () => {
         axios.put(baseUrl+"/cart/truncate")
         .then(response => {
@@ -50,6 +54,8 @@ export const Cart = () =>{
             console.log(error);
         });
     };
+
+    // *Removing single item based on the bouton click using backend delete api exposed
     const handleRemoveThisItem = () => {
         axios.delete(deleteUrl+itemID)
             .then(response => {
