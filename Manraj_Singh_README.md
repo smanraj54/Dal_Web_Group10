@@ -28,7 +28,24 @@ The customer user in this feature is authorised to add items from the homepage i
 
 ## Files Written
 
-*homepagebackend.js *cartBackend *cart.js *cardComponent.js *Layout.js *homepageCatalogue.js *invalid.js *navBarDetails.js *navBarDetails.css
+*homepagebackend.js : 
+    Description: In this file I have exposed the apis to fetch the data from the database and render it on the browser   page. Apis I exposed for homepage can be accessed using the backend link given above. Extensionts are get('URL:/homepage') , get('URL:/homepage/items').
+
+
+*cartBackend.js:
+    Description: In this file i exposed the apis which are used to fetch, update, delete, insert the cart details to and from the cart table in the database. Apis I exposed for homepage can be accessed using the backend link given above. Extensionts are get('URL:/cart'), get('URL:/cart/Items'), delete('URL:/cart/delete/:id'), get('URL:/items/:id'), put('URL:/truncate'), post('URL:/add') 
+
+*cart.js:
+    Description: This is a frontend code file in which the frontend code of cart is written. Carts page is rendered based on this file. I this file the data from cart table is fetched and rendered on the browser page. This code mainly consists of Container, Row, Col, Button, Card components of bootstrap which is used to make the site more resposive.
+
+
+ *cardComponent.js
+    Description: This is a frontend code file which is used by theh homepage component and the cart component. This is sub component which is called multiple times for all the items fetched from the databse. In this file the data from cart table is fetched and rendered on the browser page. This code mainly consists of Container, Row, Col, Button, Card components of bootstrap which is used to make the site more resposive.
+
+  
+  *homepageCatalogue.js
+    Description: This is a frontend code file in which the frontend code of homepage is written. homepage page is rendered based on this file. I this file the data from item_details table is fetched and rendered on the browser page. This code mainly consists of Container, Row, Col, Button, Card components of bootstrap which is used to make the site more resposive.
+
 
 ## W3C Validation Test
 
