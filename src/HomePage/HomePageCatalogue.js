@@ -4,6 +4,10 @@ import {Container, Row, Col , Form} from 'react-bootstrap';
 import axios from 'axios';
 import {CardComponent} from './Components/CardComponent';
 
+/*
+    Homepage items are fetched from the database with their detials and rendered on the browser screen
+ */
+
 function HomePageCatalogue(){
     console.log("Third Page");
 

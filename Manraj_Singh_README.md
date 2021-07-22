@@ -1,16 +1,17 @@
 Assignment 3
 
-## Feature Developed: Cart Management
+## Feature Developed: Cart Management and Homepage Catalogue
 
 Date Created: 19 JUL 2021
 Last Modification Date: 21 JUL 2021
 Cart Management Feature Frontend Code URL: https://github.com/smanraj54/Dal_Web_Group10/tree/projectProposal
-Cart Management Feature backend Code URL: https://github.com/smanraj54/Dal_Web_Group10.git 
-const baseUrl = 'https://group10projectbackend.herokuapp.com';
+Cart Management Feature backend Code URL: https://github.com/smanraj54/Dal_Web_Group10/tree/projectBackend 
 
 Heroku Backend URL Link : https://group10projectbackend.herokuapp.com    
 Heroku Frontend URL Link: https://group10proposalweb.herokuapp.com/home
-Heroku Frontend URL Link: https://group10proposalweb.herokuapp.com/cart
+
+## After Adding items open MyCart form the NAVBAR or click on the below link:
+Heroku Frontend URL Link: https://group10proposalweb.herokuapp.com/
 
 ## Request: Please run the backend heroku link first ... somethimes the heroku link goes down after being inactive for too long.
 
@@ -18,7 +19,7 @@ Heroku Frontend URL Link: https://group10proposalweb.herokuapp.com/cart
 ## Author
 
 Manraj Singh
-Cart Management
+Cart Management and HomePage Catalogue
 The customer user in this feature is authorised to add items from the homepage into the cart.
 
 ## Tasks
@@ -71,7 +72,9 @@ Git clone https://github.com/smanraj54/Dal_Web_Group10.git
 npm install
 npm start 
 
-References
+
+## References
+
 [1] npm. 2021. cors. [online] Available at: https://www.npmjs.com/package/cors [Accessed 20 July 2021]. 
 
 [2] Broder, J., 2021. Online Markdown Editor - Dillinger, the Last Markdown Editor ever.. [online] Dillinger.io. Available at: https://dillinger.io/ [Accessed 21 July 2021]. 
