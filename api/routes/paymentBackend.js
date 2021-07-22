@@ -1,39 +1,40 @@
+//Author: Robinder Jasdev Singh Dhillon
+
+const http = require('http');
+const port = process.env.PORT || 3000
 const express = require('express');
-const router = express.Router();
-const bodyParser = require('body-parser');
+const app = express();
 const cors = require('cors');
-router.use(cors());
-router.use(bodyParser.json());
-var mysql = require("mysql");
+const server = http.createServer(app);
+var mysql = require('mysql');
 
-var con = mysql.createConnection({
-    host: "webdb.cim0emcvx2mb.us-east-1.rds.amazonaws.com",
-    user: "web",
-    password: "webrobinder",
-    port: 3306
-});
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+const uniqid = require('uniqid');
+app.use(cors());
 
-router.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+server.listen(port, ()=>{
+    console.log("server started at http://localhost:"+port);
+})
 
-con.connect(function (err) {
-    if (err) throw err;
-    console.log('connection successful');
-});
-
-router.get("/", (req, res) => {
+app.get("/", (req, res) => {
     res.send('Hello World!')
   });
+  
 
-router.post('/payment', function  (req, res) {
+app.post('/payment', function  (req, res) {
+    console.log('hello')
+    
     const userdata = req.body;
+    // console.log(userdata)
     try{
             userdata.id = uniqid();
+            // user.push(userdata)
             console.log(userdata)
             insertDb(userdata)
+            // console.log('query time')
+
 
             res.status(200).json({
                 Message: "User added",
@@ -53,20 +54,44 @@ catch(err){
     insertDb = (userdata)=>{
         console.log('in insert')
         var todayDate = Date.now()
+        var connection = mysql.createConnection({
+            host     : "webdb.cim0emcvx2mb.us-east-1.rds.amazonaws.com",
+            user     : "web",
+            password : "webrobinder",
+            port     : 3306
+          });
           
+          connection.connect(function(err) {
+            if (err) {
+              console.error('Database connection failed: ' + err.stack);
+              return;
+            }
+          
+            console.log('Connected to database.');
+            console.log(todayDate.type)
+            console.log(`date is ${todayDate}`)
+            console.log(`price is ${userdata.finalOrderPrice}`)
+            console.log(`card is ${userdata.cardNumber}`)
             if(userdata.type != 'Cash on Delivery' && userdata.type != 'Redeem Points option'){
                 var query = `INSERT INTO webEmployee.client(idclient,name,type,card,timestamp,status,price) VALUES ('${userdata.id}', '${userdata.cardHolderName}','CardPayment', ${userdata.cardNumber}, ${todayDate}, 'SUCCESS',${userdata.finalOrderPrice})`;
-            con.query(query, function (err, result) {
+            console.log('in if')
+            connection.query(query, function (err, result) {
                 if (err) throw err;
                 console.log("client record inserted");
               });
-              con.end
+              connection.end
             }
             else{
+                console.log('in else')
+            
                 var sqlquery = `INSERT INTO webEmployee.client(idclient,type,timestamp,status,price) VALUES ('${userdata.id}', '${userdata.type}', ${todayDate}, 'SUCCESS',${userdata.finalOrderPrice})`;
-                con.query(sqlquery, function (err, result) {
+            
+            connection.query(sqlquery, function (err, result) {
                 if (err) throw err;
+                console.log("client record inserted");
               });
-              con.end
+              connection.end
             }
+           
+          });
     }
