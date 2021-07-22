@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
+/* Frontend component of all the elements fetched from database and rendered on the browser screen
+ */
 
 export const CardComponent = (Props) => {
     const [usedQuantity, setUsedQuantity] = useState(0);
