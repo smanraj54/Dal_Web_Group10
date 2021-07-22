@@ -9,6 +9,8 @@ const cookieParser = require("cookie-parser");
 const signUp = require ('./api/routes/signup');
 const login = require ('./api/routes/login');
 const forgotPassword = require ('./api/routes/forgotPassword');
+const homepageBackend = require ('./api/routes/homepageBackend');
+const cartBackend = require ('./api/routes/cartBackend');
 
 const cors = require('cors');
 
@@ -45,6 +47,11 @@ app.use(rootRoute+'/users', signUp);
 app.use(rootRoute+'/users', login);
 
 app.use(rootRoute+'/users', forgotPassword);
+
+app.use('/homepage', homepageBackend);
+
+app.use('/cart', cartBackend);
+
 
 // app.use(rootRoute+'users',(req,res)=>{
 

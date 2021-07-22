@@ -24,7 +24,7 @@ The customer user in this feature is authorised to add items from the homepage i
 
 ## Files Written
 
-*homepagebackend.js *cart.js *cardComponent.js *Layout.js *homepageCatalogue.js *invalid.js *navBarDetails.js *navBarDetails.css
+*homepagebackend.js, *cartBackend.js *cart.js *cardComponent.js *Layout.js *homepageCatalogue.js *invalid.js *navBarDetails.js *navBarDetails.css
 
 ## W3C Validation Test
 
