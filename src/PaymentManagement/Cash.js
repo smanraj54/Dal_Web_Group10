@@ -1,3 +1,5 @@
+//Author: Robinder Jasdev Singh Dhillon
+
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 import App from './CardDetails';
@@ -22,13 +24,6 @@ class Cash extends React.Component{
 
         
     }
-
-    // componentDidUpdate(prevProps) {
-    //   // Typical usage (don't forget to compare props):
-    //   if (this.props.pricefinal !== prevProps.pricefinal) {
-    //     alert('updated')
-    //   }
-    // }
 
     cancelCashOrder= ()=>{
         var proceed = window.confirm("Are you sure you want to cancel the order?");

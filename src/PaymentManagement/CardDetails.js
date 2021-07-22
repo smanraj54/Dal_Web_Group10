@@ -1,3 +1,5 @@
+//Author: Robinder Jasdev Singh Dhillon
+
 import React from 'react';
 import { Row,Col, Form, Button, Container, Card} from 'react-bootstrap';
 import '../App.css'
@@ -81,11 +83,6 @@ class App extends React.Component{
         var baseUrl = "https://group10projectbackend.herokuapp.com";
         var deleteUrl = baseUrl + "/cart/delete/";
         var finalOrderPrice = this.props.pricefinal
-        console.log(this.props.pricefinal)
-        console.log(this.state.cardHolderName);
-        console.log(this.state.cardNumber);
-        console.log(this.state.expiryMonth);
-        console.log(this.state.expiryYear);
         const { cardHolderName, cardNumber, expiryMonth, expiryYear  } = this.state;
         if(this.state.totalPrice!= 0){
         alert("Order Placed!");
@@ -93,9 +90,6 @@ class App extends React.Component{
           this.setState({totalPrice:0})
         });
         this.props.clearInfo();
-        // const deleteCart = await axios.post("/payment", { cardHolderName, cardNumber, expiryMonth, expiryYear,finalOrderPrice}).then(result => {
-          
-        // });
       }
       else{
         alert("order total is 0. Cannot place order")

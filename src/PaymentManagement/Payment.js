@@ -1,3 +1,6 @@
+//Author: Robinder Jasdev Singh Dhillon
+
+
 import React from 'react';
 import App from './CardDetails';
 import Cash from './Cash';

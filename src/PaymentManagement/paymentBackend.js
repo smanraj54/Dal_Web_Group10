@@ -1,3 +1,5 @@
+//Author: Robinder Jasdev Singh Dhillon
+
 const http = require('http');
 const port = 2000;
 const express = require('express');
@@ -14,25 +16,15 @@ server.listen(port, ()=>{
     console.log("server started at http://localhost:"+port);
 })
 
-
-// var user = [{email : "",name : "", id : "", cardNumber: "", timestamp:"",status:""}]
-// var userdata
-
-  
-
 app.post('/payment', function  (req, res) {
     console.log('hello')
     
     const userdata = req.body;
-    // console.log(userdata)
     try{
             userdata.id = uniqid();
-            // user.push(userdata)
+            
             console.log(userdata)
             insertDb(userdata)
-            // console.log('query time')
-
-
             res.status(200).json({
                 Message: "User added",
                 success : true,
@@ -63,12 +55,7 @@ catch(err){
               console.error('Database connection failed: ' + err.stack);
               return;
             }
-          
-            console.log('Connected to database.');
-            console.log(todayDate.type)
-            console.log(`date is ${todayDate}`)
-            console.log(`price is ${userdata.finalOrderPrice}`)
-            console.log(`card is ${userdata.cardNumber}`)
+
             if(userdata.type != 'Cash on Delivery' && userdata.type != 'Redeem Points option'){
                 var query = `INSERT INTO webEmployee.client(idclient,name,type,card,timestamp,status,price) VALUES ('${userdata.id}', '${userdata.cardHolderName}','CardPayment', ${userdata.cardNumber}, ${todayDate}, 'SUCCESS',${userdata.finalOrderPrice})`;
             console.log('in if')
