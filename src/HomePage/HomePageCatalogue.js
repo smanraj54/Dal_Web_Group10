@@ -6,7 +6,10 @@ import {CardComponent} from './Components/CardComponent';
 
 function HomePageCatalogue(){
     console.log("Third Page");
-    const baseUrl = 'https://homepagebackend.herokuapp.com';
+
+    //const baseUrl = 'https://homepagebackend.herokuapp.com';
+    const baseUrl = 'https://group10projectbackend.herokuapp.com';
+    //const baseUrl = 'http://localhost:2000';
     const getUrl = baseUrl+'/homepage/items';
     const [records, setRecords] = useState([]); 
     const [searchFilter, setSearchFilter] = useState('');

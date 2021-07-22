@@ -7,7 +7,9 @@ import axios from 'axios';
 
 export const Cart = () =>{
 
-    var baseUrl = "https://homepagebackend.herokuapp.com";
+    //const baseUrl = 'https://homepagebackend.herokuapp.com';
+    const baseUrl = 'https://group10projectbackend.herokuapp.com';
+    //const baseUrl = 'http://localhost:2000';
     var deleteUrl = baseUrl + "/cart/delete/";
     const [toggle, setToggle] = useState(true);
     var getUrl = baseUrl + "/cart/items";

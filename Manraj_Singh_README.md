@@ -4,11 +4,14 @@ Assignment 3
 
 Date Created: 19 JUL 2021
 Last Modification Date: 21 JUL 2021
-Cart Management Feature Branch URL: https://github.com/smanraj54/Dal_Web_Group10/tree/projectProposal
-Cartmanagement backend Code URL: https://github.com/smanraj54/Dal_Web_Group10.git 
+Cart Management Feature Frontend Code URL: https://github.com/smanraj54/Dal_Web_Group10/tree/projectProposal
+Cart Management Feature backend Code URL: https://github.com/smanraj54/Dal_Web_Group10.git 
+const baseUrl = 'https://group10projectbackend.herokuapp.com';
 
-Heroku Backend URL Link : https://homepagebackend.herokuapp.com/    
-Heroku Frontend URL: https://group10proposalweb.herokuapp.com/
+Heroku Backend URL Link : https://group10projectbackend.herokuapp.com    
+Heroku Frontend URL Link: https://group10proposalweb.herokuapp.com/home
+Heroku Frontend URL Link: https://group10proposalweb.herokuapp.com/cart
+
 ## Request: Please run the backend heroku link first ... somethimes the heroku link goes down after being inactive for too long.
 
 
@@ -24,7 +27,7 @@ The customer user in this feature is authorised to add items from the homepage i
 
 ## Files Written
 
-*homepagebackend.js *cart.js *cardComponent.js *Layout.js *homepageCatalogue.js *invalid.js *navBarDetails.js *navBarDetails.css
+*homepagebackend.js *cartBackend *cart.js *cardComponent.js *Layout.js *homepageCatalogue.js *invalid.js *navBarDetails.js *navBarDetails.css
 
 ## W3C Validation Test
 
