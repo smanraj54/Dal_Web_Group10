@@ -3,7 +3,8 @@
 /.pnp
 .pnp.js
 .DS_Store
-
+/client
+/server
 # Compiled class file
 *.class
 
