@@ -1,3 +1,6 @@
+// Author : Pathik Kumar Patel
+// Description: gets the user data from frontend and save it to user database.
+
 const express = require('express');
 
 const router = express.Router();
@@ -30,6 +33,8 @@ con.connect(function(err) {
   
    console.log('connection successful');
   });
+
+// saving the details of the user to user table and giving proper response.
 
 router.post('/signup', (req, res) => {
 

@@ -1,3 +1,6 @@
+// Author : Pathik Kumar Patel
+// Description: updating the user password.
+
 const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
@@ -27,6 +30,8 @@ con.connect(function (err) {
   console.log("connection successful");
 });
 
+// updating the user password.
+
 router.put("/updatePassword", (req, res) => {
   con.query(
     `UPDATE user_auth SET password = '${req.body.password}' WHERE (email = '${req.body.email}');`,
@@ -47,6 +52,7 @@ router.put("/updatePassword", (req, res) => {
   );
 });
 
+// checking the user authentication answer.
 router.post("/answer", (req, res) => {
   con.query(
     `SELECT answer FROM user_auth WHERE email = '${req.body.email}'`,
@@ -79,6 +85,7 @@ router.post("/answer", (req, res) => {
   );
 });
 
+// authenticationg the user email whether user is present in database or not.
 router.post("/forgotPassword", (req, res) => {
   con.query(
     `SELECT email,question FROM user_auth WHERE email = '${req.body.email}'`,

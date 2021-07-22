@@ -9,6 +9,7 @@ const cookieParser = require("cookie-parser");
 const signUp = require ('./api/routes/signup');
 const login = require ('./api/routes/login');
 const forgotPassword = require ('./api/routes/forgotPassword');
+const deleteUser = require('./api/routes/deleteUser');
 const homepageBackend = require ('./api/routes/homepageBackend');
 const cartBackend = require ('./api/routes/cartBackend');
 const customerSupport = require ('./api/routes/customerSupport');
@@ -47,6 +48,8 @@ app.use(rootRoute+'/users', signUp);
 app.use(rootRoute+'/users', login);
 
 app.use(rootRoute+'/users', forgotPassword);
+
+app.use(rootRoute+'/users', deleteUser);
 
 app.use('/homepage', homepageBackend);
 
