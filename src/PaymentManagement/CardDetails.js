@@ -78,7 +78,7 @@ class App extends React.Component{
       };
 
       information = async()=>{
-        var baseUrl = "https://homepagebackend.herokuapp.com";
+        var baseUrl = "https://group10projectbackend.herokuapp.com";
         var deleteUrl = baseUrl + "/cart/delete/";
         var finalOrderPrice = this.props.pricefinal
         console.log(this.props.pricefinal)
@@ -110,7 +110,7 @@ class App extends React.Component{
       }
 
       cancelOrder= ()=>{
-        var baseUrl = "https://homepagebackend.herokuapp.com";
+        var baseUrl = "https://group10projectbackend.herokuapp.com";
         var truncateURL = baseUrl + "/cart/truncate";
         axios.put(truncateURL).then(res => {
           

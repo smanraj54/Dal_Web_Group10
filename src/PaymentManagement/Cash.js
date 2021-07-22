@@ -40,7 +40,7 @@ class Cash extends React.Component{
 
       cancelOrder = () => {
         this.props.clearInfo();
-        var baseUrl = "https://homepagebackend.herokuapp.com";
+        var baseUrl = "https://group10projectbackend.herokuapp.com";
         var truncateURL = baseUrl + "/cart/truncate";
         axios.put(truncateURL).then(res => {
           this.props.clearInfo();

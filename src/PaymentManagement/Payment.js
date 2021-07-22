@@ -49,7 +49,7 @@ class Payment extends React.Component{
     }
     
     informationOrder = async()=>{
-        var baseUrl = "https://homepagebackend.herokuapp.com";
+        var baseUrl = "https://group10projectbackend.herokuapp.com";
         var getUrlInfo = baseUrl + "/cart/items";
         console.log('in information order')
         var price = 0
