@@ -4,6 +4,7 @@ import { withRouter } from "react-router";
 import Grocery from "../grocery.png";
 import Header from "../components/Header";
 import { NavLink } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -79,7 +80,9 @@ const Login = (props) => {
           <div className="col col-lg-5">
             <form onSubmit={loginValidation}>
               <div className="container">
-                <h1>Login Page</h1>
+                <div className="text-center">
+                  <h4>Login</h4>
+                </div>
                 <div className="form-group">
                   <label>Email</label>
                   <input

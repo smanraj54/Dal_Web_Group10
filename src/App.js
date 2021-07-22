@@ -15,6 +15,7 @@ import SignUp from "./UserManagement/pages/SignUp";
 import ForgotPassword from "./UserManagement/pages/ForgotPassword";
 import Question from "./UserManagement/pages/Question";
 import UpdatePassword from "./UserManagement/pages/UpdatePassword";
+import UserHeader from './UserManagement/components/UserHeader';
 //import AdminPanel from './AdminPage/AdminPanel';
 
 function App() {
@@ -60,14 +61,14 @@ function App() {
       <Route exact path = "/home">
           {" "}
           <div>
-            <NavbarDetails/>
+            <UserHeader/>
             <HomePageCatalogue></HomePageCatalogue>
           </div>
       </Route>
       <Route path = "/Cart">
           {" "}
           <div>
-            <NavbarDetails/>
+            <UserHeader/>
             <Cart/>
           </div>
           {/* <h1>WELCOME TO SecondPage</h1> */}
@@ -75,7 +76,7 @@ function App() {
       <Route path = "/Delivery">
           {" "}
           <div>
-            <NavbarDetails/>
+            <UserHeader/>
             <Delivery/>
           </div>
           {/* <h1>WELCOME TO SecondPage</h1> */}
@@ -91,7 +92,7 @@ function App() {
       <Route path = "/Payment">
           {" "}
           <div>
-            <NavbarDetails/>
+            <UserHeader/>
             <Payment/>
           </div>
       </Route>

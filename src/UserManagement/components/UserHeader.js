@@ -1,41 +1,69 @@
 import React, {Component} from 'react';
 import Logo from '../../logo.png';
+import "../css/Header.css";
 import { withRouter } from "react-router";
+import {Navbar, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
 
 
-class UserHeader extends Component{
-    constructor(props){
-        super(props);
-    }
+const UserHeader = (props) =>{
+    
 
-    render() {
         return (
-            <header className="p-3  text-white bg-primary">
-            <div className="container">
-              <div className="container d-flex flex-wrap justify-content-center">
-                <a href="#" className="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
-                      <img src={Logo} className="img-thumbnail" width="40" height="32" alt="Logo"/> 
-                </a>
-
-                <div className="text-end">
-                  <button type="button" className="btn btn-outline-light me-2">Login</button>
-                  <button type="button" className="btn btn-warning">Sign-up</button>
-                </div>
-              </div>
-              <div>
-                <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                  <li><a href="#" className="nav-link px-2 text-light">Vegetables</a></li>
-                  <li><a href="#" className="nav-link px-2 text-light">Personal Care</a></li>
-                  <li><a href="#" className="nav-link px-2 text-light">Snacks</a></li>
-                  <li><a href="#" className="nav-link px-2 text-light">Dairy Products</a></li>
-                  <li><a href="#" className="nav-link px-2 text-light">Household</a></li>
-                </ul>
-              </div>
-            </div>
-            </header>
+          <Navbar className="color_nav" expand="lg">
+          <Navbar.Brand onClick = {() => {
+                                 props.history.push("SignUp");
+                            }}>
+                              <img
+                            alt="Logo"
+                            src={Logo}
+                            width="30"
+                            height="30"
+                            className="d-inline-block align-top"/>
+                            {' '}Volunteer Mart</Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav
+              className="mr-auto my-2 my-lg-0"
+              style={{ maxHeight: '100px' }}
+              navbarScroll
+            >
+              <Nav.Link onClick = {() => {
+                                 props.history.push("Home");
+                            }} >Home</Nav.Link>
+        
+              <Nav.Link onClick = {() => {
+                                 props.history.push("CustomerCare");
+                            }}>Customer Care</Nav.Link>
+              <Nav.Link onClick = {() => {
+                                 props.history.push("Cart");
+                            }}>My Cart</Nav.Link>
+        
+              <NavDropdown title="Account" id="navbarScrollingDropdown">
+                <NavDropdown.Item onClick = {() => {
+                                 props.history.push("Delivery");
+                            }}>Delivery</NavDropdown.Item>
+                <NavDropdown.Item onClick = {() => {
+                                 props.history.push("SignUp");
+                            }}>Account Details</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item >Wishlist</NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+            <Form className="d-flex">
+              <FormControl
+                type="search"
+                placeholder="Search"
+                className="mr-2"
+                aria-label="Search"
+              />
+              <Button variant="outline-success"onClick = {() => {
+                                 props.history.push("Delivery");
+                            }}>Search</Button>
+            </Form>
+          </Navbar.Collapse>
+        </Navbar>
               
         );
-    }
 }
 
 export default withRouter(UserHeader);

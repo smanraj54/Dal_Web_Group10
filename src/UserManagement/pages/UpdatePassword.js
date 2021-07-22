@@ -74,7 +74,9 @@ const UpdatePassword = (props) => {
             <div className="col col-lg-5">
             <form onSubmit={passwordValidation}>
               <div className="container">
-                <h1>Reset Password</h1>
+                <div className="text-center">
+                  <h4>Reset Password</h4>
+                </div>
                 <div className="mb-3">
                   <label className="form-label">New Password</label>
                   <input

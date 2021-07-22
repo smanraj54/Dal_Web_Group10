@@ -33,7 +33,7 @@ function HomePageCatalogue(){
     }, []);
 
     return (<div>
-        <Container fluid='md' className = 'm-5' padding = "10" margin = "20">
+        <Container fluid='md' className = 'm-5' style = {{padding: "10px"}}>
              <Row>
                 <Col>
                 </Col>
