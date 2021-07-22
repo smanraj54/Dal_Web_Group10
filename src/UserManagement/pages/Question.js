@@ -1,3 +1,6 @@
+// Author : Pathik Kumar Patel
+// Description: The page for forgot password where user enters their answer.
+
 import { withRouter } from "react-router";
 import React, { useState } from "react";
 import Header from "../components/Header";
@@ -20,12 +23,13 @@ const Question = (props) => {
     setAnswer(event.target.value);
   };
 
+ // checking the answer of the user and if answer is correct, rotuing the user to new password link.
   function answerValidation(event) {
     event.preventDefault();
     if (answer.trim() === "") {
       setError("Please Enter Answer");
     } else {
-      const url = "http://localhost:2000/api/users/answer";
+      const url = "https://group10projectbackend.herokuapp.com/api/users/answer";
       console.log(formData);
       axios.post(url, formData).then((response) => {
         if (response.status === 500) {

@@ -1,3 +1,6 @@
+// Author : Pathik Kumar Patel
+// Description: The page for forgot password where user enters their email.
+
 import { withRouter } from "react-router";
 import React, { useState } from "react";
 import Header from "../components/Header";
@@ -19,8 +22,12 @@ const ForgotPassword = (props) => {
     console.log(event.target.value);
   };
 
+  // validating the email input of the user and sending user to next page if email is valid.
+
   function emailValidation(event) {
     event.preventDefault();
+
+    // email validation
     if (email.trim() === "") {
       setError("Please Enter E-mail.");
     } else if (
@@ -28,13 +35,15 @@ const ForgotPassword = (props) => {
     ) {
       setError("Enter Valid Email");
     } else {
-      const url = "http://localhost:2000/api/users/forgotPassword";
+      const url = "https://group10projectbackend.herokuapp.com/api/users/forgotPassword";
       axios.post(url, formData).then((response) => {
         console.log(response.status)
         console.log(email)
         if (response.status === 500) {
           setError("server error");
         } 
+
+    // checking that user exist in database or not.
         else if (response.status === 200) 
         {
           localStorage.setItem("resetUser", email);

@@ -37,7 +37,7 @@ function App() {
     <Router>
     <Switch>
       <Route exact path="/">
-        <Homepage />
+        <Login />
       </Route>
       <Route exact path="/userHome">
         <UserHomepage />

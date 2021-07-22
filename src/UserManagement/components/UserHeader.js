@@ -1,3 +1,6 @@
+// Author : Pathik Kumar Patel
+// Description : Header of website after user logs in 
+
 import React, {Component} from 'react';
 import Logo from '../../logo.png';
 import "../css/Header.css";

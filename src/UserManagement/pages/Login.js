@@ -1,3 +1,6 @@
+// Author : Pathik Kumar Patel
+// Description: The login page.
+
 import axios from "axios";
 import { useState } from "react";
 import { withRouter } from "react-router";
@@ -27,22 +30,34 @@ const Login = (props) => {
     setPassword(event.target.value);
   };
 
+  // validating the user email and password.
+
   function loginValidation(event) {
     event.preventDefault();
+
+    // email validation.
+
     if (email.trim() === "") {
       setError("Please Enter E-mail.");
     } else if (
       !/^[a-zA-z0-9]+[_]*[a-zA-Z0-9]+\@[a-zA-Z0-9]+\.[a-zA-Z]+$/.test(email)
     ) {
       setError("Enter Valid Email");
-    } else if (password.trim().length < 8) {
+    } 
+
+    // passowrd validation.
+
+    else if (password.trim().length < 8) {
       setError("Password should be of min 8 characters.");
     } else if (/[^A-Za-z0-9!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/.test(password)) {
       setError(
         "Password should only contain alpha-numeric and special characters."
       );
-    } else {
-      const url = "http://localhost:2000/api/users/login";
+    } 
+    
+    // authenticating the user, and routing to next page if authenticated.
+    else {
+      const url = "https://group10projectbackend.herokuapp.com/api/users/login";
       console.log("entered in else");
       console.log(formData);
       axios.post(url, formData).then((response) => {

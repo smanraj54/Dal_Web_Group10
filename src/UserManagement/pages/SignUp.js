@@ -1,3 +1,6 @@
+// Author : Pathik Kumar Patel
+// Description: The page for user Sign Up.
+
 import { withRouter } from "react-router";
 import Header from "../components/Header.js";
 import Grocery from "../grocery.png";
@@ -13,14 +16,17 @@ const SignUp = (props) => {
     question: "",
     answer: ""
   });
+
   const [error, setError] = useState("");
 
+  // getting the input value of sign up form.
   const formHandler = (event) => {
     let name = event.target.name;
     let value = event.target.value.toString();
     setFormData({ ...formData, [name]: value });
   };
 
+ // validating the information filled by user in form.
   const signUpValidation = (event) => {
     event.preventDefault();
 
@@ -57,8 +63,9 @@ const SignUp = (props) => {
     } else if (/[^a-zA-Z0-9]/.test(formData.answer)) {
       setError("Answer accepts aplhabets only.");
     } else {
-      const url = "http://localhost:2000/api/users/signup";
+      const url = "https://group10projectbackend.herokuapp.com/api/users/signup";
 
+      // sending request to the api to store the user data.
       axios.post(url, formData)
         .then(function (response) {
           console.log("the response is: "+response);

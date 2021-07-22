@@ -1,3 +1,6 @@
+// Author : Pathik Kumar Patel
+// Description: The page for forgot password where user enters their new password.
+
 import { withRouter } from "react-router";
 import React, {useState} from "react";
 import Header from "../components/Header";
@@ -25,7 +28,7 @@ const UpdatePassword = (props) => {
         setConfirmPwd(event.target.value);
         console.log(event.target.value);
       };
-  
+      // validating the entered password and updating it in the database.
     function passwordValidation(event){
       event.preventDefault();
       if (password.trim().length < 8) {
@@ -41,8 +44,10 @@ const UpdatePassword = (props) => {
       } else if (password !== confirmPwd) {
         setError("Passwod do not match");
       }  else {
-        const url = "http://localhost:2000/api/users/updatePassword";
+        const url = "https://group10projectbackend.herokuapp.com/api/users/updatePassword";
           console.log(formData);
+
+          // update the password in the database.
         axios.put(url, formData).then((response) => {
           console.log("the response is: "+response);
           
