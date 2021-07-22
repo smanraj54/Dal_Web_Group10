@@ -1,3 +1,10 @@
+
+/*
+Author: Manraj Singh
+Dal Id: B00877934
+email id: mn697903@dal.ca
+*/
+
 import axios from 'axios';
 import { Card, Row, Col, Button} from 'react-bootstrap';
 

@@ -1,3 +1,9 @@
+/*
+Author: Manraj Singh
+Dal Id: B00877934
+email id: mn697903@dal.ca
+*/
+
 import React from 'react';
 import {Navbar, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
 //import styled from 'styled-components';

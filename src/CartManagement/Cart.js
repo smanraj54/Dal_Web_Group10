@@ -1,3 +1,10 @@
+
+/*
+Author: Manraj Singh
+Dal Id: B00877934
+email id: mn697903@dal.ca
+*/
+
 import {Container, Row, Col, Button, Card} from 'react-bootstrap';
 //import {CardComponent} from './Components/CardComponent';
 import { useHistory } from 'react-router';
