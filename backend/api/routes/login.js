@@ -1,3 +1,7 @@
+// Author : Pathik Kumar Patel
+// Description: login backend file which handles request from frontend and does authentication of user.
+// references : https://www.codegrepper.com/code-examples/javascript/frameworks/dist/cors+issue+node+js
+
 const express = require("express");
 
 const router = express.Router();
@@ -5,20 +9,17 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 router.use(bodyParser.json());
 
-// const cors = require('cors');
-// router.use(cors({
-//     origin: ["http://localhost:3000/"],
-//     methods: ["GET","POST"],
-//     credentials: true
-// }));
-
 var mysql = require("mysql");
 
+// adding header to allow access api from the frontend
+
 router.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", "https://group10proposalweb.herokuapp.com"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+// making connection with MySQL instance.
 
 var con = mysql.createConnection({
   host: "node-js-5709.cvk24p0dwiqd.us-east-1.rds.amazonaws.com",
@@ -33,22 +34,7 @@ con.connect(function (err) {
   console.log("connection successful");
 });
 
-// router.get("/login", (req,res) => {
-//     if(!req.session.user){
-//         return res.status(401).send({
-//             loggedIn: false
-//         });
-//     }
-
-//     else{
-//         return res.status(200).send({
-//             loggedIn: true,
-//             user: req.session.user
-//         })
-//     }
-    
-
-// });
+// checking the user credentials from database and giving response.
 
 router.post("/login", (req, res) => {
     

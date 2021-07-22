@@ -1,3 +1,6 @@
+// Author : Pathik Kumar Patel
+// Description: updating the user password.
+
 const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
@@ -6,7 +9,7 @@ router.use(bodyParser.json());
 var mysql = require("mysql");
 
 router.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", "https://group10proposalweb.herokuapp.com"); // update to match the domain you will make the request from
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
@@ -26,6 +29,8 @@ con.connect(function (err) {
 
   console.log("connection successful");
 });
+
+// updating the user password.
 
 router.put("/updatePassword", (req, res) => {
   con.query(
@@ -47,6 +52,7 @@ router.put("/updatePassword", (req, res) => {
   );
 });
 
+// checking the user authentication answer.
 router.post("/answer", (req, res) => {
   con.query(
     `SELECT answer FROM user_auth WHERE email = '${req.body.email}'`,
@@ -79,6 +85,7 @@ router.post("/answer", (req, res) => {
   );
 });
 
+// authenticationg the user email whether user is present in database or not.
 router.post("/forgotPassword", (req, res) => {
   con.query(
     `SELECT email,question FROM user_auth WHERE email = '${req.body.email}'`,
