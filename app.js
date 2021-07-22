@@ -11,7 +11,6 @@ const login = require ('./api/routes/login');
 const forgotPassword = require ('./api/routes/forgotPassword');
 const homepageBackend = require ('./api/routes/homepageBackend');
 const cartBackend = require ('./api/routes/cartBackend');
-const paymentBackend = require ('./api/routes/paymentBackend');
 
 const cors = require('cors');
 
@@ -48,8 +47,6 @@ app.use(rootRoute+'/users', signUp);
 app.use(rootRoute+'/users', login);
 
 app.use(rootRoute+'/users', forgotPassword);
-
-app.use(rootRoute+'/Payment', paymentBackend);
 
 app.use('/homepage', homepageBackend);
 
