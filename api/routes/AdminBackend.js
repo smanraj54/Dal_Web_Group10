@@ -144,8 +144,4 @@ apps.get('/api/getItemNames/:storeName',(req,res) =>{
 
 
 
-apps.listen(3001,()=>{
-    console.log("node runnning");
-});
-
 module.exports = apps;
