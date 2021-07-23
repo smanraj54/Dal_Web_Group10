@@ -1,3 +1,9 @@
+/*
+Author: Kishan Rakeshbhai Patel
+Dal Id: B00882970
+email id: kishanp@dal.ca
+*/
+
 import React, { Component, useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 
