@@ -19,9 +19,9 @@ const db = mysql.createPool({
 
 
 //defaults
-app.use(cors());
-app.use(express.json())
-app.use(bodyParser.urlencoded({extended:true}))
+apps.use(cors());
+apps.use(express.json())
+apps.use(bodyParser.urlencoded({extended:true}))
 
 
 
