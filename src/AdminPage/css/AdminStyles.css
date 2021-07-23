@@ -1,12 +1,15 @@
-
+/*
+Author: Narendran Krishnakumar
+Page Function: Styles for the admin management
+*/
 
 #footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #2A313A;
-    color: white;
+    background-color: #deedd6;
+    color: black;
     text-align: center;
  }
 
@@ -19,10 +22,8 @@
     top:0;
     width:100%;
     text-align: center;
-    background-color: #2A313A;
-    color: white;
-    
-    
+    background-color: #deedd6;
+    color: black;
   
 }
 
@@ -51,18 +52,14 @@
     
 }
 
-#link3, #link4{
+#link3, #link4, #link2, #link5, #link6{
     text-decoration: none;
-    color:white;
+    color:black;
 
     
 }
 
-#link2{
-    text-decoration: none;
-    color:yellow;
-    
-}
+
 
 .alignleftz1{
     float: right;
@@ -79,14 +76,17 @@
     margin-right:38%;
 
 }
+
+
 .fontsw{
-    margin-top:15px;#body{
-        background-color: darkgrey;
-    }
+    margin-top:15px;
     
 }
 
-
+#body {
+  
+    background-color: #deedd6;
+}
 
 #mainElement{
     margin-top:5%;
@@ -120,6 +120,17 @@
   
   }
 
+  .center{
+   
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  #redRemove{
+    background-color: #e91313;
+    color: white;
+  }
+
   button[type=button] {
     background-color: #e6b03b;
     color: white;
@@ -130,6 +141,7 @@
   
   }
 
+
   
   button[type=submit]:hover {
     background-color: #45a049;
@@ -139,9 +151,9 @@
     background-color: #eecd14;
   }
 
-  .container {
+  .childContainer {
     border-radius: 5px;
-    background-color: darkgrey;
+    background-color: white;
     padding: 110px;
   }
   
@@ -157,5 +169,34 @@
   }
 
   #body{
-    background-color: darkgrey;
+    background-color: rgba(255, 255, 255, 0.979);
+}
+
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  transform: scale(2);
+  padding: 10px;
+}
+
+
+.current{
+  background-color: rgb(255, 255, 255);
+}
+
+
+#greenFetch{
+  background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  	float: right;
+    margin-right:0%;
 }
