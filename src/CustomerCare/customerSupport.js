@@ -29,6 +29,7 @@ function CustomerSupport(props) {
             });
         } else {
             alert("Something went wrong! Please login again.");
+            props.history.push('/login');
         }
     }
 
