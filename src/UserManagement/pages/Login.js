@@ -40,7 +40,7 @@ const Login = (props) => {
     if (email.trim() === "") {
       setError("Please Enter E-mail.");
     } else if (
-      !/^[a-zA-z0-9]+[_]*[a-zA-Z0-9]+\@[a-zA-Z0-9]+\.[a-zA-Z]+$/.test(email)
+      !/([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z])/.test(email)
     ) {
       setError("Enter Valid Email");
     } 
@@ -66,7 +66,7 @@ const Login = (props) => {
         if (response.status === 200) {
           localStorage.setItem("email", email);
           props.history.push({
-            pathname: "/",
+            pathname: "/home",
           });
         } else if (response.status === 500) {
           setError("server error, try again later");
@@ -76,9 +76,9 @@ const Login = (props) => {
           setError("email and password do not match");
         }
       });
-      setEmail('');
-      setPassword('');
     }
+    setEmail("");
+    setPassword("");
   }
 
   return (
@@ -104,6 +104,7 @@ const Login = (props) => {
                     type="text"
                     className="form-control"
                     name="email"
+                    value={email}
                     placeholder="Email"
                     onChange={emailHandler}
                   />
@@ -114,6 +115,7 @@ const Login = (props) => {
                     type="password"
                     className="form-control"
                     name="password"
+                    value={password}
                     placeholder="Password"
                     onChange={passwordHandler}
                   />

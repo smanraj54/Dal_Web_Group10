@@ -59,6 +59,8 @@ const AdminLogin = (props) => {
         }
       });
     }
+    setUsername("");
+    setPassword("");
   }
 
   return (
@@ -84,6 +86,7 @@ const AdminLogin = (props) => {
                     type="text"
                     className="form-control"
                     name="username"
+                    value={username}
                     placeholder="Username"
                     onChange={usernameHandler}
                   />
@@ -94,6 +97,7 @@ const AdminLogin = (props) => {
                     type="password"
                     className="form-control"
                     name="password"
+                    value={password}
                     placeholder="Password"
                     onChange={passwordHandler}
                   />
