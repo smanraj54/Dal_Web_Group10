@@ -5,9 +5,22 @@ Page Function: Updates the item details in the db
 import React, { useState, useEffect } from "react";
 import '../css/AdminStyles.css';
 import Axios from 'axios'
+import { Redirect, Route, withRouter } from "react-router-dom";
 
-function UpdateItem() {
-
+function UpdateItem(props) {
+  //  var isAdmin = localStorage.getItem('admin');
+  var  isAdmin = localStorage.getItem('admin');
+    console.log(isAdmin);
+  
+    // checking whether the user is logged in or not.
+    // if user is not logged in then they will be redirected to login.
+   
+    useEffect(() => {
+      
+      if(!isAdmin){
+        props.history.push('/admin/login');
+      }
+    },[]);
 
     const [storeName, setStoreName] = useState('')
     const [itemName, setItemName] = useState('')
@@ -24,11 +37,16 @@ const fetchData=()=>{
         alert("Please enter the store name first");
     }
     else{
-        Axios.get(`http://localhost:3001/api/getItemNames/${storeName}`).then((response)=>{
+        Axios.get(`https://group10projectbackend.herokuapp.com/api/getItemNames/${storeName}`).then((response)=>{
             setSuccess(response.data);
             })
     }
    
+}
+
+const terminateSession=()=>{
+    localStorage.setItem('admin',"");
+    props.history.push('/admin/login');
 }
 
     const submitAdd = () => {
@@ -37,7 +55,7 @@ const fetchData=()=>{
             alert("Please enter all the fields");
           }
           else{
-            Axios.put("http://localhost:3001/api/updateItem", {
+            Axios.put("https://group10projectbackend.herokuapp.com/api/updateItem", {
                 storeName: storeName,
                 itemName: itemName,
                 itemQty: itemQty,
@@ -71,19 +89,19 @@ const fetchData=()=>{
         <body id="body">
             <div id="header">
                 <div>
-                    <p class="alignleft">Volunteer Mart</p>
-                    <p class="alignright2"><a href="#" id="link1">Logout</a></p>
+                    <p class="alignleft" id="boldify">Volunteer Mart</p>
+                    <p class="alignright2"><a href="#" id="link1" onClick={terminateSession}>Logout</a></p>
                     <p class="alignright">Welcome Admin</p>
                 </div>
                 <br></br>
 
                 <hr></hr>
 
-                <p class="alignleftz3"><a href="http://localhost:3000/AddItem" tabindex="1" id="link4"> AddItem</a></p>
-       <p class="alignleftz2"><a  class = "current" href="http://localhost:3000/UpdateItem" tabindex="1" id="link3"> UpdateItem</a></p>
-       <p class="alignleftz2"><a href="http://localhost:3000/RemoveStore" tabindex="1" id="link5"> Remove Store</a></p>
-       <p class="alignleftz2"><a href="http://localhost:3000/RemoveItem" tabindex="1" id="link6"> Remove Item</a></p>
-        <p class="alignleftz1"><a href="http://localhost:3000/AdminPanel" tabindex="1" id="link2">Create Store</a></p>
+                <p class="alignleftz3"><a  class = "current" href="https://group10proposalweb.herokuapp.com/AddItem" tabindex="1" id="link4"> AddItem</a></p>
+                <p class="alignleftz2"><a href="https://group10proposalweb.herokuapp.com/UpdateItem" tabindex="1" id="link3"> UpdateItem</a></p>
+                <p class="alignleftz2"><a href="https://group10proposalweb.herokuapp.com/RemoveStore" tabindex="1" id="link5"> Remove Store</a></p>
+                <p class="alignleftz2"><a href="https://group10proposalweb.herokuapp.com/RemoveItem" tabindex="1" id="link6"> Remove Item</a></p>
+                <p class="alignleftz1"><a href="https://group10proposalweb.herokuapp.com/AdminPanel" tabindex="1" id="link2">Create Store</a></p>
 
 
             </div>
@@ -177,7 +195,7 @@ const fetchData=()=>{
                     <br></br>
                     <div class="center">
                         <button type="submit" onClick={submitAdd} >Update</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="http://localhost:3000/UpdateItem"><button type="button" >Cancel</button> </a>
+                        <a href="https://group10proposalweb.herokuapp.com/UpdateItem"><button type="button" >Cancel</button> </a>
                     </div>
                     {success.map((val)=>{
                                 return (
@@ -198,4 +216,4 @@ const fetchData=()=>{
     );
 }
 
-export default UpdateItem;
+export default withRouter(UpdateItem);

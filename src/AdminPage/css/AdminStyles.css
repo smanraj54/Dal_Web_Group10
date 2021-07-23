@@ -131,7 +131,7 @@ Page Function: Styles for the admin management
     color: white;
   }
 
-  button[type=button] {
+ .center button[type=button] {
     background-color: #e6b03b;
     color: white;
     padding: 12px 9px;
@@ -199,4 +199,9 @@ input[type=checkbox]
     cursor: pointer;
   	float: right;
     margin-right:0%;
+}
+
+#boldify{
+  font-weight: 500;
+
 }

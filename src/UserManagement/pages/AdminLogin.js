@@ -47,7 +47,7 @@ const AdminLogin = (props) => {
         if (response.status === 200) {
           localStorage.setItem("admin", username);
           props.history.push({
-            pathname: "/",
+            pathname: "/AdminPanel",
           });
         } else if (response.status === 500) {
           setError("server error, try again later");

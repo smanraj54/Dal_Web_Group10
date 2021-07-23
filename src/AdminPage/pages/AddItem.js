@@ -5,9 +5,24 @@ Page Function: adds the item to the existing store
 import React, { useState, useEffect } from "react";
 import '../css/AdminStyles.css';
 import Axios from 'axios'
+import { Redirect, Route, withRouter } from "react-router-dom";
 
-function AddItem() {
+function AddItem(props) {
 
+
+
+    var isAdmin = localStorage.getItem('admin');
+    console.log(isAdmin);
+  
+    // checking whether the user is logged in or not.
+    // if user is not logged in then they will be redirected to login.
+   
+    useEffect(() => {
+      if(!isAdmin){
+        props.history.push('/admin/login');
+      }
+    },[]);
+  
 
     const [storeName, setStoreName] = useState('')
     const [itemName, setItemName] = useState('')
@@ -16,6 +31,12 @@ function AddItem() {
     const [itemDesc, setItemDesc] = useState('')
     const [itemImage, setItemImage] = useState('')
 
+
+    const terminateSession=()=>{
+        localStorage.setItem('admin',"");
+        props.history.push('/admin/login');
+    }
+    
 //API Call
     const submitAdd = () => {
 
@@ -23,7 +44,7 @@ function AddItem() {
             alert("Please enter all the fields");
           }
           else{
-            Axios.post("http://localhost:3001/api/addItem", {
+            Axios.post("https://group10projectbackend.herokuapp.com/api/addItem", {
                 storeName: storeName,
                 itemName: itemName,
                 itemQty: itemQty,
@@ -56,19 +77,19 @@ function AddItem() {
         <body id="body">
             <div id="header">
                 <div>
-                    <p class="alignleft">Volunteer Mart</p>
-                    <p class="alignright2"><a href="#" id="link1">Logout</a></p>
+                    <p class="alignleft" id="boldify">Volunteer Mart</p>
+                    <p class="alignright2"><a href="#" id="link1" onClick={terminateSession}>Logout</a></p>
                     <p class="alignright">Welcome Admin</p>
                 </div>
                 <br></br>
 
                 <hr></hr>
 
-                <p class="alignleftz3"><a  class = "current" href="http://localhost:3000/AddItem" tabindex="1" id="link4"> AddItem</a></p>
-                <p class="alignleftz2"><a href="http://localhost:3000/UpdateItem" tabindex="1" id="link3"> UpdateItem</a></p>
-                <p class="alignleftz2"><a href="http://localhost:3000/RemoveStore" tabindex="1" id="link5"> Remove Store</a></p>
-                <p class="alignleftz2"><a href="http://localhost:3000/RemoveItem" tabindex="1" id="link6"> Remove Item</a></p>
-                <p class="alignleftz1"><a href="http://localhost:3000/AdminPanel" tabindex="1" id="link2">Create Store</a></p>
+                <p class="alignleftz3"><a  class = "current" href="https://group10proposalweb.herokuapp.com/AddItem" tabindex="1" id="link4"> AddItem</a></p>
+                <p class="alignleftz2"><a href="https://group10proposalweb.herokuapp.com/UpdateItem" tabindex="1" id="link3"> UpdateItem</a></p>
+                <p class="alignleftz2"><a href="https://group10proposalweb.herokuapp.com/RemoveStore" tabindex="1" id="link5"> Remove Store</a></p>
+                <p class="alignleftz2"><a href="https://group10proposalweb.herokuapp.com/RemoveItem" tabindex="1" id="link6"> Remove Item</a></p>
+                <p class="alignleftz1"><a href="https://group10proposalweb.herokuapp.com/AdminPanel" tabindex="1" id="link2">Create Store</a></p>
 
 
             </div>
@@ -174,7 +195,7 @@ function AddItem() {
                     <br></br>
                     <div class="center">
                         <button type="submit" onClick={submitAdd} >Add</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="http://localhost:3000/AddItem"><button type="button" >Cancel</button> </a>
+                        <a href="https://group10proposalweb.herokuapp.com/AddItem"><button type="button" >Cancel</button> </a>
                     </div>
 
                 </div>
@@ -189,4 +210,4 @@ function AddItem() {
     );
 }
 
-export default AddItem;
+export default withRouter(AddItem) ;
