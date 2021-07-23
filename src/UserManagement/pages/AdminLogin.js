@@ -1,83 +1,63 @@
-// Author : Pathik Kumar Patel
-// Description: The login page.
-
 import axios from "axios";
 import { useState } from "react";
 import { withRouter } from "react-router";
 import Grocery from "../grocery.png";
-import Header from "../components/Header";
 import { NavLink } from "react-router-dom";
-import Footer from "../components/Footer";
+import Header from "../components/Header";
 
-const Login = (props) => {
-  const [email, setEmail] = useState("");
+const AdminLogin = (props) => {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   axios.defaults.withCredentials = true;
 
   const formData = {
-    email: email,
+    username: username,
     password: password,
   };
 
-  const emailHandler = (event) => {
-    setEmail(event.target.value);
+  const usernameHandler = (event) => {
+    setUsername(event.target.value);
     console.log(event.target.value);
   };
 
   const passwordHandler = (event) => {
     setPassword(event.target.value);
+    //console.log(event.target.value)
   };
-
-  // validating the user email and password.
 
   function loginValidation(event) {
     event.preventDefault();
-
-    // email validation.
-
-    if (email.trim() === "") {
-      setError("Please Enter E-mail.");
-    } else if (
-      !/^[a-zA-z0-9]+[_]*[a-zA-Z0-9]+\@[a-zA-Z0-9]+\.[a-zA-Z]+$/.test(email)
-    ) {
-      setError("Enter Valid Email");
-    } 
-
-    // passowrd validation.
-
-    else if (password.trim().length < 8) {
-      setError("Password should be of min 8 characters.");
+    if (username.trim() === "") {
+      setError("Please Enter Username.");
+    } else if (password.trim().length < 1) {
+      setError("Enter password");
     } else if (/[^A-Za-z0-9!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/.test(password)) {
       setError(
         "Password should only contain alpha-numeric and special characters."
       );
-    } 
-    
-    // authenticating the user, and routing to next page if authenticated.
-    else {
-      const url = "https://group10projectbackend.herokuapp.com/api/users/login";
+    } else {
+      const url = "https://group10projectbackend.herokuapp.com/api/admin/login";
       console.log("entered in else");
       console.log(formData);
       axios.post(url, formData).then((response) => {
         console.log("the response is: " + response);
 
         if (response.status === 200) {
-          localStorage.setItem("email", email);
+          localStorage.setItem("admin", username);
           props.history.push({
             pathname: "/",
           });
         } else if (response.status === 500) {
           setError("server error, try again later");
         }
+
         else if (response.status === 204) {
           console.log(response.data.success);
-          setError("email and password do not match");
+          setError("username and password do not match");
         }
       });
-      setEmail('');
-      setPassword('');
     }
   }
 
@@ -96,16 +76,16 @@ const Login = (props) => {
             <form onSubmit={loginValidation}>
               <div className="container">
                 <div className="text-center">
-                  <h4>Login</h4>
+                  <h4>Admin Login</h4>
                 </div>
                 <div className="form-group">
-                  <label>Email</label>
+                  <label>Username</label>
                   <input
                     type="text"
                     className="form-control"
-                    name="email"
-                    placeholder="Email"
-                    onChange={emailHandler}
+                    name="username"
+                    placeholder="Username"
+                    onChange={usernameHandler}
                   />
                 </div>
                 <div className="form-group">
@@ -117,15 +97,6 @@ const Login = (props) => {
                     placeholder="Password"
                     onChange={passwordHandler}
                   />
-                </div>
-                <div className="text-center">
-                  <NavLink
-                    className="navbar-item"
-                    activeClassName="is-active"
-                    to="/resetPassword"
-                  >
-                    Forgot Password ?
-                  </NavLink>
                 </div>
                 <div className="text-center">
                   <h6 style={{ color: "blue" }}>{error}</h6>
@@ -143,4 +114,4 @@ const Login = (props) => {
   );
 };
 
-export default withRouter(Login);
+export default withRouter(AdminLogin);

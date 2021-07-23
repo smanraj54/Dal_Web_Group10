@@ -10,6 +10,7 @@ import HomePageCatalogue from './HomePage/HomePageCatalogue';
 import Homepage from "./UserManagement/pages/Homepage";
 import UserHomepage from "./UserManagement/pages/UserHomepage";
 import Login from "./UserManagement/pages/Login";
+import AdminLogin from "./UserManagement/pages/AdminLogin";
 import SignUp from "./UserManagement/pages/SignUp";
 import ForgotPassword from "./UserManagement/pages/ForgotPassword";
 import Question from "./UserManagement/pages/Question";
@@ -44,6 +45,9 @@ function App() {
       </Route>
       <Route exact path="/login">
         <Login />
+      </Route>
+      <Route exact path="/admin/login">
+        <AdminLogin />
       </Route>
       <Route exact path="/signUp">
         <SignUp />

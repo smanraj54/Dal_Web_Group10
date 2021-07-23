@@ -1,11 +1,9 @@
 // Author : Pathik Kumar Patel
 
 import { withRouter } from "react-router";
-import {Navbar, Nav, NavDropdown, Form, FormControl, Button, ButtonGroup, ButtonToolbar} from 'react-bootstrap';
+import {Navbar, Nav, Button, ButtonToolbar} from 'react-bootstrap';
 import Logo from '../../logo.png';
 import "../css/Header.css";
-
-
 
 const Header = (props) => {
     const loginHandler = (event) => {
@@ -18,6 +16,12 @@ const Header = (props) => {
           props.history.push({
             pathname: "/signup"
           });
+      }
+
+      const adminLoginHandler = (event) => {
+        props.history.push({
+          pathname: "/admin/login"
+        });
       }
       
         return (
@@ -41,8 +45,9 @@ const Header = (props) => {
             </Nav>
           </Navbar.Collapse>
           <ButtonToolbar>
-            <Button className = "btn" variant="outline-dark" onClick={loginHandler}>Login</Button>{' '}
             <Button variant="success" onClick={signUpHandler}>Sign Up</Button>{' '}
+            <Button className = "btn" variant="outline-dark" onClick={loginHandler}>Login</Button>{' '}
+            <Button className = "btn" variant="outline-dark" onClick={adminLoginHandler}>Admin</Button>{' '}
           </ButtonToolbar>
           </Navbar>
         );

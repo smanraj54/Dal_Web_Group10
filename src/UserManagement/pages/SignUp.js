@@ -180,7 +180,7 @@ const SignUp = (props) => {
                 </div>
                 <div className="text-center">
                   <h6 style={{ color: "blue" }}>{error}</h6>
-                  <button type="submit" className="btn btn-primary">
+                  <button type="submit" className="btn btn-success">
                     Submit
                   </button>
                   <h1></h1>
