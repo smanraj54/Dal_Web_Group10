@@ -6,6 +6,7 @@ const express = require ('express');
 const apps = express();
 const cors = require("cors");
 const mysql = require('mysql');
+const bodyParser = require('body-parser');
 
 
 //db credentials 
