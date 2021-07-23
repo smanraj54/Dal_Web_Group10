@@ -25,15 +25,23 @@ function RemoveStore(props) {
     const [success, setSuccess] = useState([])
 
 
-useEffect (()=>{
-    Axios.get('https://group10proposalweb.herokuapp.com/api/getStoreNames').then((response)=>{
-    setSuccess(response.data);
-    })
-},[])
 
 const terminateSession=()=>{
-    localStorage.setItem('admin',null);
+    localStorage.clear();
     props.history.push('/admin/login');
+}
+
+
+
+const fetchData=()=>{
+    if(storeName===''){
+        alert("Please enter the store name first");
+    }
+    else{
+        Axios.get('https://group10proposalweb.herokuapp.com/api/getStoreNames').then((response)=>{
+            setSuccess(response.data);
+    })
+
 }
 
 //API Call
@@ -108,7 +116,7 @@ const terminateSession=()=>{
                                 setStoreName(e.target.value)
                             }} required
                         />
-
+  <button id="greenFetch" type="button" onClick={fetchData} >↻</button>
                     </div>
 
 

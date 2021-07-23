@@ -32,7 +32,7 @@ function AdminPanel(props) {
 
 
   const terminateSession=()=>{
-    localStorage.setItem('admin',null);
+    localStorage.clear();
     props.history.push('/admin/login');
 }
 

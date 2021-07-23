@@ -45,7 +45,7 @@ const fetchData=()=>{
 }
 
 const terminateSession=()=>{
-    localStorage.setItem('admin',null);
+    localStorage.clear();
     props.history.push('/admin/login');
 }
 
