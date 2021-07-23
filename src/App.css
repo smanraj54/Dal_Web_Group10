@@ -28,6 +28,32 @@
   color: #61dafb;
 }
 
+.margin-top {
+  margin-top:15px;}
+
+.margin-bottom {
+  margin-bottom:7px;}
+
+  .margin-bottom-buttons {
+    margin-bottom:30px;}
+  
+  .margin-right {
+    margin-right:200px;}
+  
+  .margin-left {
+    margin-left:150px;}
+    
+  .margin-left-cash {
+    margin-left:80px;}
+
+  table,th,td {
+      border: 1px solid black;
+    }
+  th, td {
+      padding: 10px;
+    }
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
