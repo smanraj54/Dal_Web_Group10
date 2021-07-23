@@ -17,20 +17,7 @@ function CustomerSupport(props) {
         fetchComplains();
     }, []);
 
-    async function fetchComplains() {
-        const email = localStorage.getItem('email');
-        if (email) {
-            const data = new URLSearchParams();
-            data.set('email', email);
-            await axios.post(url, data).then((res) => {
-                console.log(res.data.data);
-                setList(res.data.data);
-            });
-        } else {
-            alert("Something went wrong! Please login again.");
-        }
-    }
-
+    //get all the complaints submitted by the current user
     async function fetchComplains() {
         const email = localStorage.getItem('email');
         if (email) {

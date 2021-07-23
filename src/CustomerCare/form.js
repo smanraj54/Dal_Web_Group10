@@ -24,6 +24,7 @@ function Form(props) {
         setView(false);
     }, []);
 
+    //set data of a complaint in a form
     useEffect(() => {
         if (previousProps.details !== details) {
             if (details) {
@@ -50,6 +51,7 @@ function Form(props) {
         }
     }
 
+    //validate form
     function validate(e) {
         e.preventDefault();
         if (state.type.match('select')) {
@@ -67,6 +69,7 @@ function Form(props) {
         }
     }
 
+    //submit a complain
     async function addComplains() {
         const email = localStorage.getItem('email');
         if (email) {
@@ -74,6 +77,7 @@ function Form(props) {
             data.set('email', email);
             data.set('desc', state.desc);
             data.set('type', state.type);
+            console.log(email);
             const url = "https://group10projectbackend.herokuapp.com/support/complainsubmit";
             await axios.post(url, data).then((res) => {
                 fetchComplains();
@@ -83,6 +87,7 @@ function Form(props) {
         }
     }
 
+    //update a submitted complaint
     async function updateComplain() {
         const email = localStorage.getItem('email');
         if (email) {
@@ -118,9 +123,9 @@ function Form(props) {
                     <textarea className="form-control" name="desc" rows="4" maxLength="100" placeholder="Description" onChange={updateVariable} value={state.desc}></textarea>
                     <h6 class="pt-1">{descLength}/100 words</h6>
                 </div>
-                <div class="text-right mr-3">
+                <div className="text-right mr-3">
                     <h4>{state.error}</h4>
-                    <button type="submit" class="btn pr-5 pl-5 mb-3 mt-2" style={{ backgroundColor: '#0AAD0A', color: '#FFFFFF' }}>{view ? 'Update' : 'Submit'}</button>
+                    <button type="submit" className="btn pr-5 pl-5 mb-3 mt-2" style={{ backgroundColor: '#0AAD0A', color: '#FFFFFF' }}>{view ? 'Update' : 'Submit'}</button>
                 </div>
             </form>
         </div>
