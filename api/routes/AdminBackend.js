@@ -4,6 +4,7 @@ Page Function: Backend API for the admin management
 */
 const express = require ('express');
 const apps = express();
+const cors = require("cors");
 const mysql = require('mysql');
 
 
