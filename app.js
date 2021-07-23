@@ -61,7 +61,7 @@ app.use('/cart', cartBackend);
 
 app.use('/support', customerSupport);
 
-app.use(rootRoute,adminBackend);
+app.use(adminBackend);
 // app.use(rootRoute+'users',(req,res)=>{
 
 //     res.send('it works!');
