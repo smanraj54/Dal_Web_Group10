@@ -32,7 +32,7 @@ function AdminPanel(props) {
 
 
   const terminateSession=()=>{
-    localStorage.setItem('admin',"");
+    localStorage.setItem('admin',null);
     props.history.push('/admin/login');
 }
 
@@ -94,11 +94,11 @@ const submitAdd = () => {
 
         <hr></hr>
    
-    <p class="alignleftz3"><a  class = "current" href="https://group10proposalweb.herokuapp.com/AddItem" tabindex="1" id="link4"> AddItem</a></p>
+    <p class="alignleftz3"><a  href="https://group10proposalweb.herokuapp.com/AddItem" tabindex="1" id="link4"> AddItem</a></p>
                 <p class="alignleftz2"><a href="https://group10proposalweb.herokuapp.com/UpdateItem" tabindex="1" id="link3"> UpdateItem</a></p>
                 <p class="alignleftz2"><a href="https://group10proposalweb.herokuapp.com/RemoveStore" tabindex="1" id="link5"> Remove Store</a></p>
                 <p class="alignleftz2"><a href="https://group10proposalweb.herokuapp.com/RemoveItem" tabindex="1" id="link6"> Remove Item</a></p>
-                <p class="alignleftz1"><a href="https://group10proposalweb.herokuapp.com/AdminPanel" tabindex="1" id="link2">Create Store</a></p>
+                <p class="alignleftz1"><a  class = "current" href="https://group10proposalweb.herokuapp.com/AdminPanel" tabindex="1" id="link2">Create Store</a></p>
 
         
       </div>

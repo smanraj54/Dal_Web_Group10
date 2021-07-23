@@ -33,7 +33,7 @@ function AddItem(props) {
 
 
     const terminateSession=()=>{
-        localStorage.setItem('admin',"");
+        localStorage.setItem('admin',null);
         props.history.push('/admin/login');
     }
     
