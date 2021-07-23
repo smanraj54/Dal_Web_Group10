@@ -14,6 +14,7 @@ const deleteUser = require('./api/routes/deleteUser');
 const homepageBackend = require ('./api/routes/homepageBackend');
 const cartBackend = require ('./api/routes/cartBackend');
 const customerSupport = require ('./api/routes/customerSupport');
+const adminBackend = require ('./api/routes/AdminBackend');
 const cors = require('cors');
 
 const rootRoute = '/api';
@@ -59,6 +60,8 @@ app.use('/homepage', homepageBackend);
 app.use('/cart', cartBackend);
 
 app.use('/support', customerSupport);
+
+app.use(rootRoute,adminBackend);
 // app.use(rootRoute+'users',(req,res)=>{
 
 //     res.send('it works!');
