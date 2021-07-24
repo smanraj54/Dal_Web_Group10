@@ -39,7 +39,9 @@ function RemoveStore(props) {
                 setSuccess(response.data);
             })
 
-        
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
         //API Call

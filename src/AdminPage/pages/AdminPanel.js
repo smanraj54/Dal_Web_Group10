@@ -18,7 +18,7 @@ function AdminPanel(props) {
  
   useEffect(() => {
     if(!isAdmin){
-    //  props.history.push('/admin/login');
+      props.history.push('/admin/login');
     }
   },[]);
   
