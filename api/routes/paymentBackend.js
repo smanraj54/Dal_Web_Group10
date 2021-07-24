@@ -59,8 +59,7 @@ catch(err){
           host: "db-admin.cbsrzgbgkhst.us-east-1.rds.amazonaws.com",
           user: "admin",
           password: "admin1234",
-          database: "db_admin",
-            port     : 3306
+          database: "db_admin"
           });
           
           connection.connect(function(err) {
@@ -72,7 +71,7 @@ catch(err){
             console.log('Connected to database.');
             //if condition, if the type of payment is cash on delivery or points, execute code in if, otherwise execute code in else
             if(userdata.type != 'Cash on Delivery' && userdata.type != 'Redeem Points option'){
-                var query = `INSERT INTO webEmployee.client(idclient,name,type,card,timestamp,status,price) VALUES ('${userdata.id}', '${userdata.cardHolderName}','CardPayment', ${userdata.cardNumber}, ${todayDate}, 'SUCCESS',${userdata.finalOrderPrice})`;
+                var query = `INSERT INTO db_admin.client(idclient,name,type,card,timestamp,status,price) VALUES ('${userdata.id}', '${userdata.cardHolderName}','CardPayment', ${userdata.cardNumber}, ${todayDate}, 'SUCCESS',${userdata.finalOrderPrice})`;
             console.log('in if')
             connection.query(query, function (err, result) {
                 if (err) throw err;
