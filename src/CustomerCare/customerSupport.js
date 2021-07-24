@@ -1,3 +1,8 @@
+/*
+Author: Kishan Rakeshbhai Patel
+Dal Id: B00882970
+email id: kishanp@dal.ca
+*/
 import React, { Component, useState, useEffect } from 'react';
 import axios from 'axios';
 import Body from './body';
@@ -12,6 +17,7 @@ function CustomerSupport(props) {
         fetchComplains();
     }, []);
 
+    //get all the complaints submitted by the current user
     async function fetchComplains() {
         const email = localStorage.getItem('email');
         if (email) {
@@ -23,20 +29,7 @@ function CustomerSupport(props) {
             });
         } else {
             alert("Something went wrong! Please login again.");
-        }
-    }
-
-    async function fetchComplains() {
-        const email = localStorage.getItem('email');
-        if (email) {
-            const data = new URLSearchParams();
-            data.set('email', email);
-            await axios.post(url, data).then((res) => {
-                console.log(res.data.data);
-                setList(res.data.data);
-            });
-        } else {
-            alert("Something went wrong! Please login again.");
+            props.history.push('/login');
         }
     }
 

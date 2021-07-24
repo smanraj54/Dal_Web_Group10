@@ -1,3 +1,8 @@
+/*
+Author: Kishan Rakeshbhai Patel
+Dal Id: B00882970
+email id: kishanp@dal.ca
+*/
 import React, { Component, useState } from 'react';
 import LeftBody from './left_body';
 import RightBody from './right_body';

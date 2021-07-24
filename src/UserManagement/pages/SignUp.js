@@ -37,7 +37,7 @@ const SignUp = (props) => {
     } else if (formData.email.trim() === "") {
       setError("Please Enter E-mail.");
     } else if (
-      !/^[a-zA-z0-9]+[_]*[a-zA-Z0-9]+\@[a-zA-Z0-9]+\.[a-zA-Z]+$/.test(
+      !/([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z])/.test(
         formData.email
       )
     ) {
@@ -180,7 +180,7 @@ const SignUp = (props) => {
                 </div>
                 <div className="text-center">
                   <h6 style={{ color: "blue" }}>{error}</h6>
-                  <button type="submit" className="btn btn-primary">
+                  <button type="submit" className="btn btn-success">
                     Submit
                   </button>
                   <h1></h1>

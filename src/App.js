@@ -10,12 +10,18 @@ import HomePageCatalogue from './HomePage/HomePageCatalogue';
 import Homepage from "./UserManagement/pages/Homepage";
 import UserHomepage from "./UserManagement/pages/UserHomepage";
 import Login from "./UserManagement/pages/Login";
+import AdminLogin from "./UserManagement/pages/AdminLogin";
 import SignUp from "./UserManagement/pages/SignUp";
 import ForgotPassword from "./UserManagement/pages/ForgotPassword";
 import Question from "./UserManagement/pages/Question";
 import UpdatePassword from "./UserManagement/pages/UpdatePassword";
 import UserHeader from './UserManagement/components/UserHeader';
-//import AdminPanel from './AdminPage/AdminPanel';
+import AdminPanel from './AdminPage/pages/AdminPanel';
+import AddItem from './AdminPage/pages/AddItem';
+import UpdateItem from './AdminPage/pages/UpdateItem';
+import RemoveItem from './AdminPage/pages/RemoveItem';
+import RemoveStore from './AdminPage/pages/RemoveStore';
+
 
 function App() {
   const history = useHistory();  
@@ -44,6 +50,9 @@ function App() {
       </Route>
       <Route exact path="/login">
         <Login />
+      </Route>
+      <Route exact path="/admin/login">
+        <AdminLogin />
       </Route>
       <Route exact path="/signUp">
         <SignUp />
@@ -93,12 +102,40 @@ function App() {
             <Payment/>
           </div>
       </Route>
-      {/* <Route path = "/Admin">
+      <Route path = "/AddItem">
+          {" "}
+          <div>
+            <AddItem/>
+          </div>
+      </Route> 
+      <Route path = "/UpdateItem">
+          {" "}
+          <div>
+            <UpdateItem/>
+          </div>
+      </Route> 
+      <Route exact path = "/RemoveItem">
+          {" "}
+          <div>
+            <RemoveItem/>
+          </div>
+      </Route> 
+      <Route exact path = "/RemoveStore">
+          {" "}
+          <div>
+            <RemoveStore/>
+          </div>
+      </Route> 
+      { <Route path = "/AdminPanel">
           {" "}
           <div>
             <AdminPanel/>
           </div>
-      </Route> */}
+      </Route> }
+      <Route path = "/Wrong">
+          {" "}
+          <h1>Wrong Email and Password!!!</h1>
+      </Route>
       <Route path = "/Wrong">
           {" "}
           <h1>Wrong Email and Password!!!</h1>

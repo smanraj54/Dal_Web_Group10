@@ -31,7 +31,7 @@ const ForgotPassword = (props) => {
     if (email.trim() === "") {
       setError("Please Enter E-mail.");
     } else if (
-      !/^[a-zA-z0-9]+[_]*[a-zA-Z0-9]+\@[a-zA-Z0-9]+\.[a-zA-Z]+$/.test(email)
+      !/([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z])/.test(email)
     ) {
       setError("Enter Valid Email");
     } else {
