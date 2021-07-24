@@ -37,7 +37,7 @@ function RemoveStore(props) {
       
             Axios.get('https://group10projectbackend.herokuapp.com/api/getStoreNames').then((response) => {
                 setSuccess(response.data);
-            })
+            }) 
 
             .catch((err) => {
                 console.log(err)
