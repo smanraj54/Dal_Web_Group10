@@ -43,6 +43,7 @@ function RemoveStore(props) {
             })
 
         }
+    }
 
         //API Call
         const submitRemove = () => {
@@ -147,5 +148,5 @@ function RemoveStore(props) {
         );
 
     }
-}
+
     export default withRouter(RemoveStore);
