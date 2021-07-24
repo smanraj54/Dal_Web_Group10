@@ -33,16 +33,16 @@ function RemoveStore(props) {
 
 
 
-    const fetchData = () => {
+    useEffect(() => {
       
-            Axios.get('https://group10proposalweb.herokuapp.com/api/getStoreNames').then((response) => {
+            Axios.get('https://group10projectbackend.herokuapp.com/api/getStoreNames').then((response) => {
                 setSuccess(response.data);
             })
 
             .catch((err) => {
                 console.log(err)
             })
-    }
+        }, []);
 
         //API Call
         const submitRemove = () => {
@@ -116,7 +116,7 @@ function RemoveStore(props) {
                                     setStoreName(e.target.value)
                                 }} required
                             />
-                            <button id="greenFetch" type="button" onClick={fetchData} >↻</button>
+                        
                         </div>
 
 
