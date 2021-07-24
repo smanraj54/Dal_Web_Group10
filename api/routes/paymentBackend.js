@@ -56,9 +56,10 @@ catch(err){
         console.log('in insert')
         var todayDate = Date.now()
         var connection = mysql.createConnection({
-            host     : "webdb.cim0emcvx2mb.us-east-1.rds.amazonaws.com",
-            user     : "web",
-            password : "webrobinder",
+          host: "db-admin.cbsrzgbgkhst.us-east-1.rds.amazonaws.com",
+          user: "admin",
+          password: "admin1234",
+          database: "db_admin",
             port     : 3306
           });
           
