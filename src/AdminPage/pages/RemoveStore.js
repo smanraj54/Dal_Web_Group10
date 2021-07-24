@@ -34,15 +34,12 @@ function RemoveStore(props) {
 
 
     const fetchData = () => {
-        if (storeName === '') {
-            alert("Please enter the store name first");
-        }
-        else {
+      
             Axios.get('https://group10proposalweb.herokuapp.com/api/getStoreNames').then((response) => {
                 setSuccess(response.data);
             })
 
-        }
+        
     }
 
         //API Call
