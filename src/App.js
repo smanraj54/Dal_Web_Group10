@@ -1,6 +1,6 @@
 import {BrowserRouter as Router,Switch, Route ,useHistory} from 'react-router-dom';
 import './App.css';
-import Delivery from './Delivery/Delivery';
+import Delivery from './PaymentManagement/Delivery';
 import CustomerSupport from './CustomerCare/customerSupport';
 
 import Payment from './PaymentManagement/Payment';

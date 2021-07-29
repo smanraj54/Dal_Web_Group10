@@ -3,6 +3,7 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 import App from './CardDetails';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios'
 
 
@@ -42,6 +43,7 @@ class Cash extends React.Component{
       }
 //code to be executed if order is successful, to add details in database
       informationCash = ()=>{
+        const { location, history } = this.props
         var finalOrderPrice = this.props.pricefinal
           console.log('in information cash')
 
@@ -53,6 +55,10 @@ class Cash extends React.Component{
           console.log("cash/points payment in frontend")
           console.log(type)
           this.setState({totalPrice:0})
+          history.push({
+            pathname: '/Delivery',
+            state: { id: result.data.id }
+          });
         });
       }
       else{
@@ -78,4 +84,4 @@ class Cash extends React.Component{
     }
 }
 
-export default Cash;
+export default withRouter(Cash);

@@ -4,6 +4,7 @@ import React from 'react';
 import { Row,Col, Form, Button, Container, Card} from 'react-bootstrap';
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 //pattern to allow only alphabets and numbers respectively
@@ -91,6 +92,7 @@ class App extends React.Component{
 
       //upon successful submission of form
       information = async()=>{
+        const { location, history } = this.props
         var baseUrl = "https://group10projectbackend.herokuapp.com";
         var deleteUrl = baseUrl + "/cart/delete/";
         var finalOrderPrice = this.props.pricefinal
@@ -100,8 +102,13 @@ class App extends React.Component{
         //calling backend API to store information in database and place order
         const response = await axios.post("https://backend-nodeapp.herokuapp.com/payment", { cardHolderName, cardNumber, expiryMonth, expiryYear,finalOrderPrice}).then(result => {
           this.setState({totalPrice:0})
+          this.props.clearInfo();
+          history.push({
+            pathname: '/Delivery',
+            state: { id: result.data.id }
+          });
         });
-        this.props.clearInfo();
+        
       }
       else{
         alert("order total is 0. Cannot place order")
@@ -190,4 +197,4 @@ class App extends React.Component{
     }
   }
 
-export default App;
+export default withRouter(App);
