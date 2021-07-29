@@ -57,7 +57,7 @@ class Cash extends React.Component{
           this.setState({totalPrice:0})
           history.push({
             pathname: '/Delivery',
-            state: { id: result.data.id }
+            state: { id: result.data.data.id }
           });
         });
       }

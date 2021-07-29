@@ -6,6 +6,7 @@ import listPic from '../assets/list.jpg';
 import deliveryPic from '../assets/delivery.jpg';
 import deliveredPic from '../assets/delivered.jpg';
 import '../App.css';
+import axios from 'axios';
 
 class Delivery extends React.Component{
 
@@ -37,16 +38,17 @@ class Delivery extends React.Component{
         else{
         alert(this.state.notification)
         this.clearStatus()
+        this.changeDeliveryStatus()
         }
     }
 
-    changeDeliveryStatus = async(id)=>{
+    changeDeliveryStatus = async()=>{
         const { match, location, history } = this.props
         const status = this.state.notification;
-        console.log(location.state.id)
-        // const response = await axios.post("https://backend-nodeapp.herokuapp.com/delivery", { location.state.id, status }).then(result => {
-        //     console.log("done");
-        // });
+        const id = location.state.id;
+        const response = await axios.post("https://backend-nodeapp.herokuapp.com/delivery", { id, status }).then(result => {
+            console.log("done");
+        });
       }
 
     clearStatus=()=>{
@@ -86,6 +88,7 @@ class Delivery extends React.Component{
     }
 
     render(){
+        console.log("aeeeeeeee")
         let btn_class_confirm = this.state.colorconfirm ? "myClick" : "";
         let btn_class_way = this.state.colorway ? "myClick" : "";
         let btn_class_deliver = this.state.colordeliver ? "myClick" : "";
@@ -111,7 +114,7 @@ class Delivery extends React.Component{
             this.setOrderNotification()
 
             }}>
-      <Card.Img variant="top" src={listPic} className="card-img-top"/>
+      <Card.Img style={{cursor: "pointer"}} variant="top" src={listPic} className="card-img-top"/>
       {/* <Card.Body style={{textAlign:'center'}}><h6 class="mb-1">Order Placed</h6></Card.Body>              */}
       <Card.Footer style={{textAlign:'center'}}>Confirm Order</Card.Footer>
       </Card>
@@ -123,7 +126,7 @@ class Delivery extends React.Component{
             this.setDeliveryNotification()
             // this.changeColorWay()
             }}>
-      <Card.Img variant="top" src={deliveryPic} className="card-img-top" />
+      <Card.Img style={{cursor: "pointer"}} variant="top" src={deliveryPic} className="card-img-top" />
       <Card.Footer style={{textAlign:'center'}}>Order on the way</Card.Footer>             
       </Card>
     </Col>
@@ -134,7 +137,7 @@ class Delivery extends React.Component{
             this.setDeliveredNotification()
             // this.changeColorDelivered()
             }}>
-      <Card.Img variant="top" src={deliveredPic} className="card-img-top"/>
+      <Card.Img style={{cursor: "pointer"}} variant="top" src={deliveredPic} className="card-img-top"/>
       <Card.Body style={{textAlign:'center'}}><h6 class="mb-1">Order Delivered</h6></Card.Body>             
      </Card>
     </Col>

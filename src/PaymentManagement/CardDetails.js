@@ -105,7 +105,7 @@ class App extends React.Component{
           this.props.clearInfo();
           history.push({
             pathname: '/Delivery',
-            state: { id: result.data.id }
+            state: { id: result.data.data.id }
           });
         });
         
