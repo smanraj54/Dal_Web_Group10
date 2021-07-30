@@ -48,8 +48,13 @@ const UserHeader = (props) =>{
                 <NavDropdown.Item onClick = {() => {
                                  props.history.push("SignUp");
                             }}>Account Details</NavDropdown.Item>
-                <NavDropdown.Divider />
                 <NavDropdown.Item >Wishlist</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item onClick = {() => {
+                                 props.history.push("/login");
+                                 localStorage.removeItem("email");
+                            }}>Log Out</NavDropdown.Item>
+                
               </NavDropdown>
             </Nav>
             <Form className="d-flex">
