@@ -66,7 +66,7 @@ const Login = (props) => {
         if (response.status === 200) {
           localStorage.setItem("email", email);
           props.history.push({
-            pathname: "/home",
+            pathname: "/homeStores",
           });
         } else if (response.status === 500) {
           setError("server error, try again later");

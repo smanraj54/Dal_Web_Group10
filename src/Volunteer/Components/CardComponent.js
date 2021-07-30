@@ -46,7 +46,7 @@ export const CardComponent = (Props) => {
     /* Fetching data once the page load */
     useEffect( () => {
         fetchData();
-    });
+    },[]);
 
     
 

@@ -22,6 +22,7 @@ import AddItem from './AdminPage/pages/AddItem';
 import UpdateItem from './AdminPage/pages/UpdateItem';
 import RemoveItem from './AdminPage/pages/RemoveItem';
 import RemoveStore from './AdminPage/pages/RemoveStore';
+import StoreList from './FirstHomePage/storeList';
 
 
 function App() {
@@ -70,7 +71,7 @@ function App() {
       <Route exact path = "/home">
           {" "}
           <div>
-            <UserHeader/>
+            
             <HomePageCatalogue></HomePageCatalogue>
           </div>
       </Route>
@@ -149,6 +150,12 @@ function App() {
           {" "}
           <h1>Wrong Email and Password!!!</h1>
       </Route>
+      <Route exact path = "/homeStores">
+          {" "}
+          <div>
+            <StoreList/>
+          </div>
+      </Route> 
       <Route>
           {" "}
           <h1>WrongPage!!!</h1>
