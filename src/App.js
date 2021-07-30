@@ -7,6 +7,7 @@ import Payment from './PaymentManagement/Payment';
 import { NavbarDetails } from './CartManagement/NavBarDetails';
 import { Cart } from './CartManagement/Cart';
 import HomePageCatalogue from './HomePage/HomePageCatalogue';
+import VolunteerOrders from './Volunteer/VolunteerOrders';
 import Homepage from "./UserManagement/pages/Homepage";
 import UserHomepage from "./UserManagement/pages/UserHomepage";
 import Login from "./UserManagement/pages/Login";
@@ -78,6 +79,14 @@ function App() {
           <div>
             <UserHeader/>
             <Cart/>
+          </div>
+          {/* <h1>WELCOME TO SecondPage</h1> */}
+      </Route>
+      <Route path = "/volunteer">
+          {" "}
+          <div>
+            <UserHeader/>
+            <VolunteerOrders/>
           </div>
           {/* <h1>WELCOME TO SecondPage</h1> */}
       </Route>

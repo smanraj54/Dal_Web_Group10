@@ -16,7 +16,9 @@ import { useEffect, useState } from 'react';
 
 export const CardComponent = (Props) => {
     const [usedQuantity, setUsedQuantity] = useState(0);
-    var baseUrl = "https://homepagebackend.herokuapp.com";
+    //const baseUrl = 'https://homepagebackend.herokuapp.com';
+    const baseUrl = 'https://group10projectbackend.herokuapp.com';
+    //const baseUrl = 'http://localhost:2000';
     const data = {
         "ID": Props.record.item_id,
         "picture": Props.record.item_image,
