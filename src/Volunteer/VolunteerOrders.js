@@ -20,8 +20,8 @@ function VolunteerOrders(){
     console.log("Volunteer Page");
 
     //const baseUrl = 'https://homepagebackend.herokuapp.com';
-    //const baseUrl = 'https://group10projectbackend.herokuapp.com';
-    const baseUrl = 'http://localhost:2000';
+    const baseUrl = 'https://group10projectbackend.herokuapp.com';
+    //const baseUrl = 'http://localhost:2000';
     const getUrl = baseUrl+'/orders/details';
     const getUrl2 = baseUrl+'/orders/items/';
     const [records, setRecords] = useState([]);

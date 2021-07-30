@@ -18,8 +18,8 @@ export const CardComponent = (Props) => {
     //const [usedQuantity, setUsedQuantity] = useState(0);
     const [records, setRecords] = useState([]);
     //const baseUrl = 'https://homepagebackend.herokuapp.com';
-    //const baseUrl = 'https://group10projectbackend.herokuapp.com';
-    const baseUrl = 'http://localhost:2000';
+    const baseUrl = 'https://group10projectbackend.herokuapp.com';
+    //const baseUrl = 'http://localhost:2000';
     const data = {
         "order_id": Props.record.order_id,
         "order_status": Props.record.order_status
