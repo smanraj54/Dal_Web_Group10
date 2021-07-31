@@ -3,6 +3,7 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 import App from './CardDetails';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios'
 
 
@@ -19,47 +20,30 @@ class Cash extends React.Component{
         //props value indicating type of payment
         const values = this.props.nameOfType
           this.informationCash()
-          this.placeOrder();
-          
+          this.cancelOrder();
+
         
     }
 //code to be executed if order is cancelled
-    placeOrder= ()=>{
-        this.placeThisOrder();
-        this.cancelOrder();
-      }
-
-      cancelCashOrder= ()=>{
+    cancelCashOrder= ()=>{
         var proceed = window.confirm("Are you sure you want to cancel the order?");
         if (proceed) {
         alert("order cancelled")      
         }
         this.cancelOrder();
       }
-
 //emptying the cart if order is cancelled by calling API
       cancelOrder = () => {
         this.props.clearInfo();
-        //var baseUrl = 'https://homepagebackend.herokuapp.com';
         var baseUrl = "https://group10projectbackend.herokuapp.com";
-        //var baseUrl = 'http://localhost:2000';
         var truncateURL = baseUrl + "/cart/truncate";
         axios.put(truncateURL).then(res => {
           this.props.clearInfo();
         });
       }
-
-      placeThisOrder = () => {
-        this.props.clearInfo();
-        var baseUrl = 'https://group10projectbackend.herokuapp.com';
-        var orderDetails = baseUrl + "/orders/add";
-        axios.post(orderDetails).then(res => {
-          this.props.clearInfo();
-        });
-      }
-
 //code to be executed if order is successful, to add details in database
       informationCash = ()=>{
+        const { location, history } = this.props
         var finalOrderPrice = this.props.pricefinal
           console.log('in information cash')
 
@@ -71,6 +55,10 @@ class Cash extends React.Component{
           console.log("cash/points payment in frontend")
           console.log(type)
           this.setState({totalPrice:0})
+          history.push({
+            pathname: '/Delivery',
+            state: { id: result.data.data.id }
+          });
         });
       }
       else{
@@ -96,4 +84,4 @@ class Cash extends React.Component{
     }
 }
 
-export default Cash;
+export default withRouter(Cash);
