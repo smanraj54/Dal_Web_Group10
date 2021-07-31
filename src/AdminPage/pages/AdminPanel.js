@@ -44,7 +44,7 @@ const submitAdd = () => {
     alert("Please enter all the fields");
   }
   else{
-    Axios.post("https://group10projectbackend.herokuapp.com/api/addStore",JSON.stringify({
+    Axios.post("https://group10projectbackend.herokuapp.com/api/addStore",{
       storeName:storeName,
       phone:phone,
       address:address,
@@ -52,7 +52,7 @@ const submitAdd = () => {
       logo:logo,
       opHrs:opHrs,
       category:category,
-    })).then((response)=>{
+    }).then((response)=>{
       console.log(response)
   
       if(response.data===""){

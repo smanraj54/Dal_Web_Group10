@@ -55,14 +55,14 @@ const terminateSession=()=>{
             alert("Please enter all the fields");
           }
           else{
-            Axios.put("https://group10projectbackend.herokuapp.com/api/updateItem", JSON.stringify({
+            Axios.put("https://group10projectbackend.herokuapp.com/api/updateItem", {
                 storeName: storeName,
                 itemName: itemName,
                 itemQty: itemQty,
                 itemPrice: itemPrice,
                 itemDesc: itemDesc,
     
-            })).then((response) => {
+            }).then((response) => {
                 console.log(response)
                 if(response.data==="success"  || response.data.changedRows===1||response.data.affectedRows===1 ||response.status===200){
           

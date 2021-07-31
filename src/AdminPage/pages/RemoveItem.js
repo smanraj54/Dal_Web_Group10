@@ -54,10 +54,10 @@ const terminateSession=()=>{
             alert("Please enter all the fields");
         }
         else{
-            Axios.post("https://group10projectbackend.herokuapp.com/api/removeItem",JSON.stringify({
+            Axios.post("https://group10projectbackend.herokuapp.com/api/removeItem",{
                 storeName:storeName,
                 itemName:itemName,
-              })).then((response)=>{
+              }).then((response)=>{
                   console.log(response)
                 if(response.data==="success"  || response.data.changedRows===1||response.data.affectedRows===1 ||response.status===200){
       

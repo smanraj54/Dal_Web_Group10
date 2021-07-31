@@ -44,14 +44,14 @@ function AddItem(props) {
             alert("Please enter all the fields");
           }
           else{
-            Axios.post("https://group10projectbackend.herokuapp.com/api/addItem", JSON.stringify({
+            Axios.post("https://group10projectbackend.herokuapp.com/api/addItem", {
                 storeName: storeName,
                 itemName: itemName,
                 itemQty: itemQty,
                 itemPrice: itemPrice,
                 itemDesc: itemDesc,
                 itemImage: itemImage,
-            })).then((response) => {
+            }).then((response) => {
                 if(response.data==="success"  || response.data.changedRows===1||response.data.affectedRows===1 ||response.status===200){
           
                     alert("Item Successfully added");
