@@ -16,6 +16,7 @@ const cartBackend = require ('./api/routes/cartBackend');
 const customerSupport = require ('./api/routes/customerSupport');
 const adminBackend = require ('./api/routes/AdminBackend');
 const ordersBackend = require('./api/routes/OrdersBackend');
+const homePageBackendUpdated = require('./api/routes/homePageBackendUpdated');
 const cors = require('cors');
 
 const rootRoute = '/api';
@@ -57,6 +58,8 @@ app.use(rootRoute+'/users', forgotPassword);
 app.use(rootRoute+'/users', deleteUser);
 
 app.use('/homepage', homepageBackend);
+
+app.use('/homepagenew', homePageBackendUpdated);
 
 app.use('/cart', cartBackend);
 
