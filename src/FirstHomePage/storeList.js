@@ -6,7 +6,7 @@ email id: kishanp@dal.ca
 import React, { Component, useState, useEffect } from 'react';
 import axios from 'axios';
 import UserHeader from '../UserManagement/components/UserHeader';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 import { withRouter } from 'react-router';
 import { useHistory } from 'react-router-dom';
 
@@ -38,7 +38,18 @@ function StoreList(props) {
     return (
         <div>
             <UserHeader />
-
+            <Row xs={1} md={3} className="g-4">
+                {Array.from(storeList).map((store, idx) => (
+                    <Col key={idx}>
+                        <Card>
+                            <Card.Body>
+                                <Card.Title onClick={() => showProducts(store)}>{store.store_name}</Card.Title>
+                                
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
             {storeList.map((store, index) => (
                 <Row key={index}>
                     <Col>
