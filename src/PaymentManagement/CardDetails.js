@@ -97,8 +97,8 @@ class App extends React.Component{
     
 placeThisOrder = () => {
 this.props.clearInfo();
-varbaseUrl = 'https://group10projectbackend.herokuapp.com';
-varorderDetails = baseUrl + "/orders/add";
+var baseUrl = 'https://group10projectbackend.herokuapp.com';
+var orderDetails = baseUrl + "/orders/add";
 axios.post(orderDetails).then(res=> {
 this.props.clearInfo();
  });
