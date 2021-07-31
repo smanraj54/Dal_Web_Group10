@@ -195,7 +195,7 @@ function AddItem(props) {
                     <br></br>
                     <div class="center">
                         <button type="submit" onClick={submitAdd} >Add</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="https://group10proposalweb.herokuapp.com/AddItem"><button type="button" >Cancel</button> </a>
+                        <a href="https://group10proposalweb.herokuapp.com/AddItem"><button class="center2" type="button" >Cancel</button> </a>
                     </div>
 
                 </div>

@@ -14,7 +14,7 @@ const UserHeader = (props) =>{
         return (
           <Navbar className="color_nav" expand="lg">
           <Navbar.Brand onClick = {() => {
-                                 props.history.push("SignUp");
+                                 props.history.push("/homeStores");
                             }}>
                               <img
                             alt="Logo"
@@ -31,7 +31,7 @@ const UserHeader = (props) =>{
               navbarScroll
             >
               <Nav.Link onClick = {() => {
-                                 props.history.push("Home");
+                                 props.history.push("/homeStores");
                             }} >Home</Nav.Link>
         
               <Nav.Link onClick = {() => {
@@ -49,6 +49,9 @@ const UserHeader = (props) =>{
                                  props.history.push("SignUp");
                             }}>Account Details</NavDropdown.Item>
                 <NavDropdown.Item >Wishlist</NavDropdown.Item>
+                <NavDropdown.Item onClick = {() => {
+                                 props.history.push("/volunteer");
+                            }}>Volunteer</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick = {() => {
                                  props.history.push("/login");
