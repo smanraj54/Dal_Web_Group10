@@ -12,10 +12,10 @@ const AdminLogin = (props) => {
 
   axios.defaults.withCredentials = true;
 
-  const formData = JSON.stringify({
+  const formData = {
     username: username,
     password: password,
-  });
+  };
 
   const usernameHandler = (event) => {
     setUsername(event.target.value);
