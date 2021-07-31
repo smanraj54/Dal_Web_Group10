@@ -50,9 +50,7 @@ class Payment extends React.Component{
     }
     //code to display data in the order details Card. API is called to fetch data from cart
     informationOrder = async()=>{
-        //var baseUrl = 'https://homepagebackend.herokuapp.com';
         var baseUrl = "https://group10projectbackend.herokuapp.com";
-        //var baseUrl = 'http://localhost:2000';
         var getUrlInfo = baseUrl + "/cart/items";
         console.log('in information order')
         var price = 0
