@@ -3,21 +3,12 @@ Author: Kishan Rakeshbhai Patel
 Dal Id: B00882970
 email id: kishanp@dal.ca
 */
-<<<<<<< HEAD
-import React, { Component, useState, useEffect } from 'react';
-import axios from 'axios';
-import UserHeader from '../UserManagement/components/UserHeader';
-import { Container, Row, Col, Card } from 'react-bootstrap';
-import { withRouter } from 'react-router';
-import { useHistory } from 'react-router-dom';
-=======
 import React, { Component, useState, useEffect } from "react";
 import axios from "axios";
 import UserHeader from "../UserManagement/components/UserHeader";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { withRouter } from "react-router";
 import { useHistory } from "react-router-dom";
->>>>>>> 301e268ec8d82d98141016a5d2d69e6cfbb3abff
 
 function StoreList(props) {
   const history = useHistory();
