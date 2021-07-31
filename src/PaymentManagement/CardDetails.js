@@ -78,7 +78,7 @@ class App extends React.Component{
           }
           else {
             //executed if all the validations are checked and input is correct
-            this.cancelOrder();
+            this.placeOrder();
             event.preventDefault();
             this.setState({setRedirect:true});
             this.information()
@@ -89,7 +89,23 @@ class App extends React.Component{
             expiryYear:''})
           }
       };
+  
+          placeOrder= ()=>{
+         this.placeThisOrder();
+         this.cancelOrder();
+         }
+    
+placeThisOrder = () => {
+this.props.clearInfo();
+varbaseUrl = 'https://group10projectbackend.herokuapp.com';
+varorderDetails = baseUrl + "/orders/add";
+axios.post(orderDetails).then(res=> {
+this.props.clearInfo();
+ });
+ }
 
+
+          
       //upon successful submission of form
       information = async()=>{
         const { location, history } = this.props
