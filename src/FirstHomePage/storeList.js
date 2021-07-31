@@ -13,9 +13,13 @@ import { useHistory } from "react-router-dom";
 function StoreList(props) {
   const history = useHistory();
   const [storeList, setList] = useState([]);
+  var isUser = localStorage.getItem('email');
   const url = "https://group10projectbackend.herokuapp.com/homepagenew/getStores";
 
   useEffect(() => {
+    if(!isUser){
+      props.history.push('/login');
+    }
     fetchComplains();
   }, []);
 
@@ -82,4 +86,4 @@ function StoreList(props) {
   );
 }
 
-export default StoreList;
+export default withRouter(StoreList);
