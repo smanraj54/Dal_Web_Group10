@@ -77,7 +77,7 @@ class App extends React.Component{
           }
           else {
             //executed if all the validations are checked and input is correct
-            this.cancelOrder();
+            this.placeOrder();
             event.preventDefault();
             this.setState({setRedirect:true});
             this.information()
@@ -89,9 +89,17 @@ class App extends React.Component{
           }
       };
 
+      placeOrder= ()=>{
+        this.placeThisOrder();
+        this.cancelOrder();
+      }
+
       //upon successful submission of form
       information = async()=>{
+        //var baseUrl = 'https://homepagebackend.herokuapp.com';
         var baseUrl = "https://group10projectbackend.herokuapp.com";
+        //var baseUrl = 'http://localhost:2000';
+        
         var deleteUrl = baseUrl + "/cart/delete/";
         var finalOrderPrice = this.props.pricefinal
         const { cardHolderName, cardNumber, expiryMonth, expiryYear  } = this.state;
@@ -117,7 +125,9 @@ class App extends React.Component{
       }
 //emptying the cart if order is cancelled
       cancelOrder= ()=>{
+        //var baseUrl = 'https://homepagebackend.herokuapp.com';
         var baseUrl = "https://group10projectbackend.herokuapp.com";
+        //var baseUrl = 'http://localhost:2000';
         var truncateURL = baseUrl + "/cart/truncate";
         axios.put(truncateURL).then(res => {
           
@@ -130,6 +140,18 @@ class App extends React.Component{
         //deleting the information of total order price and data
         this.props.clearInfo();
       }
+
+      placeThisOrder = () => {
+        this.props.clearInfo();
+        //var baseUrl = 'https://homepagebackend.herokuapp.com';
+        var baseUrl = 'https://group10projectbackend.herokuapp.com';
+        //var baseUrl = 'http://localhost:2000';
+        var orderDetails = baseUrl + "/orders/add";
+        axios.post(orderDetails).then(res => {
+          this.props.clearInfo();
+        });
+      }
+
         
     render(){
       // code for frontend form of credit/debit card
