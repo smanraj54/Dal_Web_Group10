@@ -11,10 +11,10 @@ const bodyParser = require('body-parser');
 
 //db credentials 
 const db = mysql.createPool({
-    host: 'db-admin.cbsrzgbgkhst.us-east-1.rds.amazonaws.com',
-    user: 'admin',
+    host: '35.188.62.128',
+    user: 'root',
     password: 'admin1234',
-    database: 'db_admin',
+    database: 'db_admin'
 });
 
 

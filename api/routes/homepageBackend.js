@@ -26,10 +26,10 @@ router.use(function (req, res, next) {
 
 // connecting to the database where homepage item_deteails page is present
 var con = mysql.createConnection({
-  host: "db-admin.cbsrzgbgkhst.us-east-1.rds.amazonaws.com",
-  user: "admin",
-  password: "admin1234",
-  database: "db_admin"
+    host: '35.188.62.128',
+    user: 'root',
+    password: 'admin1234',
+    database: 'db_admin'
 });
 
 con.connect(function(err) {

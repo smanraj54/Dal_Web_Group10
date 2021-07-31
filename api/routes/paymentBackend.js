@@ -77,10 +77,10 @@ insertDb = (userdata) => {
   console.log('in insert')
   var todayDate = Date.now()
   var connection = mysql.createConnection({
-    host: "db-admin.cbsrzgbgkhst.us-east-1.rds.amazonaws.com",
-    user: "admin",
-    password: "admin1234",
-    database: "db_admin"
+    host: '35.188.62.128',
+    user: 'root',
+    password: 'admin1234',
+    database: 'db_admin'
   });
 
   connection.connect(function (err) {
@@ -103,7 +103,7 @@ insertDb = (userdata) => {
     else {
       console.log('in else')
 
-      var sqlquery = `INSERT INTO webEmployee.client(idclient,type,timestamp,status,price) VALUES ('${userdata.id}', '${userdata.type}', ${todayDate}, 'SUCCESS',${userdata.finalOrderPrice})`;
+      var sqlquery = `INSERT INTO db_admin.client(idclient,type,timestamp,status,price) VALUES ('${userdata.id}', '${userdata.type}', ${todayDate}, 'SUCCESS',${userdata.finalOrderPrice})`;
 
       connection.query(sqlquery, function (err, result) {
         if (err) throw err;
@@ -119,10 +119,10 @@ updateDeliveryStatus = (id, status) => {
   console.log('in insert')
   var todayDate = Date.now()
   var connection = mysql.createConnection({
-    host: "db-admin.cbsrzgbgkhst.us-east-1.rds.amazonaws.com",
-    user: "admin",
-    password: "admin1234",
-    database: "db_admin"
+    host: '35.188.62.128',
+    user: 'root',
+    password: 'admin1234',
+    database: 'db_admin'
   });
 
   connection.connect(function (err) {

@@ -12,10 +12,10 @@ app.use(
 );
 
 const connection = mysql.createPool({
-    host: "db-admin.cbsrzgbgkhst.us-east-1.rds.amazonaws.com",
-  user: "admin",
-  password: "admin1234",
-  database: "db_admin"
+    host: '35.188.62.128',
+    user: 'root',
+    password: 'admin1234',
+    database: 'db_admin'
 });
 
 app.get('/', (req, res) => {
