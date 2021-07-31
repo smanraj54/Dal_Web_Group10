@@ -18,10 +18,10 @@ router.use(function (req, res, next) {
 });
 
 var con = mysql.createConnection({
-  host: "node-js-5709.cvk24p0dwiqd.us-east-1.rds.amazonaws.com",
-  user: "admin",
-  password: "password",
-  database: "auth",
+    host: "db-admin.cbsrzgbgkhst.us-east-1.rds.amazonaws.com",
+    user: "admin",
+    password: "admin1234",
+    database: "db_admin"
 });
 
 con.connect(function (err) {
