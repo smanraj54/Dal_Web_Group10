@@ -19,27 +19,45 @@ class Cash extends React.Component{
         //props value indicating type of payment
         const values = this.props.nameOfType
           this.informationCash()
-          this.cancelOrder();
-
+          this.placeOrder();
+          
         
     }
 //code to be executed if order is cancelled
-    cancelCashOrder= ()=>{
+    placeOrder= ()=>{
+        this.placeThisOrder();
+        this.cancelOrder();
+      }
+
+      cancelCashOrder= ()=>{
         var proceed = window.confirm("Are you sure you want to cancel the order?");
         if (proceed) {
         alert("order cancelled")      
         }
         this.cancelOrder();
       }
+
 //emptying the cart if order is cancelled by calling API
       cancelOrder = () => {
         this.props.clearInfo();
+        //var baseUrl = 'https://homepagebackend.herokuapp.com';
         var baseUrl = "https://group10projectbackend.herokuapp.com";
+        //var baseUrl = 'http://localhost:2000';
         var truncateURL = baseUrl + "/cart/truncate";
         axios.put(truncateURL).then(res => {
           this.props.clearInfo();
         });
       }
+
+      placeThisOrder = () => {
+        this.props.clearInfo();
+        var baseUrl = 'https://group10projectbackend.herokuapp.com';
+        var orderDetails = baseUrl + "/orders/add";
+        axios.post(orderDetails).then(res => {
+          this.props.clearInfo();
+        });
+      }
+
 //code to be executed if order is successful, to add details in database
       informationCash = ()=>{
         var finalOrderPrice = this.props.pricefinal
