@@ -13,7 +13,7 @@ import { useHistory } from "react-router-dom";
 function StoreList(props) {
   const history = useHistory();
   const [storeList, setList] = useState([]);
-  const url = "https://group10projectbackend.herokuapp.com/support/getStores";
+  const url = "https://group10projectbackend.herokuapp.com/homepagenew/getStores";
 
   useEffect(() => {
     fetchComplains();

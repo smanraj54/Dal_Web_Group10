@@ -26,8 +26,8 @@ function HomePageCatalogue(props){
     //const baseUrl = 'https://homepagebackend.herokuapp.com';
     const baseUrl = 'https://group10projectbackend.herokuapp.com';
     //const baseUrl = 'http://localhost:2000';
-    const getUrlCatagory = 'http://localhost:2000/support/getCatagories';
-    const getUrlitems = 'http://localhost:2000/support/getItems';
+    const getUrlCatagory = 'https://group10projectbackend.herokuapp.com/homepagenew/getCatagories';
+    const getUrlitems = 'https://group10projectbackend.herokuapp.com/homepagenew/getItems';
     
     const getUrl = baseUrl+'/homepage/items';
     const [records, setRecords] = useState([]); 
