@@ -4,6 +4,7 @@ import React from 'react';
 import { Row,Col, Form, Button, Container, Card} from 'react-bootstrap';
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 //pattern to allow only alphabets and numbers respectively
@@ -77,7 +78,7 @@ class App extends React.Component{
           }
           else {
             //executed if all the validations are checked and input is correct
-            this.placeOrder();
+            this.cancelOrder();
             event.preventDefault();
             this.setState({setRedirect:true});
             this.information()
@@ -89,17 +90,10 @@ class App extends React.Component{
           }
       };
 
-      placeOrder= ()=>{
-        this.placeThisOrder();
-        this.cancelOrder();
-      }
-
       //upon successful submission of form
       information = async()=>{
-        //var baseUrl = 'https://homepagebackend.herokuapp.com';
+        const { location, history } = this.props
         var baseUrl = "https://group10projectbackend.herokuapp.com";
-        //var baseUrl = 'http://localhost:2000';
-        
         var deleteUrl = baseUrl + "/cart/delete/";
         var finalOrderPrice = this.props.pricefinal
         const { cardHolderName, cardNumber, expiryMonth, expiryYear  } = this.state;
@@ -108,8 +102,13 @@ class App extends React.Component{
         //calling backend API to store information in database and place order
         const response = await axios.post("https://backend-nodeapp.herokuapp.com/payment", { cardHolderName, cardNumber, expiryMonth, expiryYear,finalOrderPrice}).then(result => {
           this.setState({totalPrice:0})
+          this.props.clearInfo();
+          history.push({
+            pathname: '/Delivery',
+            state: { id: result.data.data.id }
+          });
         });
-        this.props.clearInfo();
+        
       }
       else{
         alert("order total is 0. Cannot place order")
@@ -125,9 +124,7 @@ class App extends React.Component{
       }
 //emptying the cart if order is cancelled
       cancelOrder= ()=>{
-        //var baseUrl = 'https://homepagebackend.herokuapp.com';
         var baseUrl = "https://group10projectbackend.herokuapp.com";
-        //var baseUrl = 'http://localhost:2000';
         var truncateURL = baseUrl + "/cart/truncate";
         axios.put(truncateURL).then(res => {
           
@@ -140,18 +137,6 @@ class App extends React.Component{
         //deleting the information of total order price and data
         this.props.clearInfo();
       }
-
-      placeThisOrder = () => {
-        this.props.clearInfo();
-        //var baseUrl = 'https://homepagebackend.herokuapp.com';
-        var baseUrl = 'https://group10projectbackend.herokuapp.com';
-        //var baseUrl = 'http://localhost:2000';
-        var orderDetails = baseUrl + "/orders/add";
-        axios.post(orderDetails).then(res => {
-          this.props.clearInfo();
-        });
-      }
-
         
     render(){
       // code for frontend form of credit/debit card
@@ -212,4 +197,4 @@ class App extends React.Component{
     }
   }
 
-export default App;
+export default withRouter(App);
