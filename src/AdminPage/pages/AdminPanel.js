@@ -241,7 +241,7 @@ const submitAdd = () => {
         <br></br>
         <div class="center">     
         <button type="submit" onClick={submitAdd} >Add</button>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="https://group10proposalweb.herokuapp.com/AdminPanel"><button id="cancelButton" type="button" >Cancel</button></a> 
+        <a href="https://group10proposalweb.herokuapp.com/AdminPanel"><button class = "center2"  id="cancelButton" type="button" >Cancel</button></a> 
             </div>
           
             </div>

@@ -195,7 +195,7 @@ const terminateSession=()=>{
                     <br></br>
                     <div class="center">
                         <button type="submit" onClick={submitAdd} >Update</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="https://group10proposalweb.herokuapp.com/UpdateItem"><button type="button" >Cancel</button> </a>
+                        <a href="https://group10proposalweb.herokuapp.com/UpdateItem"><button class = "center2" type="button" >Cancel</button> </a>
                     </div>
                     {success.map((val)=>{
                                 return (

@@ -6,7 +6,7 @@ email id: mn697903@dal.ca
 */
 
 import { useEffect, useState } from 'react';
-import {Container, Row, Col , Form} from 'react-bootstrap';
+import {Container, Row, Col , Form, Button} from 'react-bootstrap';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
 import {CardComponent} from './Components/CardComponent';
@@ -26,8 +26,8 @@ function HomePageCatalogue(props){
     //const baseUrl = 'https://homepagebackend.herokuapp.com';
     const baseUrl = 'https://group10projectbackend.herokuapp.com';
     //const baseUrl = 'http://localhost:2000';
-    const getUrlCatagory = 'http://localhost:3001/getCatagories';
-    const getUrlitems = 'http://localhost:3001/getItems';
+    const getUrlCatagory = 'http://localhost:2000/support/getCatagories';
+    const getUrlitems = 'http://localhost:2000/support/getItems';
     
     const getUrl = baseUrl+'/homepage/items';
     const [records, setRecords] = useState([]); 
@@ -88,11 +88,8 @@ function HomePageCatalogue(props){
 
     return (<div>
     <UserHeader/>
-        <Container fluid='md' className = 'm-5' style = {{padding: "10px"}}>
-             <Row>
-                <Col>
-                </Col>
-            </Row>
+        <Container>
+            
             {/* <Row>
                 <Col>
                 <select onChange={(e) => sortArray(e.target.value)}>
@@ -103,26 +100,38 @@ function HomePageCatalogue(props){
                 </Col>
             </Row> */}
 
-            {
-                catagory.map((cat, index) => (
-                <Row key={index}>
-                    <Col>
-                        <button style={{ backgroundColor: '#8EE4AF', width: '200px' }} onClick={() => showFilteredItems(cat.category)}>{cat.category}</button>
+            <div style={{margin:"25px"}}>
+                <Row xs={1} md={6} className="g-4">
+                {catagory.map((cat, index) => (
+                
+                    <Col key={index}>
+                        <Button variant="outline-success" style={{width:"150px"}} onClick={() => showFilteredItems(cat.category)}>{cat.category}</Button>
                     </Col>
+                
+            ))}
                 </Row>
-            ))
-            }
-            <h6>------------------</h6>
+            </div>
+
             {filtered && filtered.length > 0
-                    ? filtered.map((record) => {
-                return (
-                <Row>
-                    <Col>
-                        <CardComponent record = {record}/>
+                    ? 
+                    <Row xs={1} md={4} className="g-4">
+                {Array.from(filtered).map((store, idx) => (
+                    <Col key={idx}>
+                        <CardComponent record = {store}/>
                     </Col>
-                </Row>
-                );
-            }) :
+                ))}
+            </Row>
+            //         filtered.map((record) => {
+            //     return (
+                    
+            //     <Row>
+            //         <Col>
+            //             <CardComponent record = {record}/>
+            //         </Col>
+            //     </Row>
+            //     );
+            // }) 
+            :
             <h2>No item in this category!!</h2>}
         </Container>
     </div>);
