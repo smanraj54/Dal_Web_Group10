@@ -51,9 +51,9 @@ apps.post("/api/addStore",(req,res) =>{
             res.send(response)
         }
         else{
-            let sqlInsert = "insert into store_details (store_name,store_addr,op_hrs,category,price,services,store_logo) values (?,?,?,?,?,?,?)";
+            let sqlInsert = "insert into store_details (store_name,store_addr,op_hrs,price,services,store_logo) values (?,?,?,?,?,?)";
 
-            db.query(sqlInsert,[storeName,address,opHrs,category,
+            db.query(sqlInsert,[storeName,address,opHrs,
             price,phone,logo],(err,result)=>{
                 console.log(result)
                 res.send(result)
@@ -75,11 +75,12 @@ apps.post("/api/addItem",(req,res) =>{
     let itemPrice = req.body.itemPrice
     let itemDesc = req.body.itemDesc
     let itemImage = req.body.itemImage
+    let category = req.body.category
   
-    let sqlInsert = "insert into item_details (store_name,item_name,item_qty,item_price,item_desc,item_image) values (?,?,?,?,?,?)";
+    let sqlInsert = "insert into item_details (store_name,item_name,item_qty,item_price,item_desc,item_image,category) values (?,?,?,?,?,?,?)";
 
     db.query(sqlInsert,[storeName,itemName,itemQty,itemPrice,
-    itemDesc,itemImage],(err,result)=>{
+    itemDesc,itemImage,category],(err,result)=>{
         console.log(result)
         res.send(result)
     })
