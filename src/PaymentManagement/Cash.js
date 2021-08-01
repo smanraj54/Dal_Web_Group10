@@ -20,10 +20,24 @@ class Cash extends React.Component{
         //props value indicating type of payment
         const values = this.props.nameOfType
           this.informationCash()
-          this.cancelOrder();
+          this.placeOrder();
 
         
     }
+  placeOrder= ()=>{
+ this.placeThisOrder();
+ this.cancelOrder();
+ }
+  
+  placeThisOrder = () => {
+ this.props.clearInfo();
+ var baseUrl = 'https://group10projectbackend.herokuapp.com';
+ var orderDetails = baseUrl + "/orders/add";
+ axios.post(orderDetails).then(res => {
+ this.props.clearInfo();
+ });
+ }
+  
 //code to be executed if order is cancelled
     cancelCashOrder= ()=>{
         var proceed = window.confirm("Are you sure you want to cancel the order?");

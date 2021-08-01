@@ -28,7 +28,7 @@ function AdminPanel(props) {
   const [price,setPrice] = useState('')
   const [logo,setLogo] = useState('')
   const [opHrs,setopHrs] = useState('')
-  const [category,setCategory] = useState('')
+
 
 
   const terminateSession=()=>{
@@ -40,7 +40,7 @@ function AdminPanel(props) {
 const submitAdd = () => {
 
 //API Call
-  if(storeName===''||phone==='' || address===''|| price==='' ||logo===''||opHrs===''||category==='' ){
+  if(storeName===''||phone==='' || address===''|| price==='' ||logo===''||opHrs==='' ){
     alert("Please enter all the fields");
   }
   else{
@@ -50,8 +50,7 @@ const submitAdd = () => {
       address:address,
       price:price,
       logo:logo,
-      opHrs:opHrs,
-      category:category,
+      opHrs:opHrs
     }).then((response)=>{
       console.log(response)
   
@@ -153,35 +152,7 @@ const submitAdd = () => {
 
           </textarea>
         </div>
-        {/*Select Category*/}
-
-        <div>
-          <b><label class="lab"> Category
-
-          </label> </b>&nbsp;&nbsp;&nbsp;<br />
-
-          <input type="checkbox" id="vegetables" name="vegetables" value="vegetables" onChange={(e)=>{
-              setCategory(e.target.value)
-            }} /> &nbsp;&nbsp;
-          <label for="vegetables">Vegetables</label>&nbsp;&nbsp;&nbsp;
-          <input type="checkbox" id="fruits"   name="fruits" value="fruits"  onChange={(e)=>{
-              setCategory(e.target.value)
-            }}/>&nbsp;&nbsp;
-          <label for="fruits"> Fruits</label>&nbsp;&nbsp;&nbsp;&nbsp;
-          <input type="checkbox" id="EssentialA"  name="EssentialA" value="EssentialA" onChange={(e)=>{
-              setCategory(e.target.value)
-            }}/>&nbsp;&nbsp;
-          <label for="EssentialA"> Essentials - Type A </label>&nbsp;&nbsp;&nbsp;&nbsp;
-          <input type="checkbox" id="EssentialB"  name="EssentialB" value="EssentialB" onChange={(e)=>{
-              setCategory(e.target.value)
-            }}/>&nbsp;&nbsp;
-          <label for="EssentialB"> Essentials - Type B </label>&nbsp;&nbsp;&nbsp;&nbsp;
-          <input type="checkbox" id="EssentialC"  name="EssentialC" value="EssentialC" onChange={(e)=>{
-              setCategory(e.target.value)
-            }}/>&nbsp;&nbsp;
-          <label for="EssentialC"> Essentials - Type C </label>&nbsp;&nbsp;&nbsp;&nbsp;
-
-        </div>
+       
 
            {/*Operating hours*/}
 
@@ -241,7 +212,7 @@ const submitAdd = () => {
         <br></br>
         <div class="center">     
         <button type="submit" onClick={submitAdd} >Add</button>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="https://group10proposalweb.herokuapp.com/AdminPanel"><button id="cancelButton" type="button" >Cancel</button></a> 
+        <a href="https://group10proposalweb.herokuapp.com/AdminPanel"><button class = "center2"  id="cancelButton" type="button" >Cancel</button></a> 
             </div>
           
             </div>

@@ -1,12 +1,13 @@
 import {BrowserRouter as Router,Switch, Route ,useHistory} from 'react-router-dom';
 import './App.css';
-import Delivery from './PaymentManagement/Delivery';
+import Delivery from './Delivery/Delivery';
 import CustomerSupport from './CustomerCare/customerSupport';
 
 import Payment from './PaymentManagement/Payment';
 import { NavbarDetails } from './CartManagement/NavBarDetails';
 import { Cart } from './CartManagement/Cart';
 import HomePageCatalogue from './HomePage/HomePageCatalogue';
+import VolunteerOrders from './Volunteer/VolunteerOrders';
 import Homepage from "./UserManagement/pages/Homepage";
 import UserHomepage from "./UserManagement/pages/UserHomepage";
 import Login from "./UserManagement/pages/Login";
@@ -21,6 +22,7 @@ import AddItem from './AdminPage/pages/AddItem';
 import UpdateItem from './AdminPage/pages/UpdateItem';
 import RemoveItem from './AdminPage/pages/RemoveItem';
 import RemoveStore from './AdminPage/pages/RemoveStore';
+import StoreList from './FirstHomePage/storeList';
 
 
 function App() {
@@ -69,7 +71,7 @@ function App() {
       <Route exact path = "/home">
           {" "}
           <div>
-            <UserHeader/>
+            
             <HomePageCatalogue></HomePageCatalogue>
           </div>
       </Route>
@@ -78,6 +80,14 @@ function App() {
           <div>
             <UserHeader/>
             <Cart/>
+          </div>
+          {/* <h1>WELCOME TO SecondPage</h1> */}
+      </Route>
+      <Route path = "/volunteer">
+          {" "}
+          <div>
+            <UserHeader/>
+            <VolunteerOrders/>
           </div>
           {/* <h1>WELCOME TO SecondPage</h1> */}
       </Route>
@@ -140,6 +150,12 @@ function App() {
           {" "}
           <h1>Wrong Email and Password!!!</h1>
       </Route>
+      <Route exact path = "/homeStores">
+          {" "}
+          <div>
+            <StoreList/>
+          </div>
+      </Route> 
       <Route>
           {" "}
           <h1>WrongPage!!!</h1>

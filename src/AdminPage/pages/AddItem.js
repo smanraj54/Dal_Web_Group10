@@ -7,22 +7,23 @@ import '../css/AdminStyles.css';
 import Axios from 'axios'
 import { Redirect, Route, withRouter } from "react-router-dom";
 
+
 function AddItem(props) {
 
 
 
     var isAdmin = localStorage.getItem('admin');
     console.log(isAdmin);
-  
+
     // checking whether the user is logged in or not.
     // if user is not logged in then they will be redirected to login.
-   
+
     useEffect(() => {
-      if(!isAdmin){
-        props.history.push('/admin/login');
-      }
-    },[]);
-  
+        if (!isAdmin) {
+            props.history.push('/admin/login');
+        }
+    }, []);
+
 
     const [storeName, setStoreName] = useState('')
     const [itemName, setItemName] = useState('')
@@ -30,20 +31,21 @@ function AddItem(props) {
     const [itemPrice, setItemPrice] = useState('')
     const [itemDesc, setItemDesc] = useState('')
     const [itemImage, setItemImage] = useState('')
+    const [category,setCategory] = useState('')
 
 
-    const terminateSession=()=>{
+    const terminateSession = () => {
         localStorage.clear();
         props.history.push('/admin/login');
     }
-    
-//API Call
+
+    //API Call
     const submitAdd = () => {
 
-        if(storeName===''||itemName==='' || itemQty===''|| itemPrice==='' ||itemDesc===''||itemImage===''){
+        if (storeName === '' || itemName === '' || itemQty === '' || itemPrice === '' || itemDesc === '' || itemImage === ''||category==='') {
             alert("Please enter all the fields");
-          }
-          else{
+        }
+        else {
             Axios.post("https://group10projectbackend.herokuapp.com/api/addItem", {
                 storeName: storeName,
                 itemName: itemName,
@@ -51,24 +53,25 @@ function AddItem(props) {
                 itemPrice: itemPrice,
                 itemDesc: itemDesc,
                 itemImage: itemImage,
+                category:category
             }).then((response) => {
-                if(response.data==="success"  || response.data.changedRows===1||response.data.affectedRows===1 ||response.status===200){
-          
+                if (response.data === "success" || response.data.changedRows === 1 || response.data.affectedRows === 1 || response.status === 200) {
+
                     alert("Item Successfully added");
                     window.location.reload();
-                   
-              
-                  }
-                  else{
+
+
+                }
+                else {
                     alert("Something went wrong");
-                  }
-                  
-                }) 
-                .catch((err) =>{
-                  console.log(err)
+                }
+
+            })
+                .catch((err) => {
+                    console.log(err)
                 })
-          }
-       
+        }
+
     }
 
 
@@ -85,7 +88,7 @@ function AddItem(props) {
 
                 <hr></hr>
 
-                <p class="alignleftz3"><a  class = "current" href="https://group10proposalweb.herokuapp.com/AddItem" tabindex="1" id="link4"> AddItem</a></p>
+                <p class="alignleftz3"><a class="current" href="https://group10proposalweb.herokuapp.com/AddItem" tabindex="1" id="link4"> AddItem</a></p>
                 <p class="alignleftz2"><a href="https://group10proposalweb.herokuapp.com/UpdateItem" tabindex="1" id="link3"> UpdateItem</a></p>
                 <p class="alignleftz2"><a href="https://group10proposalweb.herokuapp.com/RemoveStore" tabindex="1" id="link5"> Remove Store</a></p>
                 <p class="alignleftz2"><a href="https://group10proposalweb.herokuapp.com/RemoveItem" tabindex="1" id="link6"> Remove Item</a></p>
@@ -128,6 +131,41 @@ function AddItem(props) {
                                 setItemName(e.target.value)
                             }} required
                         />
+
+                    </div>
+
+
+                    {/*Select Category*/}
+
+                    <div>
+                        <b><label class="lab"> Category
+
+                        </label> </b>&nbsp;&nbsp;&nbsp;<br />
+
+                        <input type="checkbox" id="Vegetables" name="Vegetables" value="Vegetables" onChange={(e) => {
+                            setCategory(e.target.value)
+                        }} /> &nbsp;&nbsp;
+                        <label for="Vegetables">Vegetables</label>&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" id="Fruits" name="Fruits" value="Fruits" onChange={(e) => {
+                            setCategory(e.target.value)
+                        }} />&nbsp;&nbsp;
+                        <label for="Fruits"> Fruits</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" id="Drinks" name="Drinks" value="Drinks" onChange={(e) => {
+                            setCategory(e.target.value)
+                        }} />&nbsp;&nbsp;
+                        <label for="Drinks"> Drinks </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" id="Dishware" name="Dishware" value="Dishware" onChange={(e) => {
+                            setCategory(e.target.value)
+                        }} />&nbsp;&nbsp;
+                        <label for="Dishware">Dishware </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" id="Essentials" name="Essentials" value="Essentials" onChange={(e) => {
+                            setCategory(e.target.value)
+                        }} />&nbsp;&nbsp;
+                        <label for="Essentials"> Essentials </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" id="Meat" name="Meat" value="Meat" onChange={(e) => {
+                            setCategory(e.target.value)
+                        }} />&nbsp;&nbsp;
+                        <label for="Meat"> Meat </label>&nbsp;&nbsp;&nbsp;&nbsp;
 
                     </div>
 
@@ -195,7 +233,7 @@ function AddItem(props) {
                     <br></br>
                     <div class="center">
                         <button type="submit" onClick={submitAdd} >Add</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="https://group10proposalweb.herokuapp.com/AddItem"><button type="button" >Cancel</button> </a>
+                        <a href="https://group10proposalweb.herokuapp.com/AddItem"><button class="center2" type="button" >Cancel</button> </a>
                     </div>
 
                 </div>
@@ -210,4 +248,4 @@ function AddItem(props) {
     );
 }
 
-export default withRouter(AddItem) ;
+export default withRouter(AddItem);

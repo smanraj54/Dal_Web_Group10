@@ -57,7 +57,11 @@ const AdminLogin = (props) => {
           console.log(response.data.success);
           setError("username and password do not match");
         }
-      });
+      })
+      .catch((err) =>{
+        console.log(err)
+      })
+      
     }
     setUsername("");
     setPassword("");
