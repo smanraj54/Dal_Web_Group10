@@ -9,10 +9,10 @@ Heroku Backend URL Link : https://group10projectbackend.herokuapp.com
 Heroku Frontend URL Link: https://group10proposalsweb.herokuapp.com
 
 ## Contributors
-Narendran Krishnakumar
-Pathik Patel
-Kishan Patel
-Manraj Singh
+Narendran Krishnakumar <br />
+Pathik Patel <br />
+Kishan Patel <br />
+Manraj Singh <br />
 Robinder Singh
 
 # Feature: Admin Management
