@@ -8,6 +8,12 @@ Last Modification Date: 30 JUL 2021
 Heroku Backend URL Link : https://group10projectbackend.herokuapp.com    
 Heroku Frontend URL Link: https://group10proposalsweb.herokuapp.com
 
+## Contributors
+Narendran Krishnakumar
+Pathik Patel
+Kishan Patel
+Manraj Singh
+Robinder Singh
 
 # Feature: Admin Management
 
